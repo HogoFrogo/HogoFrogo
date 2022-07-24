@@ -6,7 +6,23 @@ Not a big project probably, just to try to create some game cooperatively.
 ## Hogo Frogo (one of the options)
 Game with existing weird frogs
 
-For example:
+### Frogs:  
+1) Purple Frog  
+  Weirdo-mutant frog
+2) Mossy Frog  
+ dunno frog
+3) Budgett's Frog  
+ Big-mouth frog
+4) Long-Nosed Horned Frog  
+ Warrior frog
+5) Parachute Frog  
+ Flying frog
+6) Waxy Monkey Tree Frog  
+ Muscular frog
+7) Black Rain Frog  
+ Sad frog
+
+#### Frog Images:  
 1) Purple Frog  
 ![Purple Frog](https://ichef.bbci.co.uk/news/976/cpsprodpb/0DC4/production/_87842530_bbc_biswas_2.jpg)
 2) Mossy Frog  
