@@ -37,3 +37,6 @@ Game with existing weird frogs
 ![Waxy Monkey Tree Frog](http://cdn.shopify.com/s/files/1/0854/5720/articles/waxy_monkey_frog_3_1200x1200.jpg?v=1598834764)
 7) Black Rain Frog  
 ![Black Rain Frog](https://static.boredpanda.com/blog/wp-content/uploads/2020/06/black-rain-frogs-2-5edf2a036a852__700.jpg)
+
+### Game nature ideas:
+1) Platform fighting game (e. g. Smash Bros) with an emphasis on controls, that impersonate frog behaviour (hold A+S to wind up, release to jump in the left direction, hold K+L and release for the other direction).
