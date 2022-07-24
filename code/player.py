@@ -40,7 +40,7 @@ class Player(pygame.sprite.Sprite):
 		self.hurt_time = 0
 
 		# audio 
-		self.jump_sound = pygame.mixer.Sound('../audio/effects/jump.wav')
+		self.jump_sound = pygame.mixer.Sound('../audio/effects/jump2.mp3')
 		self.jump_sound.set_volume(0.5)
 		self.hit_sound = pygame.mixer.Sound('../audio/effects/hit.wav')
 
