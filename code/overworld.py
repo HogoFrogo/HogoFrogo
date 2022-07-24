@@ -35,7 +35,7 @@ class Icon(pygame.sprite.Sprite):
 	def __init__(self,pos):
 		super().__init__()
 		self.pos = pos
-		self.image = pygame.image.load('../graphics/overworld/hat.png').convert_alpha()
+		self.image = pygame.image.load('../graphics/overworld/frog.png').convert_alpha()
 		self.rect = self.image.get_rect(center = pos)
 
 	def update(self):
