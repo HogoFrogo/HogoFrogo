@@ -8,7 +8,7 @@ Game with existing weird frogs
 
 ### Frogs:  
 1) Purple Frog  
-  Weirdo-mutant frog
+  Weirdo-mutant (mole + frog + buttocks) frog
 2) Mossy Frog  
  dunno frog
 3) Budgett's Frog  
