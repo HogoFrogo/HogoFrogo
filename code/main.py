@@ -14,7 +14,7 @@ class Game:
 		self.coins = 0
 		
 		# audio 
-		self.level_bg_music = pygame.mixer.Sound('../audio/level_music.wav')
+		self.level_bg_music = pygame.mixer.Sound('../audio/magnetic_b-ing.wav')
 		self.overworld_bg_music = pygame.mixer.Sound('../audio/overworld_music.wav')
 
 		# overworld creation
