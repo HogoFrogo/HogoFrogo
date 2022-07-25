@@ -137,7 +137,7 @@ class Player(pygame.sprite.Sprite):
 		self.collision_rect.y += self.direction.y
 
 	def jump(self):
-			self.direction.y = self.jump_speed - self.jump_velocity
+			self.direction.y = self.jump_speed - self.jump_velocity/10
 			self.jump_sound.play()
 
 	def get_damage(self):
