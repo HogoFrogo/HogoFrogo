@@ -114,6 +114,8 @@ class Player(pygame.sprite.Sprite):
 			self.jump_velocity = self.jump_velocity + 1
 		elif self.on_ground==False and self.facing_right==True:
 			self.direction.x = 1
+		elif keys[pygame.K_SPACE]:
+			self.jump_velocity = 0
 		elif self.jump_velocity>0:
 			self.jump()
 			self.jump_velocity = 0
