@@ -47,4 +47,4 @@ Game with existing weird frogs
 1) NPC Black Rain Frog (No. 7), that will act for entertainment purposes in the cutscenes. In the beginning or during the story it will naturally frown to evoke sadness, in the end, it will finally smile.
 
 ## Betatester opinions
-[Click here](Betatester opinions.md)
+[Click here](Gameplay.md)
