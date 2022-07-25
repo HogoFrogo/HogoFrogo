@@ -40,3 +40,8 @@ Game with existing weird frogs
 
 ### Game nature ideas:
 1) Platform fighting game (e. g. Smash Bros) with an emphasis on controls, that impersonate frog behaviour (hold A+S to wind up, release to jump in the left direction, hold K+L and release for the other direction).
+
+
+
+### Gameplay/design ideas:
+1) NPC Black Rain Frog (No. 7), that will act for entertainment purposes in the cutscenes. In the beginning or during the story it will naturally frown to evoke sadness, in the end, it will finally smile.
