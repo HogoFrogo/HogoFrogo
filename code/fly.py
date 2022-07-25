@@ -2,11 +2,11 @@ import pygame
 from tiles import AnimatedTile
 from random import randint
 
-class Enemy(AnimatedTile):
+class Fly(AnimatedTile):
 	def __init__(self,size,x,y):
-		super().__init__(size,x,y,'../graphics/enemy/run')
+		super().__init__(size,x,y,'../graphics/fly/run')
 		self.rect.y += size - self.image.get_size()[1]
-		self.speed = randint(2,9)
+		self.speed = -randint(2,9)
 
 	def move(self):
 		self.rect.x += self.speed
