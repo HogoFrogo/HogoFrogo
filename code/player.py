@@ -23,7 +23,7 @@ class Player(pygame.sprite.Sprite):
 		self.direction = pygame.math.Vector2(0,0)
 		self.speed = 8
 		self.gravity = 0.8
-		self.jump_speed = -15
+		self.jump_speed = -5
 		self.jump_velocity = 0
 		self.collision_rect = pygame.Rect(self.rect.topleft,(50,self.rect.height))
 
@@ -139,7 +139,7 @@ class Player(pygame.sprite.Sprite):
 		self.collision_rect.y += self.direction.y
 
 	def jump(self):
-			self.direction.y = self.jump_speed - self.jump_velocity/10
+			self.direction.y = self.jump_speed - self.jump_velocity/3
 			self.jump_sound.play()
 
 	def get_damage(self):
