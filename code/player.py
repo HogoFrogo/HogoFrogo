@@ -23,7 +23,8 @@ class Player(pygame.sprite.Sprite):
 		self.direction = pygame.math.Vector2(0,0)
 		self.speed = 8
 		self.gravity = 0.8
-		self.jump_speed = -16
+		self.jump_speed = -15
+		self.jump_velocity = 0
 		self.collision_rect = pygame.Rect(self.rect.topleft,(50,self.rect.height))
 
 		# player status
@@ -101,23 +102,24 @@ class Player(pygame.sprite.Sprite):
 		keys = pygame.key.get_pressed()
 
 		if keys[pygame.K_a] and keys[pygame.K_SPACE] and self.on_ground:
-			self.jump()
 			self.create_jump_particles(self.rect.midbottom)
-			self.direction.x = -1
 			self.facing_right = False
+			self.jump_velocity = self.jump_velocity + 1
 		elif self.on_ground==False and self.facing_right==False:
 			self.direction.x = -1
 		
-		
 		elif keys[pygame.K_l] and keys[pygame.K_SPACE] and self.on_ground:
-			self.jump()
 			self.create_jump_particles(self.rect.midbottom)
-			self.direction.x = 1
 			self.facing_right = True
+			self.jump_velocity = self.jump_velocity + 1
 		elif self.on_ground==False and self.facing_right==True:
 			self.direction.x = 1
+		elif self.jump_velocity>0:
+			self.jump()
+			self.jump_velocity = 0
 		else:
 			self.direction.x = 0
+			self.jump_velocity = 0
 
 	def get_status(self):
 		if self.direction.y < 0:
@@ -135,8 +137,8 @@ class Player(pygame.sprite.Sprite):
 		self.collision_rect.y += self.direction.y
 
 	def jump(self):
-		self.direction.y = self.jump_speed
-		self.jump_sound.play()
+			self.direction.y = self.jump_speed - self.jump_velocity
+			self.jump_sound.play()
 
 	def get_damage(self):
 		if not self.invincible:
