@@ -16,6 +16,7 @@ class Level:
 		self.display_surface = surface
 		self.world_shift = 0
 		self.current_x = None
+		self.level_border = 50
 
 		# audio 
 		self.coin_sound = pygame.mixer.Sound('../audio/effects/coin.wav')
@@ -314,4 +315,4 @@ class Level:
 		# water 
 		self.water.draw(self.display_surface,self.world_shift)
 
-		if(randint(0,99)<1): self.enemy_sprites.add(Fly(tile_size,1200,randint(50,600)))
+		if(randint(0,99)<1): self.enemy_sprites.add(Fly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
