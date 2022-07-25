@@ -13,6 +13,8 @@ class Game:
 		self.cur_health = 100
 		self.coins = 0
 		self.screen = screen
+		programIcon = pygame.image.load('../graphics/character/idle/1.png')
+		pygame.display.set_icon(programIcon)
 		
 		# audio 
 		self.level_bg_music = pygame.mixer.Sound('../audio/magnetic_b-ing.mp3')
