@@ -1,0 +1,1 @@
+1) An option to jump upwards without a direction
