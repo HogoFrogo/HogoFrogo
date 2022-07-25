@@ -46,5 +46,9 @@ Game with existing weird frogs
 ### Gameplay/design ideas:
 1) NPC Black Rain Frog (No. 7), that will act for entertainment purposes in the cutscenes. In the beginning or during the story it will naturally frown to evoke sadness, in the end, it will finally smile.
 
-## Betatester opinions
+## Gameplay
 [Click here](Gameplay.md)
+
+## Betatester opinions
+[Click here](betatester_opinions.md)
+
