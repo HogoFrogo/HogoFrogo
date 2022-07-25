@@ -1,3 +1,4 @@
+from tkinter.tix import Tree
 import pygame 
 from support import import_folder
 from math import sin
@@ -99,18 +100,24 @@ class Player(pygame.sprite.Sprite):
 	def get_input(self):
 		keys = pygame.key.get_pressed()
 
-		if keys[pygame.K_RIGHT]:
-			self.direction.x = 1
-			self.facing_right = True
-		elif keys[pygame.K_LEFT]:
-			self.direction.x = -1
-			self.facing_right = False
-		else:
-			self.direction.x = 0
-
-		if keys[pygame.K_SPACE] and self.on_ground:
+		if keys[pygame.K_a] and keys[pygame.K_SPACE] and self.on_ground:
 			self.jump()
 			self.create_jump_particles(self.rect.midbottom)
+			self.direction.x = -1
+			self.facing_right = False
+		elif self.on_ground==False and self.facing_right==False:
+			self.direction.x = -1
+		
+		
+		elif keys[pygame.K_l] and keys[pygame.K_SPACE] and self.on_ground:
+			self.jump()
+			self.create_jump_particles(self.rect.midbottom)
+			self.direction.x = 1
+			self.facing_right = True
+		elif self.on_ground==False and self.facing_right==True:
+			self.direction.x = 1
+		else:
+			self.direction.x = 0
 
 	def get_status(self):
 		if self.direction.y < 0:
