@@ -93,7 +93,7 @@ class Overworld:
 				self.move_direction = self.get_movement_data('next')
 				self.current_level += 1
 				self.moving = True
-			elif keys[pygame.K_a] and self.current_level > 0:
+			elif keys[pygame.K_s] and self.current_level > 0:
 				self.move_direction = self.get_movement_data('previous')
 				self.current_level -= 1
 				self.moving = True
