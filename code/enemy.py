@@ -3,11 +3,9 @@ from tiles import AnimatedTile
 from random import randint
 
 class Enemy(AnimatedTile):
+	image = ""
 	def __init__(self,size,x,y):
-		super().__init__(size,x,y,'../graphics/enemy/run')
-		self.rect.y += size - self.image.get_size()[1]
-		self.speed = randint(2,9)
-		self.attack_damage = 10
+		super().__init__(size,x,y,self.image)
 
 	def move(self):
 		self.rect.x += self.speed

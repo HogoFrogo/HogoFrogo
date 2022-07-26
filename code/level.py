@@ -4,6 +4,7 @@ from settings import tile_size, screen_height, screen_width
 from tiles import Tile, StaticTile, Crate, Coin, Palm
 from enemy import Enemy
 from fly import Fly
+from bug import Bug
 from decoration import Sky, Water, Clouds
 from player import Player
 from particles import ParticleEffect
@@ -116,7 +117,7 @@ class Level:
 						sprite = Palm(tile_size,x,y,'../graphics/terrain/palm_bg',64)
 
 					if type == 'enemies':
-						if val == '0': sprite = Enemy(tile_size,x,y)
+						if val == '0': sprite = Bug(tile_size,x,y)
 						if val == '1': sprite = Fly(tile_size,x,y)
 						
 
@@ -143,7 +144,7 @@ class Level:
 	def enemy_collision_reverse(self):
 		for enemy in self.enemy_sprites.sprites():
 			if pygame.sprite.spritecollide(enemy,self.constraint_sprites,False):
-				if isinstance(enemy, Enemy):
+				if isinstance(enemy, Bug):
 					enemy.reverse()
 
 	def create_jump_particles(self,pos):
