@@ -11,6 +11,8 @@ class Player(pygame.sprite.Sprite):
 		self.animation_speed = 0.15
 		self.image = self.animations['idle'][self.frame_index]
 		self.rect = self.image.get_rect(topleft = pos)
+		self.tongue_stick_out = False
+		self.tongue_stick_out_timeout = 0
 		
 		# dust particles 
 		self.import_dust_run_particles()
@@ -48,7 +50,7 @@ class Player(pygame.sprite.Sprite):
 
 	def import_character_assets(self):
 		character_path = '../graphics/character/'
-		self.animations = {'idle':[],'run':[],'jump':[],'fall':[]}
+		self.animations = {'idle':[],'run':[],'jump':[],'fall':[],'tongue_stick_out':[]}
 
 		for animation in self.animations.keys():
 			full_path = character_path + animation
@@ -122,9 +124,14 @@ class Player(pygame.sprite.Sprite):
 		else:
 			self.direction.x = 0
 			self.jump_velocity = 0
+		if keys[pygame.K_k] and self.tongue_stick_out_timeout==0:
+			self.tongue_stick_out = True
+			self.tongue_stick_out_timeout = 40
 
 	def get_status(self):
-		if self.direction.y < 0:
+		if self.tongue_stick_out:
+			self.status = 'tongue_stick_out'
+		elif self.direction.y < 0:
 			self.status = 'jump'
 		elif self.direction.y > 1:
 			self.status = 'fall'
@@ -167,4 +174,8 @@ class Player(pygame.sprite.Sprite):
 		self.run_dust_animation()
 		self.invincibility_timer()
 		self.wave_value()
+		if(self.tongue_stick_out_timeout>0):
+			self.tongue_stick_out_timeout-=1
+		else:
+			self.tongue_stick_out=False
 		
