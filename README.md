@@ -40,3 +40,7 @@ Game with existing weird frogs
 
 ### Game nature ideas:
 1) Platform fighting game (e. g. Smash Bros) with an emphasis on controls, that impersonate frog behaviour (hold A+S to wind up, release to jump in the left direction, hold K+L and release for the other direction).
+
+## Dependecies:
+* pygame
+* pygame-menu
