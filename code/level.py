@@ -248,7 +248,7 @@ class Level:
 					self.explosion_sprites.add(explosion_sprite)
 					enemy.kill()
 				else:
-					self.player.sprite.get_damage()
+					self.player.sprite.get_damage(enemy.attack_damage)
 
 	def run(self):
 		# run the entire game / level 

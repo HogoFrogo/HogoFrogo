@@ -7,6 +7,7 @@ class Fly(AnimatedTile):
 		super().__init__(size,x,y,'../graphics/fly/run')
 		self.rect.y += size - self.image.get_size()[1]
 		self.speed = -randint(2,9)
+		self.attack_damage = 2
 
 	def move(self):
 		self.rect.x += self.speed
