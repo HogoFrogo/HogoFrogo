@@ -24,7 +24,6 @@ class Game:
 		# overworld creation
 		self.overworld = Overworld(0,self.max_level,screen,self.create_level)
 		self.status = 'overworld'
-		self.overworld_bg_music.play(loops = -1)
 
 		# user interface 
 		self.ui = UI(screen)
