@@ -13,6 +13,7 @@ class Player(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect(topleft = pos)
 		self.tongue_stick_out = False
 		self.tongue_stick_out_timeout = 0
+		self.stickout_charging_time = 50
 		
 		# dust particles 
 		self.import_dust_run_particles()
@@ -126,7 +127,7 @@ class Player(pygame.sprite.Sprite):
 			self.jump_velocity = 0
 		if keys[pygame.K_k] and self.tongue_stick_out_timeout==0:
 			self.tongue_stick_out = True
-			self.tongue_stick_out_timeout = 40
+			self.tongue_stick_out_timeout = self.stickout_charging_time+20
 
 	def get_status(self):
 		if self.tongue_stick_out:
@@ -177,6 +178,9 @@ class Player(pygame.sprite.Sprite):
 		self.run_dust_animation()
 		self.invincibility_timer()
 		self.wave_value()
+		
+		if(self.tongue_stick_out_timeout<=self.stickout_charging_time):
+			self.tongue_stick_out=False
 		if(self.tongue_stick_out_timeout>0):
 			self.tongue_stick_out_timeout-=1
 		else:
