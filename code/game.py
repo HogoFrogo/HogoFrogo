@@ -3,6 +3,7 @@ from settings import *
 from level import Level
 from overworld import Overworld
 from ui import UI
+from game_data import levels
 
 class Game:
 	def __init__(self, screen):
@@ -33,6 +34,7 @@ class Game:
 		self.level = Level(current_level,self.screen,self.create_overworld,self.change_coins,self.change_health)
 		self.status = 'level'
 		self.overworld_bg_music.stop()
+		self.level_bg_music = pygame.mixer.Sound(levels[current_level]['level_bg_music'])
 		self.level_bg_music.play(loops = -1)
 
 	def create_overworld(self,current_level,new_max_level):
