@@ -100,17 +100,18 @@ class Player(pygame.sprite.Sprite):
 
 	def get_input(self):
 		keys = pygame.key.get_pressed()
-
+		if keys[pygame.K_a] and self.on_ground:
+			self.facing_right = False
+		if keys[pygame.K_l] and self.on_ground:
+			self.facing_right = True
 		if keys[pygame.K_a] and keys[pygame.K_SPACE] and self.on_ground:
 			self.create_jump_particles(self.rect.midbottom)
-			self.facing_right = False
 			self.jump_velocity = self.jump_velocity + 1
 		elif self.on_ground==False and self.facing_right==False:
 			self.direction.x = -1
 		
 		elif keys[pygame.K_l] and keys[pygame.K_SPACE] and self.on_ground:
 			self.create_jump_particles(self.rect.midbottom)
-			self.facing_right = True
 			self.jump_velocity = self.jump_velocity + 1
 		elif self.on_ground==False and self.facing_right==True:
 			self.direction.x = 1
