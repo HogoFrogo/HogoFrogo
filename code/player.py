@@ -148,6 +148,9 @@ class Player(pygame.sprite.Sprite):
 	def jump(self):
 			self.direction.y = self.jump_speed - self.jump_velocity/3
 			self.jump_sound.play()
+			
+	def heal(self, healing_points):
+			self.change_health(healing_points)
 
 	def get_damage(self, damage):
 		if not self.invincible:

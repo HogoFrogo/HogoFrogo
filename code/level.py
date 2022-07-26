@@ -22,6 +22,7 @@ class Level:
 		# audio 
 		self.coin_sound = pygame.mixer.Sound('../audio/effects/coin.wav')
 		self.stomp_sound = pygame.mixer.Sound('../audio/effects/stomp.wav')
+		self.eat_sound = pygame.mixer.Sound('../audio/effects/eat.wav')
 
 		# overworld connection 
 		self.create_overworld = create_overworld
@@ -242,7 +243,14 @@ class Level:
 				enemy_center = enemy.rect.centery
 				enemy_top = enemy.rect.top
 				player_bottom = self.player.sprite.rect.bottom
-				if enemy_top < player_bottom < enemy_center and self.player.sprite.direction.y >= 0:
+				if enemy_top < player_bottom < enemy_center and self.player.sprite.tongue_stick_out:
+					self.eat_sound.play()
+					self.player.sprite.heal(enemy.healing_points)
+					# self.player.sprite.direction.y = -3
+					explosion_sprite = ParticleEffect(enemy.rect.center,'explosion')
+					self.explosion_sprites.add(explosion_sprite)
+					enemy.kill()
+				elif enemy_top < player_bottom < enemy_center and self.player.sprite.direction.y >= 0:
 					self.stomp_sound.play()
 					# self.player.sprite.direction.y = -3
 					explosion_sprite = ParticleEffect(enemy.rect.center,'explosion')
