@@ -60,7 +60,7 @@ class Game:
 			self.level_bg_music.stop()
 			self.overworld_bg_music.play(loops = -1)
 
-	def run(self):
+	def run(self,player_name):
 		if self.status == 'overworld':
 			self.overworld.run()
 		else:

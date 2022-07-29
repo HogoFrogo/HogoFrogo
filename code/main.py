@@ -17,6 +17,7 @@ def set_difficulty(value, difficulty):
     pass
 
 def start_the_game():
+	player_name = name_text_input.get_value()
 	main_menu_music.stop()
 	pygame_menu.events.EXIT
 	game.overworld_bg_music.play(loops = -1)
@@ -27,7 +28,7 @@ def start_the_game():
 				sys.exit()
 		
 		screen.fill('grey')
-		game.run()
+		game.run(player_name)
 
 		pygame.display.update()
 		clock.tick(60)
@@ -35,10 +36,9 @@ def start_the_game():
 menu = pygame_menu.Menu('Hogo Frogo', 400, 300,
                        theme=pygame_menu.themes.THEME_GREEN)
 
-menu.add.text_input('PlayerName: ', default='Mr. Croak')
+name_text_input = menu.add.text_input('PlayerName: ', default='Mr. Croak')
 menu.add.selector('Difficulty :', [('Hard', 1), ('Easy', 2)], onchange=set_difficulty)
 menu.add.button('Play', start_the_game)
 menu.add.button('Quit', pygame_menu.events.EXIT)
 main_menu_music.play(loops = -1)
 menu.mainloop(screen)
-
