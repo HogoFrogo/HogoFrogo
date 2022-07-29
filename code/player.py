@@ -62,28 +62,29 @@ class Player(pygame.sprite.Sprite):
 
 	def animate(self):
 		animation = self.animations[self.status]
+		image = animation[int(self.frame_index)]
+		if not self.facing_right:
+			flipped_image = pygame.transform.flip(image,True,False)
+			self.image = flipped_image
+		self.rect = self.image.get_rect(midbottom = self.rect.midbottom)	
+
 
 		# loop over frame index 
 		self.frame_index += self.animation_speed
 		if self.frame_index >= len(animation):
 			self.frame_index = 0
 
-		image = animation[int(self.frame_index)]
 		if self.facing_right:
 			self.image = image
 			self.rect.bottomleft = self.collision_rect.bottomleft
 		else:
-			flipped_image = pygame.transform.flip(image,True,False)
-			self.image = flipped_image
 			self.rect.bottomright = self.collision_rect.bottomright
 
 		if self.invincible:
 			alpha = self.wave_value()
 			self.image.set_alpha(alpha)
 		else:
-			self.image.set_alpha(255)
-
-		self.rect = self.image.get_rect(midbottom = self.rect.midbottom)		
+			self.image.set_alpha(255)	
 
 	def run_dust_animation(self):
 		if self.status == 'run' and self.on_ground:
