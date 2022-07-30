@@ -193,17 +193,18 @@ class Level:
 	def scroll_x(self):
 		player = self.player.sprite
 		player_x = player.rect.centerx
+		player_speed = player.native_speed
 		direction_x = player.direction.x
 
 		if player_x < screen_width / 2.5 and direction_x < 0:
-			self.world_shift = 8
+			self.world_shift = player_speed
 			player.speed = 0
 		elif player_x > screen_width - (screen_width / 2.5) and direction_x > 0:
-			self.world_shift = -8
+			self.world_shift = -player_speed
 			player.speed = 0
 		else:
 			self.world_shift = 0
-			player.speed = 8
+			player.speed = player_speed
 
 	def get_player_on_ground(self):
 		if self.player.sprite.on_ground:

@@ -24,7 +24,8 @@ class Player(pygame.sprite.Sprite):
 
 		# player movement
 		self.direction = pygame.math.Vector2(0,0)
-		self.speed = 8
+		self.speed = 4
+		self.native_speed = 4
 		self.gravity = 0.8
 		self.jump_speed = -5
 		self.jump_velocity = 0
@@ -122,6 +123,12 @@ class Player(pygame.sprite.Sprite):
 		elif self.jump_velocity>0:
 			self.create_jump_particles(self.rect.midbottom)
 			self.jump()
+			if self.jump_velocity>5:
+				self.native_speed = 6
+			elif self.jump_velocity>10:
+				self.native_speed = 8
+			else:
+				self.native_speed = 4
 			self.jump_velocity = 0
 		else:
 			self.direction.x = 0
