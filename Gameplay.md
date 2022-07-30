@@ -22,3 +22,5 @@ P: (a) Of course! (b) Of course!
 ### First level
 #### Saving The Salami Sandwich
 Player arrives at the map and gets coltrols help with tongue stick out. He jumps around till he arrives near the sandwich where bunch of flies are flying around it. When he kills them the sandwich is saved but the black frog is still sad.
+
+Jambes de grenouilles
