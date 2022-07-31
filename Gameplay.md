@@ -43,5 +43,8 @@ Purple Frog
 
 
 
-Jambes de grenouilles
-Cigars out of typha
+* Jambes de grenouilles
+* Cigars out of typha
+* Pepe The Frog
+* Kermit The Frog
+* Crazy Frog
