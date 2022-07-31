@@ -14,6 +14,7 @@ class Player(pygame.sprite.Sprite):
 		self.tongue_stick_out = False
 		self.tongue_stick_out_timeout = 0
 		self.stickout_charging_time = 50
+		self.native_width = 48
 		
 		# dust particles 
 		self.import_dust_run_particles()

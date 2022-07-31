@@ -244,7 +244,8 @@ class Level:
 				enemy_center = enemy.rect.centery
 				enemy_top = enemy.rect.top
 				player_bottom = self.player.sprite.rect.bottom
-				if (self.player.sprite.facing_right and self.player.sprite.rect.centerx < enemy.rect.left and self.player.sprite.tongue_stick_out) or (not self.player.sprite.facing_right and self.player.sprite.rect.centerx > enemy.rect.right and self.player.sprite.tongue_stick_out):
+				player_native_width = self.player.sprite.native_width
+				if (self.player.sprite.facing_right and self.player.sprite.rect.left+player_native_width < enemy.rect.left and self.player.sprite.tongue_stick_out) or (not self.player.sprite.facing_right and self.player.sprite.rect.right-player_native_width > enemy.rect.right and self.player.sprite.tongue_stick_out):
 					self.eat_sound.play()
 					self.player.sprite.heal(enemy.healing_points)
 					# self.player.sprite.direction.y = -3
