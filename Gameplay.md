@@ -8,6 +8,7 @@
 ## Story
 
 ### Intro
+Once upon a time there was a little frog named <player_name> that wanted to help the other frog to be happy. It heard about a very sad frog so it decided to go straight to it to help and make it happy.
 Player arrives in an empty level with controls help to learn basic movement. When he arrives at the end of map he meets a sad black rain frog.  
 Dialog:  
 P: Hello there! I'm <player_name>!  
@@ -22,6 +23,14 @@ P: (a) Of course! (b) Of course!
 ### First level
 #### Saving The Salami Sandwich
 Player arrives at the map and gets coltrols help with tongue stick out. He jumps around till he arrives near the sandwich where bunch of flies are flying around it. When he kills them the sandwich is saved but the black frog is still sad.
+
+Dialog:  
+N: You saved my sandwich! Thank you!
+N: Since now I will call you <player_name> The Saviour!
+Nobody: ...
+P: You are still sad?
+N: Yes! :(
+N: (something about 2nd level problem)
 
 ### Second level
 Waxy Monkey Tree Frog
