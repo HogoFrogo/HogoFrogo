@@ -11,13 +11,12 @@ pygame.init()
 screen = pygame.display.set_mode((screen_width,screen_height))
 clock = pygame.time.Clock()
 game = Game(screen)
+
 main_menu_music = pygame.mixer.Sound('../audio/magnetic_b-ing.mp3')
-def set_difficulty(value, difficulty):
-    # Do the job here !
-    pass
 
 def start_the_game():
 	player_name = name_text_input.get_value()
+	difficulty = difficulty_input.get_value()
 	main_menu_music.stop()
 	pygame_menu.events.EXIT
 	game.overworld_bg_music.play(loops = -1)
@@ -28,7 +27,7 @@ def start_the_game():
 				sys.exit()
 		
 		screen.fill('grey')
-		game.run(player_name)
+		game.run(player_name,difficulty)
 
 		pygame.display.update()
 		clock.tick(60)
@@ -37,7 +36,7 @@ menu = pygame_menu.Menu('Hogo Frogo', 400, 300,
                        theme=pygame_menu.themes.THEME_GREEN)
 
 name_text_input = menu.add.text_input('PlayerName: ', default='Mr. Croak')
-menu.add.selector('Difficulty :', [('Hard', 1), ('Easy', 2)], onchange=set_difficulty)
+difficulty_input = menu.add.selector('Difficulty :', [('Hard', 1), ('Easy', 2)])
 menu.add.button('Play', start_the_game)
 menu.add.button('Quit', pygame_menu.events.EXIT)
 main_menu_music.play(loops = -1)
