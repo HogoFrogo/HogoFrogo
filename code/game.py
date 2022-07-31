@@ -49,6 +49,8 @@ class Game:
 
 	def change_health(self,amount):
 		self.cur_health += amount
+		if(self.cur_health>self.max_health):
+			self.cur_health = self.max_health
 
 	def check_game_over(self):
 		if self.cur_health <= 0:
