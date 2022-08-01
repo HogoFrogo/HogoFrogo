@@ -50,6 +50,8 @@ Parachute Frog
 ### Seventh level
 Purple Frog
 
+### Eigth level
+Bufo Alvarius - When it croaks psychedelic balls in multiple directions approach. If player is hit, textures change and illusions of new enemies randomly arrive. More colours, harder to see what to do.
 
 
 * Jambes de grenouilles
