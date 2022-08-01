@@ -41,6 +41,9 @@ Game with existing weird frogs
 ![Balloon Frog](https://i.pinimg.com/736x/5b/7c/f8/5b7cf8ad17918ff6c6a2e7772defee16--photo-credit-amphibians.jpg)
 9) Goliath Frog  
 ![Goliath Frog](https://cdn.roaring.earth/wp-content/uploads/2020/09/frogspider.jpg)
+10) Colorado River Toad (Bufo Alvarius)  
+![Colorado River Toad](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/2009-03-13Bufo_alvarius067.jpg/440px-2009-03-13Bufo_alvarius067.jpg)
+
 
 ### Game nature ideas:
 1) Platform fighting game (e. g. Smash Bros) with an emphasis on controls, that impersonate frog behaviour (hold A+S to wind up, release to jump in the left direction, hold K+L and release for the other direction).
