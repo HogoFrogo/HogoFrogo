@@ -41,5 +41,3 @@ menu.add.button('Play', start_the_game)
 menu.add.button('Quit', pygame_menu.events.EXIT)
 main_menu_music.play(loops = -1)
 menu.mainloop(screen)
-
-#test

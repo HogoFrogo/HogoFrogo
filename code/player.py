@@ -28,9 +28,10 @@ class Player(pygame.sprite.Sprite):
 		self.speed = 4
 		self.native_speed = 4
 		self.gravity = 0.8
-		self.jump_speed = -5
-		self.jump_velocity = 0
+		self.jump_speed = 5
+		self.jump_energy = 0
 		self.collision_rect = pygame.Rect(self.rect.topleft,(50,self.rect.height))
+		self.jump_energy_limit = 48
 
 		# player status
 		self.status = 'idle'
@@ -111,29 +112,31 @@ class Player(pygame.sprite.Sprite):
 		if keys[pygame.K_l] and self.on_ground:
 			self.facing_right = True
 		if keys[pygame.K_s] and keys[pygame.K_SPACE] and self.on_ground:
-			self.jump_velocity = self.jump_velocity + 1
+			if self.jump_energy<self.jump_energy_limit:
+				self.jump_energy += 1
 		elif self.on_ground==False and self.facing_right==False:
 			self.direction.x = -1
 		
 		elif keys[pygame.K_l] and keys[pygame.K_SPACE] and self.on_ground:
-			self.jump_velocity = self.jump_velocity + 1
+			if self.jump_energy<self.jump_energy_limit:
+				self.jump_energy += 1
 		elif self.on_ground==False and self.facing_right==True:
 			self.direction.x = 1
 		elif keys[pygame.K_SPACE]:
-			self.jump_velocity = 0
-		elif self.jump_velocity>0:
+			self.jump_energy = 0
+		elif self.jump_energy>0:
 			self.create_jump_particles(self.rect.midbottom)
 			self.jump()
-			if self.jump_velocity>5:
+			if self.jump_energy>5:
 				self.native_speed = 6
-			elif self.jump_velocity>10:
+			elif self.jump_energy>10:
 				self.native_speed = 8
 			else:
 				self.native_speed = 4
-			self.jump_velocity = 0
+			self.jump_energy = 0
 		else:
 			self.direction.x = 0
-			self.jump_velocity = 0
+			self.jump_energy = 0
 		if keys[pygame.K_k] and self.tongue_stick_out_timeout==0:
 			self.tongue_stick_out = True
 			self.tongue_stick_out_timeout = self.stickout_charging_time+20
@@ -156,7 +159,7 @@ class Player(pygame.sprite.Sprite):
 		self.collision_rect.y += self.direction.y
 
 	def jump(self):
-			self.direction.y = self.jump_speed - self.jump_velocity/3
+			self.direction.y = -self.jump_speed - self.jump_energy/3
 			self.jump_sound.play()
 			
 	def heal(self, healing_points):
