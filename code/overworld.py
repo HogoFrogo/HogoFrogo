@@ -51,9 +51,11 @@ class Overworld:
 		self.create_level = create_level
 
 		# movement logic
+		keys = pygame.key.get_pressed()
 		self.moving = False
 		self.move_direction = pygame.math.Vector2(0,0)
 		self.speed = 8
+		self.player_direction = True
 
 		# sprites 
 		self.setup_nodes()
@@ -93,10 +95,20 @@ class Overworld:
 				self.move_direction = self.get_movement_data('next')
 				self.current_level += 1
 				self.moving = True
+				if not self.player_direction:
+					flipped_image = pygame.transform.flip(self.icon.sprite.image,True,False)
+					self.icon.sprite.image = flipped_image
+					self.player_direction = True
+
 			elif keys[pygame.K_s] and self.current_level > 0:
 				self.move_direction = self.get_movement_data('previous')
 				self.current_level -= 1
 				self.moving = True
+				if self.player_direction:
+					flipped_image = pygame.transform.flip(self.icon.sprite.image,True,False)
+					self.icon.sprite.image = flipped_image
+					self.player_direction = False
+
 			elif keys[pygame.K_SPACE]:
 				self.create_level(self.current_level)
 
