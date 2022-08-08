@@ -29,7 +29,7 @@ level_1 = {
 		'unlock': 2,
 		'level_bg_music': '../audio/magnetic_b-ing.mp3',
 		'flies': 10,
-		'dragonflies': 20}
+		'dragonflies': 1}
 level_2 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
 		'coins':'../levels/2/level_2_coins.csv',
