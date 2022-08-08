@@ -30,6 +30,8 @@ class Level:
 		self.current_level = current_level
 		level_data = levels[self.current_level]
 		self.new_max_level = level_data['unlock']
+		self.fly_occurency_probability = level_data['flies']
+		self.dragonfly_occurency_probability = level_data['dragonflies']
 
 		# player 
 		player_layout = import_csv_layout(level_data['player'])
@@ -145,9 +147,12 @@ class Level:
 
 	def enemy_collision_reverse(self):
 		for enemy in self.enemy_sprites.sprites():
-			if pygame.sprite.spritecollide(enemy,self.constraint_sprites,False):
-				if isinstance(enemy, Bug):
+			if isinstance(enemy, Bug):
+				if pygame.sprite.spritecollide(enemy,self.constraint_sprites,False):
 					enemy.reverse()
+			if isinstance(enemy, Dragonfly):
+				if(randint(0,999)<50):
+					enemy.speed_y=-enemy.speed_y
 
 	def create_jump_particles(self,pos):
 		if self.player.sprite.facing_right:
@@ -327,6 +332,5 @@ class Level:
 		# water 
 		self.water.draw(self.display_surface,self.world_shift)
 
-		# enemies generating
-		if(randint(0,999)<10): self.enemy_sprites.add(Fly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
-		if(randint(0,999)<1): self.enemy_sprites.add(Dragonfly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
+		if(randint(0,999)<self.fly_occurency_probability): self.enemy_sprites.add(Fly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
+		if(randint(0,999)<self.dragonfly_occurency_probability): self.enemy_sprites.add(Dragonfly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))

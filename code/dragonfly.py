@@ -10,4 +10,4 @@ class Dragonfly(Enemy):
 		super().__init__(size,x,y)
 		self.speed = -randint(7,10)
 		self.rect.y += size - self.image.get_size()[1]
-        
+		self.speed_y = 5

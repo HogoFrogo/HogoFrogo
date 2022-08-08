@@ -9,6 +9,7 @@ class Enemy(AnimatedTile):
 
 	def move(self):
 		self.rect.x += self.speed
+		self.rect.y += self.speed_y
 
 	def reverse_image(self):
 		if self.speed > 0:
