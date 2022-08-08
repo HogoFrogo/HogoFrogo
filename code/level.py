@@ -5,6 +5,7 @@ from tiles import Tile, StaticTile, Crate, Coin, Palm
 from enemy import Enemy
 from fly import Fly
 from bug import Bug
+from dragonfly import Dragonfly
 from decoration import Sky, Water, Clouds
 from player import Player
 from particles import ParticleEffect
@@ -326,4 +327,6 @@ class Level:
 		# water 
 		self.water.draw(self.display_surface,self.world_shift)
 
-		if(randint(0,99)<1): self.enemy_sprites.add(Fly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
+		# enemies generating
+		if(randint(0,999)<10): self.enemy_sprites.add(Fly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
+		if(randint(0,999)<1): self.enemy_sprites.add(Dragonfly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
