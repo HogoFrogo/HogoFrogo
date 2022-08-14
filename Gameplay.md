@@ -6,9 +6,12 @@
 ### 4) When player jump on an enemy he bounces off to the side selected by controls
 
 ## Story
-
 ### Intro
 Once upon a time there was a little frog named <player_name> that wanted to help the other frog to be happy. It heard about a very sad frog so it decided to go straight to it to help and make it happy.
+
+### Zeroth level
+#### The Journey To Help The World
+Empty level without any enemies. Player is directed to learn basic movement controls and just get used to them and reach the end of level where sad frog is waiting.
 Player arrives in an empty level with controls help to learn basic movement. When he arrives at the end of map he meets a sad black rain frog.  
 Dialog:  
 P: Hello there! I'm <player_name>!  
@@ -22,7 +25,7 @@ P: (a) Of course! (b) Of course!
 
 ### First level
 #### Saving The Salami Sandwich
-Player arrives at the map and gets coltrols help with tongue stick out. He jumps around till he arrives near the sandwich where bunch of flies are flying around it. When he kills them the sandwich is saved but the black frog is still sad.
+Player arrives at the map and gets coltrols help with tongue stick out. He jumps around till he arrives near the sandwich where bunch of flies are flying around it. When he kills them the sandwich is saved but the black frog is still sad. On the path to the sandwich some flies fly around from right to left.
 
 Dialog:  
 N: You saved my sandwich! Thank you!
