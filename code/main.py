@@ -32,7 +32,7 @@ def start_the_game():
 				sys.exit()
 		
 		screen.fill('grey')
-		game.run(player_name,difficulty)
+		game.run(player_name,difficulty,music)
 
 		pygame.display.update()
 		clock.tick(60)
