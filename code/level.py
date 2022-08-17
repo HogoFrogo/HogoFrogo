@@ -123,6 +123,7 @@ class Level:
 					if type == 'enemies':
 						if val == '0': sprite = Bug(tile_size,x,y)
 						if val == '1': sprite = Fly(tile_size,x,y)
+						if val == '2': sprite = Dragonfly(tile_size,x,y)
 						
 
 					if type == 'constraint':
