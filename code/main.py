@@ -1,3 +1,4 @@
+from typing_extensions import Self
 import pygame, sys
 import pygame_menu
 from settings import * 
@@ -5,6 +6,7 @@ from level import Level
 from overworld import Overworld
 from ui import UI
 from game import Game
+
 
 # Pygame setup
 pygame.init()
