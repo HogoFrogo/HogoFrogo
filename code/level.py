@@ -1,7 +1,7 @@
 import pygame 
 from support import import_csv_layout, import_cut_graphics
 from settings import tile_size, screen_height, screen_width
-from tiles import Tile, StaticTile, Crate, Coin, Palm
+from tiles import Tile, StaticTile, Crate, Coin, Palm, Constraint
 from enemy import Enemy
 from fly import Fly
 from ant import Ant
@@ -38,6 +38,8 @@ class Level:
 		self.player = pygame.sprite.GroupSingle()
 		self.goal = pygame.sprite.GroupSingle()
 		self.player_setup(player_layout,change_health)
+		self.killed_ants = 0
+		self.killed_flies = 0
 
 		# user interface 
 		self.change_coins = change_coins
@@ -127,7 +129,9 @@ class Level:
 						
 
 					if type == 'constraint':
-						sprite = Tile(tile_size,x,y)
+						if val == '0': sprite = Constraint(tile_size,x,y,0)
+						if val == '1': sprite = Constraint(tile_size,x,y,1)
+						if val == '2': sprite = Constraint(tile_size,x,y,2)
 
 					sprite_group.add(sprite)
 		
@@ -149,8 +153,22 @@ class Level:
 	def enemy_collision_reverse(self):
 		for enemy in self.enemy_sprites.sprites():
 			if isinstance(enemy,Ant):
-				if pygame.sprite.spritecollide(enemy,self.constraint_sprites,False):
-					enemy.reverse()
+				collided_constraints = pygame.sprite.spritecollide(enemy,self.constraint_sprites,False)
+				if collided_constraints:	
+					for constraint in collided_constraints:
+						print(constraint.value)
+						if constraint.value == 0:
+							enemy.reverse()
+							break
+			if isinstance(enemy,Fly):
+				collided_constraints = pygame.sprite.spritecollide(enemy,self.constraint_sprites,False)
+				if collided_constraints:	
+					for constraint in collided_constraints:
+						print(constraint.value)
+						if constraint.value == 1:
+							enemy.reverse()
+							break
+						
 			if isinstance(enemy, Dragonfly):
 				if(randint(0,999)<50):
 					enemy.speed_y=-enemy.speed_y
@@ -234,7 +252,11 @@ class Level:
 			
 	def check_win(self):
 		if pygame.sprite.spritecollide(self.player.sprite,self.goal,False):
-			self.create_overworld(self.current_level,self.new_max_level)
+			if self.current_level==1:
+				if self.killed_flies>=25 and self.killed_ants>=8:
+					self.create_overworld(self.current_level,self.new_max_level)
+			else:
+				self.create_overworld(self.current_level,self.new_max_level)
 			
 	def check_coin_collisions(self):
 		collided_coins = pygame.sprite.spritecollide(self.player.sprite,self.coin_sprites,True)
@@ -259,12 +281,20 @@ class Level:
 					explosion_sprite = ParticleEffect(enemy.rect.center,'explosion')
 					self.explosion_sprites.add(explosion_sprite)
 					enemy.kill()
+					if isinstance(enemy,Ant):
+						self.killed_ants += 1
+					if isinstance(enemy,Fly):
+						self.killed_flies += 1
 				elif enemy_top < player_bottom < enemy_center and self.player.sprite.direction.y >= 0:
 					self.stomp_sound.play()
 					# self.player.sprite.direction.y = -3
 					explosion_sprite = ParticleEffect(enemy.rect.center,'explosion')
 					self.explosion_sprites.add(explosion_sprite)
 					enemy.kill()
+					if isinstance(enemy,Ant):
+						self.killed_ants += 1
+					if isinstance(enemy,Fly):
+						self.killed_flies += 1
 				else:
 					self.player.sprite.get_damage(enemy.attack_damage)
 
@@ -320,9 +350,9 @@ class Level:
 		self.create_landing_dust()
 		
 		self.scroll_x()
-		self.player.draw(self.display_surface)
 		self.goal.update(self.world_shift)
 		self.goal.draw(self.display_surface)
+		self.player.draw(self.display_surface)
 
 		self.check_death()
 		self.check_win()
