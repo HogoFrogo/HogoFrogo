@@ -13,6 +13,7 @@ from game_data import levels
 from random import randint
 
 class Level:
+	#goal_image = '../graphics/misc/sandwich.png'
 	def __init__(self,current_level,surface,create_overworld,change_coins,change_health):
 		# general setup
 		self.display_surface = surface
@@ -34,6 +35,7 @@ class Level:
 		self.dragonfly_occurency_probability = level_data['dragonflies']
 
 		# player 
+		self.goal_image = level_data['goal_image']
 		player_layout = import_csv_layout(level_data['player'])
 		self.player = pygame.sprite.GroupSingle()
 		self.goal = pygame.sprite.GroupSingle()
@@ -146,7 +148,7 @@ class Level:
 					sprite = Player((x,y),self.display_surface,self.create_jump_particles,change_health)
 					self.player.add(sprite)
 				if val == '1':
-					hat_surface = pygame.image.load('../graphics/character/hat.png').convert_alpha()
+					hat_surface = pygame.image.load(self.goal_image).convert_alpha()
 					sprite = StaticTile(tile_size,x,y,hat_surface)
 					self.goal.add(sprite)
 

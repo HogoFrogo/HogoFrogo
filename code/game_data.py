@@ -13,7 +13,8 @@ level_0 = {
 		'node_graphics': '../graphics/overworld/0',
 		'level_bg_music': '../audio/level_music.wav',
 		'flies': 2,
-		'dragonflies': 0}
+		'dragonflies': 0,
+		'goal_image': '../graphics/character/hat.png'}
 level_1 = {
 		'terrain': '../levels/1/level_1_terrain.csv',
 		'coins':'../levels/1/level_1_coins.csv',
@@ -29,7 +30,8 @@ level_1 = {
 		'unlock': 2,
 		'level_bg_music': '../audio/magnetic_b-ing.mp3',
 		'flies': 10,
-		'dragonflies': 1}
+		'dragonflies': 1,
+		'goal_image': '../graphics/misc/sandwich.png'}
 level_2 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
 		'coins':'../levels/2/level_2_coins.csv',
@@ -45,7 +47,8 @@ level_2 = {
 		'unlock': 3,
 		'level_bg_music': '../audio/level_music.wav',
 		'flies': 10,
-		'dragonflies': 2}
+		'dragonflies': 2,
+		'goal_image': '../graphics/character/hat.png'}
 level_3 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
 		'coins':'../levels/2/level_2_coins.csv',
@@ -61,7 +64,8 @@ level_3 = {
 		'unlock': 4,
 		'level_bg_music': '../audio/magnetic_b-ing.mp3',
 		'flies': 10,
-		'dragonflies': 2}
+		'dragonflies': 2,
+		'goal_image': '../graphics/character/hat.png'}
 level_4 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
 		'coins':'../levels/2/level_2_coins.csv',
@@ -77,7 +81,8 @@ level_4 = {
 		'unlock': 5,
 		'level_bg_music': '../audio/level_music.wav',
 		'flies': 10,
-		'dragonflies': 2}
+		'dragonflies': 2,
+		'goal_image': '../graphics/character/hat.png'}
 level_5 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
 		'coins':'../levels/2/level_2_coins.csv',
@@ -93,7 +98,8 @@ level_5 = {
 		'unlock': 5,
 		'level_bg_music': '../audio/magnetic_b-ing.mp3',
 		'flies': 10,
-		'dragonflies': 2}
+		'dragonflies': 2,
+		'goal_image': '../graphics/character/hat.png'}
 
 levels = {
 	0: level_0,
