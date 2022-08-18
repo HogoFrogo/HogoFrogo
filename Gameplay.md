@@ -27,6 +27,12 @@ P: (a) Of course! (b) Of course!
 #### Saving The Salami Sandwich
 Player arrives at the map and gets coltrols help with tongue stick out. He jumps around till he arrives near the sandwich where bunch of flies are flying around it. When he kills them the sandwich is saved but the black frog is still sad. On the path to the sandwich some flies fly around from right to left.
 
+### Second level
+Waxy Monkey Tree Frog is shithead and wants to steal your sandwich, you can't beat him, but you can escape to finish.
+
+### Third level
+You meet good boi Long-Nosed Horned Frog and he helps you kick the dumbass Waxy Monkey Tree Frog
+
 Dialog:  
 N: You saved my sandwich! Thank you!
 N: Since now I will call you <player_name> The Saviour!
@@ -34,12 +40,6 @@ Nobody: ...
 P: You are still sad?
 N: Yes! :(
 N: (something about 2nd level problem)
-
-### Second level
-Waxy Monkey Tree Frog is shithead and wants to steal your sandwich, you can't beat him, but you can escape to finish.
-
-### Third level
-You meet good boi Long-Nosed Horned Frog and he helps you kick the dumbass Waxy Monkey Tree Frog
 
 ### Fourth level
 Budgett's Frog
