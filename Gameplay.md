@@ -36,10 +36,10 @@ N: Yes! :(
 N: (something about 2nd level problem)
 
 ### Second level
-Waxy Monkey Tree Frog
+Waxy Monkey Tree Frog is shithead and wants to steal your sandwich, you can't beat him, but you can escape to finish.
 
 ### Third level
-Long-Nosed Horned Frog
+You meet good boi Long-Nosed Horned Frog and he helps you kick the dumbass Waxy Monkey Tree Frog
 
 ### Fourth level
 Budgett's Frog
