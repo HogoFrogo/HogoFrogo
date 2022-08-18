@@ -30,9 +30,10 @@ Player arrives at the map and gets coltrols help with tongue stick out. He jumps
 ### Second level
 Waxy Monkey Tree Frog is shithead and wants to steal your sandwich, you can't beat him, but you can escape to finish.
 
-### Third level
+Cutscene  
 You meet good boi Long-Nosed Horned Frog and he helps you kick the dumbass Waxy Monkey Tree Frog
 
+Then:  
 Dialog:  
 N: You saved my sandwich! Thank you!
 N: Since now I will call you <player_name> The Saviour!
@@ -40,6 +41,8 @@ Nobody: ...
 P: You are still sad?
 N: Yes! :(
 N: (something about 2nd level problem)
+
+### Third level
 
 ### Fourth level
 Budgett's Frog
