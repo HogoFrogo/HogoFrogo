@@ -1,5 +1,3 @@
-from asyncio.windows_events import NULL
-from hashlib import new
 from typing_extensions import Self
 import pygame, sys
 import pygame_menu
