@@ -41,10 +41,10 @@ def change_music_volume(new_volume):
 	main_menu_music.set_volume(music_volume)
 
 
-main_menu = pygame_menu.Menu('Hogo Frogo', 400, 300,
+main_menu = pygame_menu.Menu('Hogo Frogo', screen_width, screen_height,
                        theme=pygame_menu.themes.THEME_GREEN)
 
-credits_menu = pygame_menu.Menu('Credits', 400, 300,
+credits_menu = pygame_menu.Menu('Credits', screen_width, screen_height,
                        theme=pygame_menu.themes.THEME_GREEN)
 credits_menu.add.label("Hello World")
 
