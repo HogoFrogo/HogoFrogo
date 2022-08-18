@@ -14,7 +14,7 @@ level_0 = {
 		'level_bg_music': '../audio/level_music.wav',
 		'flies': 2,
 		'dragonflies': 0,
-		'goal_image': '../graphics/character/hat.png'}
+		'goal_image': '../graphics/misc/sad_frog.png'}
 level_1 = {
 		'terrain': '../levels/1/level_1_terrain.csv',
 		'coins':'../levels/1/level_1_coins.csv',
