@@ -319,6 +319,10 @@ class Level:
 		self.terrain_sprites.update(self.world_shift)
 		self.terrain_sprites.draw(self.display_surface)
 		
+		# goal
+		self.goal.update(self.world_shift)
+		self.goal.draw(self.display_surface)
+
 		# enemy 
 		self.enemy_sprites.update(self.world_shift)
 		self.constraint_sprites.update(self.world_shift)
@@ -352,8 +356,6 @@ class Level:
 		self.create_landing_dust()
 		
 		self.scroll_x()
-		self.goal.update(self.world_shift)
-		self.goal.draw(self.display_surface)
 		self.player.draw(self.display_surface)
 
 		self.check_death()
