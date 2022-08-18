@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from hashlib import new
 from typing_extensions import Self
 import pygame, sys
@@ -42,13 +43,19 @@ def change_music_volume(new_volume):
 	main_menu_music.set_volume(music_volume)
 
 
-menu = pygame_menu.Menu('Hogo Frogo', 400, 300,
+main_menu = pygame_menu.Menu('Hogo Frogo', 400, 300,
                        theme=pygame_menu.themes.THEME_GREEN)
 
-name_text_input = menu.add.text_input('PlayerName: ', default='Mr. Croak')
-difficulty_input = menu.add.selector('Difficulty :', [('Hard', 1), ('Easy', 2)])
-menu.add.button('Play', start_the_game)
-menu.add.button('Quit', pygame_menu.events.EXIT)
-volume_slider = menu.add.range_slider('Volume', music_volume, [0, 1], 1, change_music_volume)
+credits_menu = pygame_menu.Menu('Credits', 400, 300,
+                       theme=pygame_menu.themes.THEME_GREEN)
+credits_menu.add.label("Hello World")
+
+name_text_input = main_menu.add.text_input('PlayerName: ', default='Mr. Croak')
+difficulty_input = main_menu.add.selector('Difficulty :', [('Hard', 1), ('Easy', 2)])
+main_menu.add.button('Play', start_the_game)
+main_menu.add.button('Quit', pygame_menu.events.EXIT)
+volume_slider = main_menu.add.range_slider('Volume', music_volume, [0, 1], 1, change_music_volume)
+main_menu.add.menu_link(credits_menu, 'Credits')
+main_menu.add.button('Credits', credits_menu)
 main_menu_music.play(loops = -1)
-menu.mainloop(screen)
+main_menu.mainloop(screen)
