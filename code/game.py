@@ -10,7 +10,7 @@ from game_data import levels
 class Game:
 	def __init__(self, screen, music_volume):
 		# game attributes
-		self.max_level = 1
+		self.max_level = 2
 		self.max_health = 100
 		self.cur_health = 100
 		self.coins = 0
