@@ -61,7 +61,7 @@ Bufo Alvarius - When it croaks psychedelic balls in multiple directions approach
 
 
 * Jambes de grenouilles
-* Cigars out of typha
 * Pepe The Frog
 * Kermit The Frog
 * Crazy Frog
+* Snoop Frogg + Cigars out of typha
