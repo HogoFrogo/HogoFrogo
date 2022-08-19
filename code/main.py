@@ -12,10 +12,11 @@ from game import Game
 pygame.init()
 screen = pygame.display.set_mode((screen_width,screen_height))
 clock = pygame.time.Clock()
-game = Game(screen)
+
+music_volume = 0.5
+game = Game(screen, music_volume)
 
 main_menu_music = pygame.mixer.Sound('../audio/magnetic_b-ing.mp3')
-music_volume = 0.5
 main_menu_music.set_volume(music_volume)
 
 def start_the_game():
@@ -39,6 +40,7 @@ def start_the_game():
 def change_music_volume(new_volume):
 	music_volume = new_volume
 	main_menu_music.set_volume(music_volume)
+	game.change_music_volume(new_volume)
 
 
 main_menu = pygame_menu.Menu('Hogo Frogo', screen_width, screen_height,
