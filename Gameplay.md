@@ -65,3 +65,5 @@ Bufo Alvarius - When it croaks psychedelic balls in multiple directions approach
 * Kermit The Frog
 * Crazy Frog
 * Snoop Frogg + Cigars out of typha
+
+When collecting cigars of typha for Snoop Frogg the player's frog changes eye color to red, time slows down and tongue stick out changes its directions. Raggae or SnoopLike rap playing on background.
