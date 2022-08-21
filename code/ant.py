@@ -5,7 +5,7 @@ from random import randint
 class Ant(Enemy):
 	image = '../graphics/ant/run'
 	attack_damage = 10
-	healing_points = 4
+	healing_points = 5
 	def __init__(self,size,x,y):
 		super().__init__(size,x,y)
 		self.speed = randint(2,9)

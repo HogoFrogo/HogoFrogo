@@ -5,7 +5,7 @@ from random import randint
 class Wasp(Enemy):
 	image = '../graphics/wasp/run'
 	attack_damage = 60
-	healing_points = 4
+	healing_points = 6
 	def __init__(self,size,x,y):
 		super().__init__(size,x,y)
 		self.speed = -randint(4,12)

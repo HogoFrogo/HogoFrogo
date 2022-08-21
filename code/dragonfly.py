@@ -5,7 +5,7 @@ from random import randint
 class Dragonfly(Enemy):
 	image = '../graphics/dragonfly/run'
 	attack_damage = 5
-	healing_points = 6
+	healing_points = 7
 	def __init__(self,size,x,y):
 		super().__init__(size,x,y)
 		self.speed = -randint(7,10)
