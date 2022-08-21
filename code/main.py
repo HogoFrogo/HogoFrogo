@@ -22,6 +22,10 @@ main_menu_music.set_volume(music_volume)
 def start_the_game():
 	player_name = name_text_input.get_value()
 	difficulty = difficulty_input.get_value()
+	game.difficulty=difficulty
+	
+	print("obtížnost 1")
+	print(difficulty)
 	main_menu_music.stop()
 	pygame_menu.events.EXIT
 	game.overworld_bg_music.play(loops = -1)

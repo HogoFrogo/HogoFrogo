@@ -59,7 +59,7 @@ level_2 = {
 		'wasps': 5, 
 		'flies-hard': 5,
 		'dragonflies-hard': 10,
-		'wasps-hard': 12,
+		'wasps-hard': 120,
 		'goal_image': '../graphics/character/hat.png'}
 level_3 = {
 		'terrain': '../levels/2/level_2_terrain.csv',

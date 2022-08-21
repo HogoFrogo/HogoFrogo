@@ -1,11 +1,14 @@
 import pygame 
+import copy
 from game_data import levels
 from support import import_folder
 from decoration import Sky
+import pygame_menu
 
 class Node(pygame.sprite.Sprite):
 	def __init__(self,pos,status,icon_speed,path):
 		super().__init__()
+		self.backup_surface = 0
 		self.frames = import_folder(path)
 		self.frame_index = 0
 		self.image = self.frames[self.frame_index]
@@ -42,13 +45,14 @@ class Icon(pygame.sprite.Sprite):
 		self.rect.center = self.pos
 
 class Overworld:
-	def __init__(self,start_level,max_level,surface,create_level):
+	def __init__(self,start_level,max_level,surface,create_level, difficulty):
 
 		# setup 
 		self.display_surface = surface 
 		self.max_level = max_level
 		self.current_level = start_level
 		self.create_level = create_level
+		self.difficulty = difficulty
 
 		# movement logic
 		keys = pygame.key.get_pressed()
@@ -87,7 +91,15 @@ class Overworld:
 		icon_sprite = Icon(self.nodes.sprites()[self.current_level].rect.center)
 		self.icon.add(icon_sprite)
 
+
 	def input(self):
+		
+		def start_the_game():
+			self.display_surface = self.backup_surface
+			self.run()
+			print("test")
+		def change_music_volume(new_volume):
+			print("test")
 		keys = pygame.key.get_pressed()
 
 		if not self.moving and self.allow_input:
@@ -110,7 +122,22 @@ class Overworld:
 					self.player_direction = False
 
 			elif keys[pygame.K_SPACE]:
-				self.create_level(self.current_level)
+				self.create_level(self.current_level, self.difficulty)
+			
+#			elif keys[pygame.K_ESCAPE]:
+#				screen_width = 400
+#				screen_height = 300
+#				main_menu = pygame_menu.Menu('Hogo Frogo', screen_width, screen_height,
+#				theme=pygame_menu.themes.THEME_GREEN)
+#
+#				name_text_input = main_menu.add.text_input('PlayerName: ', default='Mr. Croak')
+#				difficulty_input = main_menu.add.selector('Difficulty :', [('Hard', 1), ('Easy', 2)])
+#				main_menu.add.button('Play', start_the_game)
+#				main_menu.add.button('Quit', pygame_menu.events.EXIT)
+#				volume_slider = main_menu.add.range_slider('Volume', 0.5, [0, 1], 1, change_music_volume)
+#				self.backup_surface = self.display_surface.copy()
+#				main_menu.mainloop(self.display_surface)
+				
 
 	def get_movement_data(self,target):
 		start = pygame.math.Vector2(self.nodes.sprites()[self.current_level].rect.center)
