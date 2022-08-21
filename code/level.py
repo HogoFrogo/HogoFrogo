@@ -140,12 +140,14 @@ class Level:
 						if val == '0': sprite = Ant(tile_size,x,y)
 						if val == '1': sprite = Fly(tile_size,x,y)
 						if val == '2': sprite = Dragonfly(tile_size,x,y)
+						if val == '3': sprite = Wasp(tile_size,x,y)
 						
 
 					if type == 'constraint':
 						if val == '0': sprite = Constraint(tile_size,x,y,0)
 						if val == '1': sprite = Constraint(tile_size,x,y,1)
 						if val == '2': sprite = Constraint(tile_size,x,y,2)
+						if val == '3': sprite = Constraint(tile_size,x,y,3)
 
 					sprite_group.add(sprite)
 		
@@ -182,10 +184,25 @@ class Level:
 						if constraint.value == 1:
 							enemy.reverse()
 							break
-						
 			if isinstance(enemy, Dragonfly):
+				collided_constraints = pygame.sprite.spritecollide(enemy,self.constraint_sprites,False)
+				if collided_constraints:	
+					for constraint in collided_constraints:
+						#print(constraint.value)
+						if constraint.value == 2:
+							enemy.reverse()
+							break
 				if(randint(0,999)<50):
 					enemy.speed_y=-enemy.speed_y
+
+			if isinstance(enemy,Wasp):
+				collided_constraints = pygame.sprite.spritecollide(enemy,self.constraint_sprites,False)
+				if collided_constraints:	
+					for constraint in collided_constraints:
+						#print(constraint.value)
+						if constraint.value == 3:
+							enemy.reverse()
+							break
 
 	def create_jump_particles(self,pos):
 		if self.player.sprite.facing_right:
