@@ -33,7 +33,7 @@ level_1 = {
 		'node_graphics': '../graphics/overworld/1',
 		'unlock': 2,
 		'level_bg_music': '../audio/magnetic_b-ing.mp3',
-		'flies': 10,
+		'flies': 20,
 		'dragonflies': 1,
 		'wasps': 0,
 		'flies-hard': 20,

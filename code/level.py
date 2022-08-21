@@ -270,9 +270,9 @@ class Level:
 		if pygame.sprite.spritecollide(self.player.sprite,self.goal,False):
 			if self.current_level==1:
 				if self.killed_flies>=25 and self.killed_ants>=8:
-					self.create_overworld(self.current_level,self.new_max_level)
+					self.create_overworld(self.current_level,self.new_max_level,self.difficulty)
 			else:
-				self.create_overworld(self.current_level,self.new_max_level)
+				self.create_overworld(self.current_level,self.new_max_level,self.difficulty)
 			
 	def check_coin_collisions(self):
 		collided_coins = pygame.sprite.spritecollide(self.player.sprite,self.coin_sprites,True)
