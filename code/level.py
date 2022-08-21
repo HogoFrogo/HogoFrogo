@@ -16,12 +16,13 @@ from wasp import Wasp
 
 class Level:
 	#goal_image = '../graphics/misc/sandwich.png'
-	def __init__(self,current_level,surface,create_overworld,change_coins,change_health):
+	def __init__(self,current_level,surface,create_overworld,change_coins,change_health,difficulty):
 		# general setup
 		self.display_surface = surface
 		self.world_shift = 0
 		self.current_x = None
 		self.level_border = 50
+		self.difficulty = difficulty
 
 		# audio 
 		self.coin_sound = pygame.mixer.Sound('../audio/effects/coin.wav')
@@ -33,9 +34,17 @@ class Level:
 		self.current_level = current_level
 		level_data = levels[self.current_level]
 		self.new_max_level = level_data['unlock']
-		self.fly_occurency_probability = level_data['flies']
-		self.dragonfly_occurency_probability = level_data['dragonflies']
-		self.wasp_occurency_probability = level_data['wasps']
+
+		print("obtížnost")
+		print(difficulty)
+		if difficulty[0][0] == "Hard":
+			self.fly_occurency_probability = level_data['flies-hard']
+			self.dragonfly_occurency_probability = level_data['dragonflies-hard']
+			self.wasp_occurency_probability = level_data['wasps-hard']
+		else:
+			self.fly_occurency_probability = level_data['flies']
+			self.dragonfly_occurency_probability = level_data['dragonflies']
+			self.wasp_occurency_probability = level_data['wasps']
 
 		# player 
 		self.goal_image = level_data['goal_image']
@@ -161,7 +170,7 @@ class Level:
 				collided_constraints = pygame.sprite.spritecollide(enemy,self.constraint_sprites,False)
 				if collided_constraints:	
 					for constraint in collided_constraints:
-						print(constraint.value)
+						#print(constraint.value)
 						if constraint.value == 0:
 							enemy.reverse()
 							break
@@ -169,7 +178,7 @@ class Level:
 				collided_constraints = pygame.sprite.spritecollide(enemy,self.constraint_sprites,False)
 				if collided_constraints:	
 					for constraint in collided_constraints:
-						print(constraint.value)
+						#print(constraint.value)
 						if constraint.value == 1:
 							enemy.reverse()
 							break
@@ -253,7 +262,9 @@ class Level:
 
 	def check_death(self):
 		if self.player.sprite.rect.top > screen_height:
-			self.create_overworld(self.current_level,0)
+			print("last death")
+			print(self.difficulty)
+			self.create_overworld(self.current_level,0,self.difficulty)
 			
 	def check_win(self):
 		if pygame.sprite.spritecollide(self.player.sprite,self.goal,False):
