@@ -134,6 +134,8 @@ level_5 = {
 		'flies_hard': 20,
 		'dragonflies_hard': 10,
 		'wasps_hard': 10,
+		'parachute_frog': 0,
+		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/character/hat.png'}
 level_6 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
@@ -155,6 +157,8 @@ level_6 = {
 		'flies_hard': 20,
 		'dragonflies_hard': 10,
 		'wasps_hard': 10,
+		'parachute_frog': 0,
+		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/character/hat.png'}
 level_7 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
