@@ -1,4 +1,4 @@
-import pygame 
+import pygame
 from support import import_csv_layout, import_cut_graphics
 from settings import tile_size, screen_height, screen_width
 from tiles import Tile, StaticTile, Crate, Coin, Palm, Constraint
@@ -6,13 +6,14 @@ from enemy import Enemy
 from fly import Fly
 from ant import Ant
 from dragonfly import Dragonfly
+from wasp import Wasp
+from parachute_frog import ParachuteFrog 
 from decoration import Sky, Water, Clouds
 from player import Player
 from particles import ParticleEffect
 from game_data import levels
 from random import randint
 
-from wasp import Wasp
 
 class Level:
 	#goal_image = '../graphics/misc/sandwich.png'
@@ -41,10 +42,12 @@ class Level:
 			self.fly_occurency_probability = level_data['flies_hard']
 			self.dragonfly_occurency_probability = level_data['dragonflies_hard']
 			self.wasp_occurency_probability = level_data['wasps_hard']
+			self.parachute_frog_ocurency_probability = level_data['parachute_frog_hard']
 		else:
 			self.fly_occurency_probability = level_data['flies']
 			self.dragonfly_occurency_probability = level_data['dragonflies']
 			self.wasp_occurency_probability = level_data['wasps']
+			self.parachute_frog_ocurency_probability = level_data['parachute_frog']
 
 		# player 
 		self.goal_image = level_data['goal_image']
@@ -401,3 +404,4 @@ class Level:
 		if(randint(0,999)<self.fly_occurency_probability): self.enemy_sprites.add(Fly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if(randint(0,999)<self.dragonfly_occurency_probability): self.enemy_sprites.add(Dragonfly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if(randint(0,999)<self.wasp_occurency_probability): self.enemy_sprites.add(Wasp(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
+		if(randint(0,999)<self.parachute_frog_ocurency_probability): self.enemy_sprites.add(ParachuteFrog(tile_size,randint(0, screen_width),0))
