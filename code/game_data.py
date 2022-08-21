@@ -15,9 +15,9 @@ level_0 = {
 		'flies': 2,
 		'dragonflies': 0,
 		'wasps': 0,
-		'flies-hard': 1,
-		'dragonflies-hard': 1,
-		'wasps-hard': 2,
+		'flies_hard': 1,
+		'dragonflies_hard': 1,
+		'wasps_hard': 2,
 		'goal_image': '../graphics/misc/sad_frog.png'}
 level_1 = {
 		'terrain': '../levels/1/level_1_terrain.csv',
@@ -36,9 +36,9 @@ level_1 = {
 		'flies': 20,
 		'dragonflies': 1,
 		'wasps': 0,
-		'flies-hard': 20,
-		'dragonflies-hard': 1,
-		'wasps-hard': 4,
+		'flies_hard': 20,
+		'dragonflies_hard': 1,
+		'wasps_hard': 4,
 		'goal_image': '../graphics/misc/sandwich.png'}
 level_2 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
@@ -57,9 +57,9 @@ level_2 = {
 		'flies': 10,
 		'dragonflies': 3,
 		'wasps': 5, 
-		'flies-hard': 33,
-		'dragonflies-hard': 30,
-		'wasps-hard': 17,
+		'flies_hard': 33,
+		'dragonflies_hard': 30,
+		'wasps_hard': 17,
 		'goal_image': '../graphics/character/hat.png'}
 level_3 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
@@ -78,9 +78,9 @@ level_3 = {
 		'flies': 10,
 		'dragonflies': 2,
 		'wasps': 0,
-		'flies-hard': 20,
-		'dragonflies-hard': 10,
-		'wasps-hard': 10,
+		'flies_hard': 20,
+		'dragonflies_hard': 10,
+		'wasps_hard': 10,
 		'goal_image': '../graphics/character/hat.png'}
 level_4 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
@@ -99,9 +99,9 @@ level_4 = {
 		'flies': 10,
 		'dragonflies': 2,
 		'wasps': 0,
-		'flies-hard': 20,
-		'dragonflies-hard': 10,
-		'wasps-hard': 10,
+		'flies_hard': 20,
+		'dragonflies_hard': 10,
+		'wasps_hard': 10,
 		'goal_image': '../graphics/character/hat.png'}
 level_5 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
@@ -121,9 +121,9 @@ level_5 = {
 		'flies': 10,
 		'dragonflies': 2,
 		'wasps': 0,
-		'flies-hard': 20,
-		'dragonflies-hard': 10,
-		'wasps-hard': 10,
+		'flies_hard': 20,
+		'dragonflies_hard': 10,
+		'wasps_hard': 10,
 		'goal_image': '../graphics/character/hat.png'}
 level_6 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
@@ -142,9 +142,9 @@ level_6 = {
 		'flies': 10,
 		'dragonflies': 2,
 		'wasps': 0,
-		'flies-hard': 20,
-		'dragonflies-hard': 10,
-		'wasps-hard': 10,
+		'flies_hard': 20,
+		'dragonflies_hard': 10,
+		'wasps_hard': 10,
 		'goal_image': '../graphics/character/hat.png'}
 level_7 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
@@ -163,9 +163,9 @@ level_7 = {
 		'flies': 10,
 		'dragonflies': 2,
 		'wasps': 0,
-		'flies-hard': 20,
-		'dragonflies-hard': 10,
-		'wasps-hard': 10,
+		'flies_hard': 20,
+		'dragonflies_hard': 10,
+		'wasps_hard': 10,
 		'goal_image': '../graphics/character/hat.png'}
 
 levels = {
