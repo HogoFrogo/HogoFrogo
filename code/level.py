@@ -12,6 +12,8 @@ from particles import ParticleEffect
 from game_data import levels
 from random import randint
 
+from wasp import Wasp
+
 class Level:
 	#goal_image = '../graphics/misc/sandwich.png'
 	def __init__(self,current_level,surface,create_overworld,change_coins,change_health):
@@ -33,6 +35,7 @@ class Level:
 		self.new_max_level = level_data['unlock']
 		self.fly_occurency_probability = level_data['flies']
 		self.dragonfly_occurency_probability = level_data['dragonflies']
+		self.wasp_occurency_probability = level_data['wasps']
 
 		# player 
 		self.goal_image = level_data['goal_image']
@@ -369,3 +372,4 @@ class Level:
 
 		if(randint(0,999)<self.fly_occurency_probability): self.enemy_sprites.add(Fly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if(randint(0,999)<self.dragonfly_occurency_probability): self.enemy_sprites.add(Dragonfly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
+		if(randint(0,999)<self.wasp_occurency_probability): self.enemy_sprites.add(Wasp(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))

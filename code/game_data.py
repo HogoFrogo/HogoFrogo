@@ -14,6 +14,7 @@ level_0 = {
 		'level_bg_music': '../audio/level_music.wav',
 		'flies': 2,
 		'dragonflies': 0,
+		'wasps': 0,
 		'goal_image': '../graphics/misc/sad_frog.png'}
 level_1 = {
 		'terrain': '../levels/1/level_1_terrain.csv',
@@ -31,6 +32,7 @@ level_1 = {
 		'level_bg_music': '../audio/magnetic_b-ing.mp3',
 		'flies': 10,
 		'dragonflies': 1,
+		'wasps': 0,
 		'goal_image': '../graphics/misc/sandwich.png'}
 level_2 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
@@ -47,7 +49,8 @@ level_2 = {
 		'unlock': 3,
 		'level_bg_music': '../audio/level_music.wav',
 		'flies': 10,
-		'dragonflies': 2,
+		'dragonflies': 3,
+		'wasps': 5, 
 		'goal_image': '../graphics/character/hat.png'}
 level_3 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
