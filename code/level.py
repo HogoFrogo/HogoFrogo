@@ -38,9 +38,9 @@ class Level:
 		print("obtížnost")
 		print(difficulty)
 		if difficulty[0][0] == "Hard":
-			self.fly_occurency_probability = level_data['flies-hard']
-			self.dragonfly_occurency_probability = level_data['dragonflies-hard']
-			self.wasp_occurency_probability = level_data['wasps-hard']
+			self.fly_occurency_probability = level_data['flies_hard']
+			self.dragonfly_occurency_probability = level_data['dragonflies_hard']
+			self.wasp_occurency_probability = level_data['wasps_hard']
 		else:
 			self.fly_occurency_probability = level_data['flies']
 			self.dragonfly_occurency_probability = level_data['dragonflies']
