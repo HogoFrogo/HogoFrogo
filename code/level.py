@@ -7,12 +7,12 @@ from fly import Fly
 from ant import Ant
 from dragonfly import Dragonfly
 from wasp import Wasp
-from parachute_frog import ParachuteFrog 
 from decoration import Sky, Water, Clouds
 from player import Player
 from particles import ParticleEffect
 from game_data import levels
 from random import randint
+from parachute_frog import ParachuteFrog
 
 
 class Level:
@@ -24,6 +24,7 @@ class Level:
 		self.current_x = None
 		self.level_border = 50
 		self.difficulty = difficulty
+		self.state = 'running'
 
 		# audio 
 		self.coin_sound = pygame.mixer.Sound('../audio/effects/coin.wav')
@@ -285,12 +286,53 @@ class Level:
 			print("last death")
 			print(self.difficulty)
 			self.create_overworld(self.current_level,0,self.difficulty)
+	def begin_bossfight(self,boss):
+		match(boss):
+			case 'flyking':
+				#when the boss fight starts, a fly king will appear at the right side of the screen
+				#image = '../graphics/bosses/flyking/idle'
+				#x = 500
+				#y = 300
+				#self.flyking = Ant(tile_size,x,y)
+				#self.flyking.draw(self.display_surface)
+					#health, image and attributes
+				#the game freezes
+				self.state = 'boss_cutscene'
+				self.display_surface.blit(pygame.font.SysFont('Consolas', 32).render('Pause', True, pygame.color.Color('White')), (100, 100))
+				while self.state == 'boss_cutscene':
+					for event in pygame.event.get():
+						if event.type == pygame.KEYDOWN:
+							if event.key == pygame.K_s:
+								self.state = 'bossfight'
+				#cutscene
+
+				#combat starts
+					#the sandwich disappears and some platforms needed for combat movement will appear
+
+					#the boss will start spawning flies in a different frequency and pattern
+
+				#boss takes damage
+					#health will change
+					#platforms will change
+					#same as "combat starts"
+				
+				#boss' health is 0
+					#cutscene
+					#level end
+
+				
+
+
+
 			
 	def check_win(self):
 		if pygame.sprite.spritecollide(self.player.sprite,self.goal,False):
 			if self.current_level==1:
 				if self.killed_flies>=25 and self.killed_ants>=8:
-					self.create_overworld(self.current_level,self.new_max_level,self.difficulty)
+					#self.create_overworld(self.current_level,self.new_max_level,self.difficulty)
+					self.begin_bossfight('flyking')
+				elif self.state != 'bossfight':
+					self.begin_bossfight('flyking')
 			else:
 				self.create_overworld(self.current_level,self.new_max_level,self.difficulty)
 			
@@ -388,8 +430,11 @@ class Level:
 		self.get_player_on_ground()
 		self.vertical_movement_collision()
 		self.create_landing_dust()
-		
-		self.scroll_x()
+		if self.state != 'bossfight':
+			self.scroll_x()
+		else:
+			self.world_shift = 0
+			self.player.sprite.speed = self.player.sprite.native_speed
 		self.player.draw(self.display_surface)
 
 		self.check_death()
