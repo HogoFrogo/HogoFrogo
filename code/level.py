@@ -286,6 +286,31 @@ class Level:
 			print("last death")
 			print(self.difficulty)
 			self.create_overworld(self.current_level,0,self.difficulty)
+
+	def enter_dialog(self,dialog_type):
+		match(dialog_type):
+			case 'sad_frog':
+				self.state = 'dialog'
+				window = (400,400)
+				background = pygame.Surface(window)
+				background.fill((255, 255, 255))
+				font = pygame.font.SysFont('Arial', 24)
+				text = font.render("Hello there! I'm <player_name>!", True, pygame.color.Color('Black'))
+				background.blit(text, (20, 20))
+
+				myimage = pygame.image.load('../graphics/character/run/1.png')
+				imagerect = myimage.get_rect()
+				picture = pygame.transform.scale(myimage, (280, 100))
+				background.blit(picture, (200,200))
+				
+				self.display_surface.blit(background,(0,0))
+
+				pygame.display.flip()
+				while self.state == 'dialog':
+					for event in pygame.event.get():
+						if event.type == pygame.KEYDOWN:
+							if event.key == pygame.K_SPACE:
+								self.state = 'end'
 	def begin_bossfight(self,boss):
 		match(boss):
 			case 'flyking':
@@ -327,6 +352,8 @@ class Level:
 			
 	def check_win(self):
 		if pygame.sprite.spritecollide(self.player.sprite,self.goal,False):
+			if self.current_level==0:
+				self.enter_dialog('sad_frog')
 			if self.current_level==1:
 				if self.killed_flies>=25 and self.killed_ants>=8:
 					#self.create_overworld(self.current_level,self.new_max_level,self.difficulty)
