@@ -140,6 +140,30 @@ class Player(pygame.sprite.Sprite):
 		if keys[pygame.K_k] and self.tongue_stick_out_timeout==0:
 			self.tongue_stick_out = True
 			self.tongue_stick_out_timeout = self.stickout_charging_time+20
+		for event in pygame.event.get():
+			if event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_ESCAPE:
+					self.state = 'quick_menu'
+					window = (400,400)
+					background = pygame.Surface(window)
+					background.fill((255, 255, 255))
+					font = pygame.font.SysFont('Arial', 24)
+					text = font.render("Quick Menu", True, pygame.color.Color('Black'))
+					background.blit(text, (20, 20))
+
+					myimage = pygame.image.load('../graphics/character/run/1.png')
+					imagerect = myimage.get_rect()
+					picture = pygame.transform.scale(myimage, (280, 100))
+					background.blit(picture, (200,200))
+					
+					self.display_surface.blit(background,(0,0))
+
+					pygame.display.flip()
+					while self.state == 'quick_menu':
+						for event in pygame.event.get():
+							if event.type == pygame.KEYDOWN:
+								if event.key == pygame.K_ESCAPE:
+									self.state = 'end'
 
 	def get_status(self):
 		if self.tongue_stick_out:
