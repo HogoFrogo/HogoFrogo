@@ -302,7 +302,8 @@ class Level:
 		picture = pygame.transform.scale(myimage, (280, 140))
 		background.blit(picture, (60,130))
 		
-		self.display_surface.blit(background,(0,0))
+		x, y = self.display_surface.get_width()//2, self.display_surface.get_height()//2
+		self.display_surface.blit(background,(x - background.get_width() // 2, y - background.get_height() // 2))
 
 		pygame.display.flip()
 		while self.state == 'dialog':
