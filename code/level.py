@@ -292,7 +292,7 @@ class Level:
 		self.state = 'dialog'
 		window = (400,400)
 		background = pygame.Surface(window)
-		background.fill((255, 255, 255))
+		background.fill((102, 187, 106))
 		font = pygame.font.SysFont('Arial', 24)
 		text = font.render(text_content, True, pygame.color.Color('Black'))
 		background.blit(text, (20, 20))
