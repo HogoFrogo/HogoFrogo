@@ -25,6 +25,7 @@ class Level:
 		self.level_border = 50
 		self.difficulty = difficulty
 		self.state = 'running'
+		self.player_name = "Mr. Croak"
 
 		# audio 
 		self.coin_sound = pygame.mixer.Sound('../audio/effects/coin.wav')
@@ -287,30 +288,40 @@ class Level:
 			print(self.difficulty)
 			self.create_overworld(self.current_level,0,self.difficulty)
 
+	def view_dialog(self,text_content,image_path):
+		self.state = 'dialog'
+		window = (400,400)
+		background = pygame.Surface(window)
+		background.fill((255, 255, 255))
+		font = pygame.font.SysFont('Arial', 24)
+		text = font.render(text_content, True, pygame.color.Color('Black'))
+		background.blit(text, (20, 20))
+
+		myimage = pygame.image.load(image_path)
+		imagerect = myimage.get_rect()
+		picture = pygame.transform.scale(myimage, (280, 140))
+		background.blit(picture, (60,130))
+		
+		self.display_surface.blit(background,(0,0))
+
+		pygame.display.flip()
+		while self.state == 'dialog':
+			for event in pygame.event.get():
+				if event.type == pygame.KEYDOWN:
+					if event.key == pygame.K_SPACE:
+						self.state = 'end'
 	def enter_dialog(self,dialog_type):
 		match(dialog_type):
 			case 'sad_frog':
-				self.state = 'dialog'
-				window = (400,400)
-				background = pygame.Surface(window)
-				background.fill((255, 255, 255))
-				font = pygame.font.SysFont('Arial', 24)
-				text = font.render("Hello there! I'm <player_name>!", True, pygame.color.Color('Black'))
-				background.blit(text, (20, 20))
-
-				myimage = pygame.image.load('../graphics/character/run/1.png')
-				imagerect = myimage.get_rect()
-				picture = pygame.transform.scale(myimage, (280, 100))
-				background.blit(picture, (200,200))
+				self.view_dialog("Hello there! I'm "+self.player_name+"!",'../graphics/character/run/1.png')
+				self.view_dialog("Hello "+self.player_name+"! :(",'../graphics/misc/sad_frog.png')
+				self.view_dialog("What's going on?",'../graphics/character/run/1.png')
+				self.view_dialog("My wife has prepared me my favourite salami sandwich for snack but evil flies have taken the control over it!",'../graphics/misc/sad_frog.png')
+				self.view_dialog("Why don't you eat them?",'../graphics/character/run/1.png')
+				self.view_dialog("I'm allergic to flies! :(",'../graphics/misc/sad_frog.png')
+				self.view_dialog("Could you help me save my sandwich?",'../graphics/misc/sad_frog.png')
+				self.view_dialog("<SPACE> Of course!",'../graphics/character/run/1.png')
 				
-				self.display_surface.blit(background,(0,0))
-
-				pygame.display.flip()
-				while self.state == 'dialog':
-					for event in pygame.event.get():
-						if event.type == pygame.KEYDOWN:
-							if event.key == pygame.K_SPACE:
-								self.state = 'end'
 	def begin_bossfight(self,boss):
 		match(boss):
 			case 'flyking':
