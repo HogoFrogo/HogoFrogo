@@ -302,7 +302,7 @@ class Level:
 				while self.state == 'boss_cutscene':
 					for event in pygame.event.get():
 						if event.type == pygame.KEYDOWN:
-							if event.key == pygame.K_s:
+							if event.key == pygame.K_SPACE:
 								self.state = 'bossfight'
 				#cutscene
 
