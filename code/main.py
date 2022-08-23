@@ -35,6 +35,7 @@ def start_the_game():
 	print(difficulty)
 	main_menu_music.stop()
 	pygame_menu.events.EXIT
+	game.overworld_bg_music.set_volume(music_volume)
 	game.overworld_bg_music.play(loops = -1)
 	while True:
 		for event in pygame.event.get():
