@@ -32,6 +32,7 @@ class Level:
 		self.stomp_sound = pygame.mixer.Sound('../audio/effects/stomp.wav')
 		self.eat_sound = pygame.mixer.Sound('../audio/effects/eat.wav')
 		self.croak_speak_sound = pygame.mixer.Sound('../audio/effects/croak.wav')
+		self.fly_speak_sound = pygame.mixer.Sound('../audio/effects/bzzz.wav')
 
 		# overworld connection 
 		self.create_overworld = create_overworld
@@ -334,9 +335,9 @@ class Level:
 				player_img = '../graphics/character/run/1.png'
 				flyking_img = '../graphics/bosses/flyking.jpg'
 				self.view_dialog("Uaaaaaaah!",player_img,self.croak_speak_sound)
-				self.view_dialog("Muhahahaaa! I'm the fly king. Stop touching my sandwich!",flyking_img,self.croak_speak_sound)
+				self.view_dialog("Muhahahaaa! I'm the fly king. Stop touching my sandwich!",flyking_img,self.fly_speak_sound)
 				self.view_dialog("This sandwich is not yours!",player_img,self.croak_speak_sound)
-				self.view_dialog("If you think so fight for it!",flyking_img,self.croak_speak_sound)
+				self.view_dialog("If you think so fight for it!",flyking_img,self.fly_speak_sound)
 
 	def begin_bossfight(self,boss):
 		match(boss):
