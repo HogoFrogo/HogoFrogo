@@ -7,13 +7,20 @@ from overworld import Overworld
 from ui import UI
 from game import Game
 
+def load_settings_from_file():
+	with open('settings.conf', 'r') as f:
+		music_volume = float(f.read())
+	return {"music_volume": music_volume}
+
+settings=load_settings_from_file()
+music_volume = settings["music_volume"]
 
 # Pygame setup
 pygame.init()
 screen = pygame.display.set_mode((screen_width,screen_height))
 clock = pygame.time.Clock()
 
-music_volume = 0.5
+load_settings_from_file()
 game = Game(screen, music_volume)
 
 main_menu_music = pygame.mixer.Sound('../audio/magnetic_b-ing.mp3')
