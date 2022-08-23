@@ -45,6 +45,8 @@ def change_music_volume(new_volume):
 	music_volume = new_volume
 	main_menu_music.set_volume(music_volume)
 	game.change_music_volume(new_volume)
+	with open('settings.conf', 'w') as f:
+		f.write(str(new_volume))
 
 
 main_menu = pygame_menu.Menu('Hogo Frogo', screen_width, screen_height,
