@@ -31,6 +31,7 @@ class Level:
 		self.coin_sound = pygame.mixer.Sound('../audio/effects/coin.wav')
 		self.stomp_sound = pygame.mixer.Sound('../audio/effects/stomp.wav')
 		self.eat_sound = pygame.mixer.Sound('../audio/effects/eat.wav')
+		self.croak_speak_sound = pygame.mixer.Sound('../audio/effects/croak.wav')
 
 		# overworld connection 
 		self.create_overworld = create_overworld
@@ -288,7 +289,9 @@ class Level:
 			print(self.difficulty)
 			self.create_overworld(self.current_level,0,self.difficulty)
 
-	def view_dialog(self,text_content,image_path):
+	def view_dialog(self,text_content,image_path,dialog_sound=""):
+		if dialog_sound != "":
+			dialog_sound.play()
 		next_state=self.state
 		self.state = 'dialog'
 		window = (700,500)
@@ -319,21 +322,21 @@ class Level:
 			case 'sad_frog':
 				player_img = '../graphics/character/run/1.png'
 				sad_frog_img = '../graphics/misc/sad_frog.png'
-				self.view_dialog("Hello there! I'm "+self.player_name+"!",player_img)
-				self.view_dialog("Hello "+self.player_name+"! :(",sad_frog_img)
-				self.view_dialog("What's going on?",player_img)
-				self.view_dialog("My wife has prepared me my favourite salami sandwich for snack but evil flies have taken the control over it!",sad_frog_img)
-				self.view_dialog("Why don't you eat them?",player_img)
-				self.view_dialog("I'm allergic to flies! :(",sad_frog_img)
-				self.view_dialog("Could you help me save my sandwich?",sad_frog_img)
-				self.view_dialog("Of course!",player_img)
+				self.view_dialog("Hello there! I'm "+self.player_name+"!",player_img,self.croak_speak_sound)
+				self.view_dialog("Hello "+self.player_name+"! :(",sad_frog_img,self.croak_speak_sound)
+				self.view_dialog("What's going on?",player_img,self.croak_speak_sound)
+				self.view_dialog("My wife has prepared me my favourite salami sandwich for snack but evil flies have taken the control over it!",sad_frog_img,self.croak_speak_sound)
+				self.view_dialog("Why don't you eat them?",player_img,self.croak_speak_sound)
+				self.view_dialog("I'm allergic to flies! :(",sad_frog_img,self.croak_speak_sound)
+				self.view_dialog("Could you help me save my sandwich?",sad_frog_img,self.croak_speak_sound)
+				self.view_dialog("Of course!",player_img,self.croak_speak_sound)
 			case 'flyking':
 				player_img = '../graphics/character/run/1.png'
-				flyking_img = '../graphics/misc/sad_frog.png'
-				self.view_dialog("Uaaaaaaah!",player_img)
-				self.view_dialog("Muhahahaaa! I'm the fly king. Stop touching my sandwich!",flyking_img)
-				self.view_dialog("This sandwich is not yours!",player_img)
-				self.view_dialog("If you think so fight for it!",flyking_img)
+				flyking_img = '../graphics/bosses/flyking.jpg'
+				self.view_dialog("Uaaaaaaah!",player_img,self.croak_speak_sound)
+				self.view_dialog("Muhahahaaa! I'm the fly king. Stop touching my sandwich!",flyking_img,self.croak_speak_sound)
+				self.view_dialog("This sandwich is not yours!",player_img,self.croak_speak_sound)
+				self.view_dialog("If you think so fight for it!",flyking_img,self.croak_speak_sound)
 
 	def begin_bossfight(self,boss):
 		match(boss):
