@@ -24,7 +24,7 @@ class Level:
 		self.current_x = None
 		self.level_border = 50
 		self.difficulty = difficulty
-		self.state = 'running'
+		self.state = 'begin'
 		self.player_name = "Mr. Croak"
 
 		# audio 
@@ -338,7 +338,13 @@ class Level:
 				self.view_dialog("Muhahahaaa! I'm the fly king. Stop touching my sandwich!",flyking_img,self.fly_speak_sound)
 				self.view_dialog("This sandwich is not yours!",player_img,self.croak_speak_sound)
 				self.view_dialog("If you think so fight for it!",flyking_img,self.fly_speak_sound)
-
+			case 'chase_start':
+				player_img = '../graphics/character/run/1.png'
+				strong_frog_img = '../graphics/bosses/flyking.jpg'
+				self.view_dialog("Give me that sandwich!",strong_frog_img,self.croak_speak_sound)
+				self.view_dialog("No!",player_img,self.croak_speak_sound)
+				self.view_dialog("I will hunt you down!",strong_frog_img,self.croak_speak_sound)
+				
 	def begin_bossfight(self,boss):
 		match(boss):
 			case 'flyking':
@@ -505,3 +511,8 @@ class Level:
 		if(randint(0,999)<self.dragonfly_occurency_probability): self.enemy_sprites.add(Dragonfly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if(randint(0,999)<self.wasp_occurency_probability): self.enemy_sprites.add(Wasp(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if(randint(0,999)<self.parachute_frog_ocurency_probability): self.enemy_sprites.add(ParachuteFrog(tile_size,randint(0, screen_width),0))
+		
+		if self.state == 'begin':
+			self.state = 'running'
+			if self.current_level==2:
+				self.enter_dialog("chase_start")
