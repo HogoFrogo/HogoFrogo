@@ -389,7 +389,7 @@ class Level:
 			if self.current_level==0:
 				self.enter_dialog('sad_frog')
 			if self.current_level==1:
-				if self.killed_flies>=0 and self.killed_ants>=0 and self.state != 'bossfight':
+				if self.killed_flies>=25 and self.killed_ants>=8 and self.state != 'bossfight':
 					print("stav hry")
 					print(self.state)
 					#self.create_overworld(self.current_level,self.new_max_level,self.difficulty)
