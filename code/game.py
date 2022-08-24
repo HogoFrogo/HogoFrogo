@@ -39,6 +39,7 @@ class Game:
 		self.status = 'level'
 		self.overworld_bg_music.stop()
 		self.level_bg_music = pygame.mixer.Sound(levels[current_level]['level_bg_music'])
+		self.level_bg_music.set_volume(self.music_volume)
 		self.level_bg_music.play(loops = -1)
 
 	def create_overworld(self,current_level,new_max_level,difficulty):
