@@ -14,6 +14,7 @@ def load_settings_from_file():
 
 settings=load_settings_from_file()
 music_volume = settings["music_volume"]
+sounds_volume = 0.5
 
 # Pygame setup
 pygame.init()
@@ -21,7 +22,7 @@ screen = pygame.display.set_mode((screen_width,screen_height))
 clock = pygame.time.Clock()
 
 load_settings_from_file()
-game = Game(screen, music_volume)
+game = Game(screen, music_volume, sounds_volume)
 
 main_menu_music = pygame.mixer.Sound('../audio/magnetic_b-ing.mp3')
 main_menu_music.set_volume(music_volume)
@@ -56,6 +57,9 @@ def change_music_volume(new_volume):
 	with open('settings.conf', 'w') as f:
 		f.write(str(new_volume))
 
+def change_sounds_volume(new_volume):
+	game.change_sounds_volume(new_volume)
+
 
 main_menu = pygame_menu.Menu('Hogo Frogo', screen_width, screen_height,
                        theme=pygame_menu.themes.THEME_GREEN)
@@ -69,6 +73,7 @@ difficulty_input = main_menu.add.selector('Difficulty :', [('Hard', 1), ('Easy',
 main_menu.add.button('Play', start_the_game)
 main_menu.add.button('Quit', pygame_menu.events.EXIT)
 volume_slider = main_menu.add.range_slider('Volume', music_volume, [0, 1], 1, change_music_volume)
+sounds_volume_slider = main_menu.add.range_slider('Sounds Volume', sounds_volume, [0, 1], 1, change_sounds_volume)
 main_menu.add.menu_link(credits_menu, 'Credits')
 main_menu.add.button('Credits', credits_menu)
 main_menu_music.play(loops = -1)

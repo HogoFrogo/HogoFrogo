@@ -4,7 +4,7 @@ from support import import_folder
 from math import sin
 
 class Player(pygame.sprite.Sprite):
-	def __init__(self,pos,surface,create_jump_particles,change_health,graphics="default"):
+	def __init__(self,pos,surface,create_jump_particles,change_health,sounds_volume=0.5,graphics="default"):
 		super().__init__()
 		self.character_path = '../graphics/character/'
 		if graphics == "different":
@@ -53,8 +53,13 @@ class Player(pygame.sprite.Sprite):
 
 		# audio 
 		self.jump_sound = pygame.mixer.Sound('../audio/effects/jump2.mp3')
-		self.jump_sound.set_volume(0.5)
+		self.jump_sound.set_volume(sounds_volume)
 		self.hit_sound = pygame.mixer.Sound('../audio/effects/hit.wav')
+		self.hit_sound.set_volume(sounds_volume)
+
+	def change_sounds_volume(self,new_volume):
+		self.jump_sound.set_volume(new_volume)
+		self.hit_sound.set_volume(new_volume)
 
 	def import_character_assets(self):
 		self.animations = {'idle':[],'run':[],'jump':[],'fall':[],'tongue_stick_out':[]}

@@ -8,7 +8,7 @@ from game_data import levels
 
 
 class Game:
-	def __init__(self, screen, music_volume):
+	def __init__(self, screen, music_volume,sounds_volume):
 		# game attributes
 		self.max_level = 7
 		self.max_health = 100
@@ -18,6 +18,7 @@ class Game:
 		programIcon = pygame.image.load('../graphics/character/idle/1.png')
 		pygame.display.set_icon(programIcon)
 		self.music_volume = music_volume
+		self.sounds_volume = sounds_volume
 		
 		# audio 
 		
@@ -35,12 +36,15 @@ class Game:
 
 
 	def create_level(self,current_level,difficulty):
+		print("sounds_volume_in_level")
+		print(self.sounds_volume)
 		self.level = Level(current_level,self.screen,self.create_overworld,self.change_coins,self.change_health,difficulty)
 		self.status = 'level'
 		self.overworld_bg_music.stop()
 		self.level_bg_music = pygame.mixer.Sound(levels[current_level]['level_bg_music'])
 		self.level_bg_music.set_volume(self.music_volume)
 		self.level_bg_music.play(loops = -1)
+		self.level.change_sounds_volume(self.sounds_volume)
 
 	def create_overworld(self,current_level,new_max_level,difficulty):
 		if new_max_level > self.max_level:
@@ -62,6 +66,10 @@ class Game:
 		self.music_volume = new_music_volume
 		self.level_bg_music.set_volume(new_music_volume)
 		self.overworld_bg_music.set_volume(new_music_volume)
+
+	def change_sounds_volume(self,new_sounds_volume):
+		print(new_sounds_volume)
+		self.sounds_volume = new_sounds_volume
 
 	def check_game_over(self):
 		if self.cur_health <= 0:

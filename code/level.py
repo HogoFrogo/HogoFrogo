@@ -110,6 +110,16 @@ class Level:
 		self.water = Water(screen_height - 20,level_width)
 		self.clouds = Clouds(400,level_width,30)
 
+	def change_sounds_volume(self, new_volume):
+		print("New volume")
+		print(new_volume)
+		self.coin_sound.set_volume(new_volume)
+		self.stomp_sound.set_volume(new_volume)
+		self.eat_sound.set_volume(new_volume)
+		self.croak_speak_sound.set_volume(new_volume)
+		self.fly_speak_sound.set_volume(new_volume)
+		self.player.sprite.change_sounds_volume(new_volume)
+
 	def create_tile_group(self,layout,type):
 		sprite_group = pygame.sprite.Group()
 
