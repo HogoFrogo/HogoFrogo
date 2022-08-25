@@ -504,8 +504,15 @@ class Level:
 		if self.state != 'bossfight':
 			self.scroll_x()
 		else:
-			self.world_shift = 0
-			self.player.sprite.speed = self.player.sprite.native_speed
+			if(self.goal.sprite.rect.centerx < (screen_width) / 2 - 5):
+				self.world_shift = 10
+				self.player.sprite.speed = 10
+			elif(self.goal.sprite.rect.centerx > (screen_width) / 2 + 5):
+				self.world_shift = -10
+				self.player.sprite.speed = -10
+			else:
+				self.world_shift = 0
+				self.player.sprite.speed = self.player.sprite.native_speed
 		self.player.draw(self.display_surface)
 
 		self.check_death()
