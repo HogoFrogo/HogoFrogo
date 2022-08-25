@@ -4,8 +4,11 @@ from support import import_folder
 from math import sin
 
 class Player(pygame.sprite.Sprite):
-	def __init__(self,pos,surface,create_jump_particles,change_health):
+	def __init__(self,pos,surface,create_jump_particles,change_health,graphics="default"):
 		super().__init__()
+		self.character_path = '../graphics/character/'
+		if graphics == "different":
+			self.character_path = '../graphics/character/different/'
 		self.import_character_assets()
 		self.frame_index = 0
 		self.animation_speed = 0.15
@@ -15,6 +18,7 @@ class Player(pygame.sprite.Sprite):
 		self.tongue_stick_out_timeout = 0
 		self.stickout_charging_time = 50
 		self.native_width = 48
+		
 		
 		# dust particles 
 		self.import_dust_run_particles()
@@ -53,15 +57,14 @@ class Player(pygame.sprite.Sprite):
 		self.hit_sound = pygame.mixer.Sound('../audio/effects/hit.wav')
 
 	def import_character_assets(self):
-		character_path = '../graphics/character/'
 		self.animations = {'idle':[],'run':[],'jump':[],'fall':[],'tongue_stick_out':[]}
 
 		for animation in self.animations.keys():
-			full_path = character_path + animation
+			full_path = self.character_path + animation
 			self.animations[animation] = import_folder(full_path)
 
 	def import_dust_run_particles(self):
-		self.dust_run_particles = import_folder('../graphics/character/dust_particles/run')
+		self.dust_run_particles = import_folder(self.character_path+'dust_particles/run')
 
 	def animate(self):
 		animation = self.animations[self.status]
@@ -151,7 +154,7 @@ class Player(pygame.sprite.Sprite):
 					text = font.render("Quick Menu", True, pygame.color.Color('Black'))
 					background.blit(text, (20, 20))
 
-					myimage = pygame.image.load('../graphics/character/run/1.png')
+					myimage = pygame.image.load(self.character_path+'run/1.png')
 					imagerect = myimage.get_rect()
 					picture = pygame.transform.scale(myimage, (280, 100))
 					background.blit(picture, (200,200))
