@@ -369,6 +369,10 @@ class Level:
 				self.state = 'boss_cutscene'
 				self.enter_dialog("flyking")
 				self.state = 'bossfight'
+				# deletes fly constraints from map so that they can fly all over the screen
+				for constraint in self.constraint_sprites:
+					if constraint.value == 1:
+						constraint.value = 0
 				#cutscene
 
 				#combat starts
