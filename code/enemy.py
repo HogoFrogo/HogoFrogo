@@ -1,6 +1,7 @@
 import pygame 
 from tiles import AnimatedTile
 from random import randint
+import math
 
 class Enemy(AnimatedTile):
 	image = ""
@@ -23,3 +24,7 @@ class Enemy(AnimatedTile):
 		self.animate()
 		self.move()
 		self.reverse_image()
+
+	def set_direction(self, angle):
+		self.speed_y = math.sin(math.radians(angle))*self.total_speed
+		self.speed = math.cos(math.radians(angle))*self.total_speed
