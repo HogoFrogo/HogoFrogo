@@ -368,11 +368,7 @@ class Level:
 				#the game freezes
 				self.state = 'boss_cutscene'
 				self.enter_dialog("flyking")
-				while self.state == 'boss_cutscene':
-					for event in pygame.event.get():
-						if event.type == pygame.KEYDOWN:
-							if event.key == pygame.K_SPACE:
-								self.state = 'bossfight'
+				self.state = 'bossfight'
 				#cutscene
 
 				#combat starts
