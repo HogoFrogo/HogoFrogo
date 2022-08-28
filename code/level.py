@@ -3,6 +3,7 @@ from support import import_csv_layout, import_cut_graphics
 from settings import tile_size, screen_height, screen_width
 from tiles import Tile, StaticTile, Crate, Coin, Palm, Constraint
 from enemy import Enemy
+from poop import Poop
 from fly import Fly
 from ant import Ant
 from dragonfly import Dragonfly
@@ -13,6 +14,7 @@ from particles import ParticleEffect
 from game_data import levels
 from random import randint
 from parachute_frog import ParachuteFrog
+from tiles import AnimatedTile
 
 
 class Level:
@@ -57,6 +59,7 @@ class Level:
 		self.goal_image = level_data['goal_image']
 		player_layout = import_csv_layout(level_data['player'])
 		self.player = pygame.sprite.GroupSingle()
+		self.boss = pygame.sprite.GroupSingle()
 		self.goal = pygame.sprite.GroupSingle()
 		self.player_setup(player_layout,change_health)
 		self.killed_ants = 0
@@ -376,6 +379,11 @@ class Level:
 				#cutscene
 
 				#combat starts
+					self.boss_x = screen_width-120
+					self.boss_y = 200
+					boss = AnimatedTile(tile_size,self.boss_x,self.boss_y,'../graphics/bosses/flyking/run')
+					self.boss.add(boss)
+
 					#the sandwich disappears and some platforms needed for combat movement will appear
 
 					#the boss will start spawning flies in a different frequency and pattern
@@ -414,9 +422,14 @@ class Level:
 			for coin in collided_coins:
 				self.change_coins(coin.value)
 
+	def check_boss_collisions(self):
+		boss_collisions = pygame.sprite.spritecollide(self.player.sprite,self.boss,False)
+		if boss_collisions:
+			for enemy in boss_collisions:
+				self.eat_sound.play()
+
 	def check_enemy_collisions(self):
 		enemy_collisions = pygame.sprite.spritecollide(self.player.sprite,self.enemy_sprites,False)
-
 		if enemy_collisions:
 			for enemy in enemy_collisions:
 				enemy_center = enemy.rect.centery
@@ -478,6 +491,9 @@ class Level:
 		self.explosion_sprites.update(self.world_shift)
 		self.explosion_sprites.draw(self.display_surface)
 
+		self.boss.update(self.world_shift)
+		self.boss.draw(self.display_surface)
+
 		# crate 
 		self.crate_sprites.update(self.world_shift)
 		self.crate_sprites.draw(self.display_surface)
@@ -520,13 +536,14 @@ class Level:
 
 		self.check_coin_collisions()
 		self.check_enemy_collisions()
+		self.check_boss_collisions()
 
 		# water 
 		self.water.draw(self.display_surface,self.world_shift)
 
 		if(randint(0,999)<self.fly_occurency_probability): self.enemy_sprites.add(Fly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if self.state == 'bossfight':
-			if(randint(0,999)<self.fly_occurency_probability*5): self.enemy_sprites.add(Fly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border),randint(150,210),20))
+			if(randint(0,999)<self.fly_occurency_probability*5): self.enemy_sprites.add(Poop(tile_size,self.boss_x,self.boss_y,randint(150,210),12))
 		if(randint(0,999)<self.dragonfly_occurency_probability): self.enemy_sprites.add(Dragonfly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if(randint(0,999)<self.wasp_occurency_probability): self.enemy_sprites.add(Wasp(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if(randint(0,999)<self.parachute_frog_ocurency_probability): self.enemy_sprites.add(ParachuteFrog(tile_size,randint(0, screen_width),0))
