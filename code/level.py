@@ -1,3 +1,4 @@
+from traceback import format_exc
 import pygame
 from support import import_csv_layout, import_cut_graphics
 from settings import tile_size, screen_height, screen_width
@@ -302,6 +303,21 @@ class Level:
 			print("last death")
 			print(self.difficulty)
 			self.create_overworld(self.current_level,0,self.difficulty)
+	
+	def text_line_split(self,text_content):
+		text_lines = []
+		text_length = len(text_content)
+		text_length_max = 45
+		while (text_length>text_length_max):
+			#Split the text, one with length 5 and the rest
+			text_line = text_content[0:text_length_max-1]
+			text_content = text_content[text_length_max-1:]
+			text_length = len(text_content)
+			text_lines.append(text_line)
+		text_lines.append(text_content)
+
+		return text_lines
+		
 
 	def view_dialog(self,text_content,image_path,dialog_sound=""):
 		if dialog_sound != "":
@@ -311,9 +327,17 @@ class Level:
 		window = (700,500)
 		background = pygame.Surface(window)
 		background.fill((102, 187, 106))
+
+		#Insert text
+		text_lines = self.text_line_split(text_content)
 		font = pygame.font.SysFont('Arial', 24)
-		text = font.render(text_content, True, pygame.color.Color('Black'))
-		background.blit(text, (20, 20))
+		line_n = 1
+		print("délka pole lajn")
+		print(len(text_lines))
+		for line in text_lines:
+			text = font.render(line, True, pygame.color.Color('Black'))
+			background.blit(text, (20, 20*line_n))
+			line_n+=1
 
 		myimage = pygame.image.load(image_path)
 		imagerect = myimage.get_rect()
