@@ -307,13 +307,52 @@ class Level:
 	def text_line_split(self,text_content):
 		text_lines = []
 		text_length = len(text_content)
-		text_length_max = 45
+		text_length_max = 60
 		while (text_length>text_length_max):
 			#Split the text, one with length 5 and the rest
-			text_line = text_content[0:text_length_max-1]
-			text_content = text_content[text_length_max-1:]
-			text_length = len(text_content)
-			text_lines.append(text_line)
+
+			# WordWrap
+			# If first 4 letters are not space it is ok
+			# But if there are it is hard
+			text_line = text_content[0:text_length_max]
+			# Pokud je text_line dlouhej jako limit a v text_content jsou ještě další znaky, tak
+			print("Podmínka 0 splněna")
+			print(len(text_line))
+			print(text_length_max)
+			if(len(text_line)==text_length_max) and len(text_content[text_length_max:])>0:
+				print("Podmínka 1 splněna")
+				## Pokud nenajdu mezeru na konci daného ani na začátku řetězce následujícího
+				if(text_content[text_length_max-1]!=" " and text_content[text_length_max]!=" "):
+					### Tak musím text říznout v bodě poslední mezery v prvním (daném) řetězci
+					i = 1
+					while i < len(text_content):
+						letter = text_line[-i]
+						if(letter==" "):
+							print("test")
+							text_split_index = text_length_max-i
+							text_line = text_line[0:text_split_index]
+
+							text_content = text_content[text_split_index+1:]
+							text_length = len(text_content)
+							text_lines.append(text_line)
+							break
+						i+=1
+				else:
+					if (text_content[text_length_max]!=" "):
+						text_content = text_content[text_length_max+1:]
+					else:
+						text_content = text_content[text_length_max:]
+					text_length = len(text_content)
+					text_lines.append(text_line)
+			else:
+				if(text_line[0]==" "):
+					text_line = text_line[1:]
+				text_content = text_content[text_length_max:]
+				text_length = len(text_content)
+				text_lines.append(text_line)
+			print(text_line)
+		if(text_content[0]==" "):
+			text_content = text_content[1:]
 		text_lines.append(text_content)
 
 		return text_lines
