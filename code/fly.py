@@ -9,7 +9,7 @@ class Fly(Enemy):
 	def __init__(self,size,x,y,angle=180,speed = 0):
 		super().__init__(size,x,y)
 		if speed ==0:
-			self.total_speed = -randint(2,9)
+			self.total_speed = randint(2,9)
 		else:
 			self.total_speed = speed
 		self.speed = -self.total_speed
