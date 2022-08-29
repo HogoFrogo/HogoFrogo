@@ -446,6 +446,7 @@ class Level:
 					self.boss_y = 200
 					boss = AnimatedTile(tile_size,self.boss_x,self.boss_y,'../graphics/bosses/flyking/run')
 					self.boss.add(boss)
+					# It is needed to somehow fix situation when camera moves
 
 					#the sandwich disappears and some platforms needed for combat movement will appear
 
