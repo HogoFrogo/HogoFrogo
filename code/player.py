@@ -15,9 +15,11 @@ class Player(pygame.sprite.Sprite):
 		self.image = self.animations['idle'][self.frame_index]
 		self.rect = self.image.get_rect(topleft = pos)
 		self.tongue_stick_out = False
+		self.tongue_stick_out_up = False
 		self.tongue_stick_out_timeout = 0
 		self.stickout_charging_time = 50
 		self.native_width = 48
+		self.native_height = 40
 		
 		
 		# dust particles 
@@ -34,7 +36,7 @@ class Player(pygame.sprite.Sprite):
 		self.gravity = 0.8
 		self.jump_speed = 5
 		self.jump_energy = 0
-		self.collision_rect = pygame.Rect(self.rect.topleft,(50,self.rect.height))
+		self.collision_rect = pygame.Rect(self.rect.topleft,(self.rect.width,self.rect.height))
 		self.jump_energy_limit = 48
 
 		# player status
@@ -62,7 +64,7 @@ class Player(pygame.sprite.Sprite):
 		self.hit_sound.set_volume(new_volume)
 
 	def import_character_assets(self):
-		self.animations = {'idle':[],'run':[],'jump':[],'fall':[],'tongue_stick_out':[]}
+		self.animations = {'idle':[],'run':[],'jump':[],'fall':[],'tongue_stick_out':[],'tongue_stick_out_up':[]}
 
 		for animation in self.animations.keys():
 			full_path = self.character_path + animation
@@ -77,8 +79,7 @@ class Player(pygame.sprite.Sprite):
 		if not self.facing_right:
 			flipped_image = pygame.transform.flip(image,True,False)
 			self.image = flipped_image
-		self.rect = self.image.get_rect(midbottom = self.rect.midbottom)	
-
+		self.rect = image.get_rect(midbottom = self.rect.midbottom)
 
 		# loop over frame index 
 		self.frame_index += self.animation_speed
@@ -148,6 +149,9 @@ class Player(pygame.sprite.Sprite):
 		if keys[pygame.K_k] and self.tongue_stick_out_timeout==0:
 			self.tongue_stick_out = True
 			self.tongue_stick_out_timeout = self.stickout_charging_time+20
+		if keys[pygame.K_d] and self.tongue_stick_out_timeout==0:
+			self.tongue_stick_out_up = True
+			self.tongue_stick_out_timeout = self.stickout_charging_time+20
 		for event in pygame.event.get():
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_ESCAPE:
@@ -174,7 +178,9 @@ class Player(pygame.sprite.Sprite):
 									self.state = 'end'
 
 	def get_status(self):
-		if self.tongue_stick_out:
+		if self.tongue_stick_out_up:
+			self.status = 'tongue_stick_out_up'
+		elif self.tongue_stick_out:
 			self.status = 'tongue_stick_out'
 		elif self.direction.y < 0:
 			self.status = 'jump'
@@ -225,8 +231,10 @@ class Player(pygame.sprite.Sprite):
 		
 		if(self.tongue_stick_out_timeout<=self.stickout_charging_time):
 			self.tongue_stick_out=False
+			self.tongue_stick_out_up=False
 		if(self.tongue_stick_out_timeout>0):
 			self.tongue_stick_out_timeout-=1
 		else:
 			self.tongue_stick_out=False
+			self.tongue_stick_out_up=False
 		

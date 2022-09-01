@@ -319,6 +319,7 @@ class Level:
 			print("Podmínka 0 splněna")
 			print(len(text_line))
 			print(text_length_max)
+			
 			if(len(text_line)==text_length_max) and len(text_content[text_length_max:])>0:
 				print("Podmínka 1 splněna")
 				## Pokud nenajdu mezeru na konci daného ani na začátku řetězce následujícího
@@ -500,7 +501,19 @@ class Level:
 				enemy_top = enemy.rect.top
 				player_bottom = self.player.sprite.rect.bottom
 				player_native_width = self.player.sprite.native_width
+				player_native_height = self.player.sprite.native_height
 				if (self.player.sprite.facing_right and self.player.sprite.rect.left+player_native_width < enemy.rect.left and self.player.sprite.tongue_stick_out) or (not self.player.sprite.facing_right and self.player.sprite.rect.right-player_native_width > enemy.rect.right and self.player.sprite.tongue_stick_out):
+					self.eat_sound.play()
+					self.player.sprite.heal(enemy.healing_points)
+					# self.player.sprite.direction.y = -3
+					explosion_sprite = ParticleEffect(enemy.rect.center,'explosion')
+					self.explosion_sprites.add(explosion_sprite)
+					enemy.kill()
+					if isinstance(enemy,Ant):
+						self.killed_ants += 1
+					if isinstance(enemy,Fly):
+						self.killed_flies += 1
+				elif (self.player.sprite.rect.bottom-player_native_height > enemy.rect.bottom and self.player.sprite.tongue_stick_out_up):
 					self.eat_sound.play()
 					self.player.sprite.heal(enemy.healing_points)
 					# self.player.sprite.direction.y = -3
