@@ -524,9 +524,9 @@ class Level:
 						self.killed_ants += 1
 					if isinstance(enemy,Fly):
 						self.killed_flies += 1
-				elif enemy_top < player_bottom < enemy_center and self.player.sprite.direction.y >= 0:
+				elif enemy_top < player_bottom < enemy_center and self.player.sprite.direction.y > 1:
 					self.stomp_sound.play()
-					# self.player.sprite.direction.y = -3
+					self.player.sprite.direction.y = -13
 					explosion_sprite = ParticleEffect(enemy.rect.center,'explosion')
 					self.explosion_sprites.add(explosion_sprite)
 					enemy.kill()
