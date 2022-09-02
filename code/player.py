@@ -46,6 +46,7 @@ class Player(pygame.sprite.Sprite):
 		self.on_ceiling = False
 		self.on_left = False
 		self.on_right = False
+		self.move_direction_right = True
 
 		# health management
 		self.change_health = change_health
@@ -116,20 +117,24 @@ class Player(pygame.sprite.Sprite):
 
 	def get_input(self):
 		keys = pygame.key.get_pressed()
-		if keys[pygame.K_s] and self.on_ground:
+		if keys[pygame.K_s]:
 			self.facing_right = False
-		if keys[pygame.K_l] and self.on_ground:
+			if self.on_ground:
+				self.move_direction_right = False
+		if keys[pygame.K_l]:
 			self.facing_right = True
+			if self.on_ground:
+				self.move_direction_right = True
 		if keys[pygame.K_s] and keys[pygame.K_SPACE] and self.on_ground:
 			if self.jump_energy<self.jump_energy_limit:
 				self.jump_energy += 1
-		elif self.on_ground==False and self.facing_right==False:
+		elif self.on_ground==False and self.move_direction_right==False:
 			self.direction.x = -1
 		
 		elif keys[pygame.K_l] and keys[pygame.K_SPACE] and self.on_ground:
 			if self.jump_energy<self.jump_energy_limit:
 				self.jump_energy += 1
-		elif self.on_ground==False and self.facing_right==True:
+		elif self.on_ground==False and self.move_direction_right==True:
 			self.direction.x = 1
 		elif keys[pygame.K_SPACE]:
 			self.jump_energy = 0

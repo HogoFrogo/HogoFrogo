@@ -527,6 +527,10 @@ class Level:
 				elif enemy_top < player_bottom < enemy_center and self.player.sprite.direction.y > 1:
 					self.stomp_sound.play()
 					self.player.sprite.direction.y = -13
+					if self.player.sprite.facing_right:
+						self.player.sprite.move_direction_right = True
+					else:
+						self.player.sprite.move_direction_right = False
 					explosion_sprite = ParticleEffect(enemy.rect.center,'explosion')
 					self.explosion_sprites.add(explosion_sprite)
 					enemy.kill()
