@@ -604,6 +604,8 @@ class Level:
 			if(self.goal.sprite.rect.centerx < (screen_width) / 2 - 5):
 				self.world_shift = 10
 				self.player.sprite.speed = 10
+				self.boss.sprite.update(self.world_shift)
+				self.boss.sprite.draw(self.display_surface) 
 			elif(self.goal.sprite.rect.centerx > (screen_width) / 2 + 5):
 				self.world_shift = -10
 				self.player.sprite.speed = -10
