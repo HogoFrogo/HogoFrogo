@@ -9,12 +9,15 @@ from game import Game
 
 def load_settings_from_file():
 	with open('settings.conf', 'r') as f:
-		music_volume = float(f.read())
-	return {"music_volume": music_volume}
+		#music_volume = float(f.read())
+		#sounds_volume = float(f.read())
+		music_volume = float(0)
+		sounds_volume = float(0)
+	return {"music_volume": music_volume, "sounds_volume": sounds_volume}
 
 settings=load_settings_from_file()
 music_volume = settings["music_volume"]
-sounds_volume = 0.5
+sounds_volume = settings["sounds_volume"]
 
 # Pygame setup
 pygame.init()
@@ -50,16 +53,20 @@ def start_the_game():
 		pygame.display.update()
 		clock.tick(60)
 
-def change_music_volume(new_volume):
-	music_volume = new_volume
-	main_menu_music.set_volume(music_volume)
-	game.change_music_volume(new_volume)
+#settings saving
+def save_settings_into_file():
 	with open('settings.conf', 'w') as f:
-		f.write(str(new_volume))
+		f.write("music_volume = " + str(game.music_volume) + "\n")
+		f.write("sounds_volume = " + str(game.sounds_volume) + "\n")
+
+def change_music_volume(new_volume):
+	game.change_music_volume(new_volume)
+	main_menu_music.set_volume(game.music_volume)
+	save_settings_into_file()
 
 def change_sounds_volume(new_volume):
-	game.change_sounds_volume(new_volume)
-
+	game.change_sounds_volume(new_volume)	
+	save_settings_into_file()
 
 main_menu = pygame_menu.Menu('Hogo Frogo', screen_width, screen_height,
                        theme=pygame_menu.themes.THEME_GREEN)
