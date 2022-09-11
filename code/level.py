@@ -17,9 +17,10 @@ from random import randint
 from parachute_frog import ParachuteFrog
 from tiles import AnimatedTile
 
+#Janek was here
+#Sam was here tho
 
 class Level:
-	#goal_image = '../graphics/misc/sandwich.png'
 	def __init__(self,current_level,surface,create_overworld,change_coins,change_health,difficulty):
 		# general setup
 		self.display_surface = surface
@@ -62,7 +63,7 @@ class Level:
 		self.player = pygame.sprite.GroupSingle()
 		self.boss = pygame.sprite.GroupSingle()
 		self.goal = pygame.sprite.GroupSingle()
-		self.player_setup(player_layout,change_health)
+		self.player_setup(player_layout,change_health, level_data['player_image'])
 		self.killed_ants = 0
 		self.killed_flies = 0
 
@@ -174,14 +175,15 @@ class Level:
 		
 		return sprite_group
 
-	def player_setup(self,layout,change_health):
+	def player_setup(self,layout,change_health, player_image):
 		for row_index, row in enumerate(layout):
 			for col_index,val in enumerate(row):
 				x = col_index * tile_size
 				y = row_index * tile_size
 				if val == '0':
-					sprite = Player((x,y),self.display_surface,self.create_jump_particles,change_health)
+					sprite = Player((x,y),self.display_surface,self.create_jump_particles,change_health, player_image)
 					self.player.add(sprite)
+					
 				if val == '1':
 					hat_surface = pygame.image.load(self.goal_image).convert_alpha()
 					sprite = StaticTile(tile_size,x,y,hat_surface)
@@ -416,7 +418,7 @@ class Level:
 				self.view_dialog("This sandwich is not yours!",player_img,self.croak_speak_sound)
 				self.view_dialog("If you think so fight for it!",flyking_img,self.fly_speak_sound)
 			case 'chase_start':
-				player_img = '../graphics/character/run/1.png'
+				player_img = '../graphics/character/sandwich/run/1.png'
 				strong_frog_img = '../graphics/bosses/flyking.jpg'
 				self.view_dialog("Give me that sandwich!",strong_frog_img,self.croak_speak_sound)
 				self.view_dialog("No!",player_img,self.croak_speak_sound)

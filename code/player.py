@@ -4,11 +4,11 @@ from support import import_folder
 from math import sin
 
 class Player(pygame.sprite.Sprite):
-	def __init__(self,pos,surface,create_jump_particles,change_health,sounds_volume=0.5,graphics="default"):
+	def __init__(self,pos,surface,create_jump_particles,change_health,graphics="default",sounds_volume=0.5):
 		super().__init__()
 		self.character_path = '../graphics/character/'
-		if graphics == "different":
-			self.character_path = '../graphics/character/different/'
+		if graphics != "default":
+			self.character_path += graphics+"/"
 		self.import_character_assets()
 		self.frame_index = 0
 		self.animation_speed = 0.15
