@@ -5,6 +5,7 @@ from level import Level
 from overworld import Overworld
 from ui import UI
 from game_data import levels
+from player import *
 
 
 class Game:
@@ -14,6 +15,8 @@ class Game:
 		self.max_health = 100
 		self.cur_health = 100
 		self.coins = 0
+		self.max_jump = 48
+		self.cur_jump = 0
 		self.screen = screen
 		programIcon = pygame.image.load('../graphics/character/idle/1.png')
 		pygame.display.set_icon(programIcon)
@@ -87,5 +90,6 @@ class Game:
 		else:
 			self.level.run()
 			self.ui.show_health(self.cur_health,self.max_health)
+			self.ui.show_jump(self.cur_jump, self.max_jump)
 			self.ui.show_coins(self.coins)
 			self.check_game_over()
