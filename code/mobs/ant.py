@@ -1,5 +1,5 @@
 import pygame 
-from enemy import Enemy
+from .enemy import Enemy
 from random import randint
 
 class Ant(Enemy):
