@@ -5,8 +5,22 @@ import math
 
 class Enemy(AnimatedTile):
 	image = ""
-	def __init__(self,size,x,y):
+	images_folder = ""
+	attack_damage = 0
+	healing_points = 0
+	speed_x = 0
+	speed_y = 0
+	def __init__(self,size,x,y,speed_x=0,speed_y=0):
+		self.image = '../graphics/'+self.images_folder+'/run'
+		self.initialize_speed()
+		if speed_x==0:
+			self.speed = self.speed_x
+		else:
+			self.speed = speed_x
+		if speed_y!=0:
+			self.speed_y = speed_y
 		super().__init__(size,x,y,self.image)
+		self.rect.y += size - self.image.get_size()[1]
 
 	def move(self):
 		self.rect.x += self.speed
@@ -28,3 +42,6 @@ class Enemy(AnimatedTile):
 	def set_direction(self, angle):
 		self.speed_y = math.sin(math.radians(angle))*self.total_speed
 		self.speed = math.cos(math.radians(angle))*self.total_speed
+
+	def initialize_speed(self):
+		self.speed_x = -randint(self.minimum_speed,self.maximum_speed)
