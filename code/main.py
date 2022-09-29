@@ -15,6 +15,21 @@ def load_settings_from_file():
 		sounds_volume = float(0)
 	return {"music_volume": music_volume, "sounds_volume": sounds_volume}
 
+#settings saving
+def save_settings_into_file():
+	with open('settings.conf', 'w') as f:
+		f.write("music_volume = " + str(game.music_volume) + "\n")
+		f.write("sounds_volume = " + str(game.sounds_volume) + "\n")
+
+def change_music_volume(new_volume):
+	game.change_music_volume(new_volume)
+	main_menu_music.set_volume(game.music_volume)
+	save_settings_into_file()
+
+def change_sounds_volume(new_volume):
+	game.change_sounds_volume(new_volume)	
+	save_settings_into_file()
+
 settings=load_settings_from_file()
 music_volume = settings["music_volume"]
 sounds_volume = settings["sounds_volume"]
@@ -53,35 +68,40 @@ def start_the_game():
 		pygame.display.update()
 		clock.tick(60)
 
-#settings saving
-def save_settings_into_file():
-	with open('settings.conf', 'w') as f:
-		f.write("music_volume = " + str(game.music_volume) + "\n")
-		f.write("sounds_volume = " + str(game.sounds_volume) + "\n")
-
-def change_music_volume(new_volume):
-	game.change_music_volume(new_volume)
-	main_menu_music.set_volume(game.music_volume)
-	save_settings_into_file()
-
-def change_sounds_volume(new_volume):
-	game.change_sounds_volume(new_volume)	
-	save_settings_into_file()
-
 main_menu = pygame_menu.Menu('Hogo Frogo', screen_width, screen_height,
                        theme=pygame_menu.themes.THEME_GREEN)
+play_menu = pygame_menu.Menu('Play', screen_width, screen_height,
+                       theme=pygame_menu.themes.THEME_GREEN)
+name_text_input = play_menu.add.text_input('PlayerName: ', default='Mr. Croak')
+difficulty_input = play_menu.add.selector('Difficulty :', [('Toad', 1), ('Frog', 2)])
+play_menu.add.button('Play', start_the_game)
 
 credits_menu = pygame_menu.Menu('Credits', screen_width, screen_height,
                        theme=pygame_menu.themes.THEME_GREEN)
-credits_menu.add.label("Hello World")
+credits_menu.add.label("Level Design")
+credits_menu.add.label("Person 1")
+credits_menu.add.label("Boss Design")
+credits_menu.add.label("Person 2")
+credits_menu.add.label("Story")
+credits_menu.add.label("Person 3\nPerson 4\nPerson 5")
+credits_menu.add.label("Programming")
+credits_menu.add.label("Person 6\nPerson 7\nPerson 8")
+credits_menu.add.label("Graphics")
+credits_menu.add.label("Person 9")
+credits_menu.add.label("Music")
+credits_menu.add.label("Person 10")
 
-name_text_input = main_menu.add.text_input('PlayerName: ', default='Mr. Croak')
-difficulty_input = main_menu.add.selector('Difficulty :', [('Hard', 1), ('Easy', 2)])
-main_menu.add.button('Play', start_the_game)
-main_menu.add.button('Quit', pygame_menu.events.EXIT)
-volume_slider = main_menu.add.range_slider('Volume', music_volume, [0, 1], 1, change_music_volume)
-sounds_volume_slider = main_menu.add.range_slider('Sounds Volume', sounds_volume, [0, 1], 1, change_sounds_volume)
+settings_menu = pygame_menu.Menu('Settings', screen_width, screen_height,
+                       theme=pygame_menu.themes.THEME_GREEN)
+volume_slider = settings_menu.add.range_slider('Volume', music_volume, [0, 1], 1, change_music_volume)
+sounds_volume_slider = settings_menu.add.range_slider('Sounds Volume', sounds_volume, [0, 1], 1, change_sounds_volume)
+
+main_menu.add.menu_link(play_menu, 'Play')
+main_menu.add.button('Play', play_menu)
+main_menu.add.menu_link(settings_menu, 'Settings')
+main_menu.add.button('Settings', settings_menu)
 main_menu.add.menu_link(credits_menu, 'Credits')
 main_menu.add.button('Credits', credits_menu)
+main_menu.add.button('Quit', pygame_menu.events.EXIT)
 main_menu_music.play(loops = -1)
 main_menu.mainloop(screen)
