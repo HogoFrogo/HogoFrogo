@@ -1,11 +1,3 @@
-# intui
-May/Could/Should be an intuitive game.
-
-Not a big project probably, just to try to create some game cooperatively.
-
-## Hogo Frogo (one of the options)
-Game with existing weird frogs
-
 ### Frogs:  
 1) Purple Frog  
   Weirdo-mutant (mole + frog + buttocks) frog
@@ -43,19 +35,3 @@ Game with existing weird frogs
 ![Goliath Frog](https://cdn.roaring.earth/wp-content/uploads/2020/09/frogspider.jpg)
 10) Colorado River Toad (Bufo Alvarius)  
 ![Colorado River Toad](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/2009-03-13Bufo_alvarius067.jpg/440px-2009-03-13Bufo_alvarius067.jpg)
-
-
-### Game nature ideas:
-1) Platform fighting game (e. g. Smash Bros) with an emphasis on controls, that impersonate frog behaviour (hold A+S to wind up, release to jump in the left direction, hold K+L and release for the other direction).
-
-
-
-### Gameplay/design ideas:
-1) NPC Black Rain Frog (No. 7), that will act for entertainment purposes in the cutscenes. In the beginning or during the story it will naturally frown to evoke sadness, in the end, it will finally smile.
-
-## Gameplay
-[Click here](Gameplay.md)
-
-## Betatester opinions
-[Click here](betatester_opinions.md)
-
