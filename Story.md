@@ -21,37 +21,22 @@ P: (a) Of course! (b) Of course!
 Player arrives at the map and gets coltrols help with tongue stick out. He jumps around till he arrives near the sandwich where bunch of flies are flying around it. When he kills them the sandwich is saved but the black frog is still sad. On the path to the sandwich some flies fly around from right to left.
 
 ### Second level
-Waxy Monkey Tree Frog is shithead and wants to steal your sandwich, you can't beat him, but you can escape to finish.
+Chase level - tsunami, if you are not fast enough, sandwich will be soaked - game over
 
 Cutscene  
-You meet good boi Long-Nosed Horned Frog and he helps you kick the dumbass Waxy Monkey Tree Frog
-
-Then:  
-Dialog:  
-N: You saved my sandwich! Thank you!
-N: Since now I will call you <player_name> The Saviour!
-Nobody: ...
-P: You are still sad?
-N: Yes! :(
-N: (something about 2nd level problem)
+After the escape a night begins 
 
 ### Third level
+Night Level - limited vision (circle around the player, that gets smaller) - when a player eats a firefly, the light radius expands -> night boss (either he does the 'lights out' and is visible only by a small light everytime you reach an HP threshold or he makes the darkness and you can't enter it)
 
 ### Fourth level
-Budgett's Frog
+frog hood - ranged enemies with AK47s - secret ending (read 'snoop frog')
 
 ### Fifth level
-Mossy Frog - hard to find (camouflaged) boss
+desert level - hydration mechanic which lowers the max jump limit - 
 
 ### Sixth level
-Parachute Frog
-
-### Seventh level
-Purple Frog
-
-### Eigth level
-Bufo Alvarius - When it croaks psychedelic balls in multiple directions approach. If player is hit, textures change and illusions of new enemies randomly arrive. More colours, harder to see what to do.
-
+test of the player's abilities - button (timed) sequence, jump puzzle, tongue mechanics - former biom seen in 0. level - HUMAN BOSS (child's father) - climb the human, environmental damage (hands) - different body sections, different gameplay gimmicks - final 'head' level - lick the eyes multiple times to kill it
 
 * Jambes de grenouilles
 * Pepe The Frog
