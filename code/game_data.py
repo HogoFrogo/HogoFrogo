@@ -21,6 +21,7 @@ level_0 = {
 		'parachute_frog': 0,
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/misc/sad_frog.png',
+		'boss': 'none',
 		'player_image': 'default'}
 level_1 = {
 		'terrain': '../levels/1/level_1_terrain.csv',
@@ -45,6 +46,7 @@ level_1 = {
 		'parachute_frog': 0,
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/misc/sandwich.png',
+		'boss': 'none',
 		'player_image': 'default'}
 level_2 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
@@ -69,6 +71,7 @@ level_2 = {
 		'parachute_frog': 0,
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/character/hat.png',
+		'boss': 'none',
 		'player_image': 'sandwich'}
 level_3 = {
 		'terrain': '../levels/3/level_3_terrain.csv',
@@ -93,6 +96,7 @@ level_3 = {
 		'parachute_frog': 0,
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/character/hat.png',
+		'boss': 'none',
 		'player_image': 'default'}
 level_4 = {
 		'terrain': '../levels/4/level_4_terrain.csv',
@@ -117,6 +121,7 @@ level_4 = {
 		'parachute_frog': 0,
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/character/hat.png',
+		'boss': 'none',
 		'player_image': 'default'}
 level_5 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
@@ -142,6 +147,7 @@ level_5 = {
 		'parachute_frog': 0,
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/character/hat.png',
+		'boss': 'none',
 		'player_image': 'default'}
 level_6 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
@@ -166,6 +172,7 @@ level_6 = {
 		'parachute_frog': 0,
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/character/hat.png',
+		'boss': 'none',
 		'player_image': 'default'}
 level_7 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
@@ -190,6 +197,7 @@ level_7 = {
 		'parachute_frog': 0,
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/character/hat.png',
+		'boss': 'none',
 		'player_image': 'default'}
 
 levels = {
