@@ -11,8 +11,10 @@ def load_settings_from_file():
 	with open('settings.conf', 'r') as f:
 		#music_volume = float(f.read())
 		#sounds_volume = float(f.read())
-		music_volume = float(0)
-		sounds_volume = float(0)
+		option = f.readline().split(" = ")
+		music_volume = float(option[1])
+		option = f.readline().split(" = ")
+		sounds_volume = float(option[1])
 	return {"music_volume": music_volume, "sounds_volume": sounds_volume}
 
 #settings saving
