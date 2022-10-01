@@ -4,7 +4,7 @@ from support import import_folder
 from math import sin
 
 class Player(pygame.sprite.Sprite):
-	def __init__(self,pos,surface,create_jump_particles,change_health,graphics="default",sounds_volume=0.5):
+	def __init__(self,pos,surface,create_jump_particles,change_health,change_jump, graphics="default",sounds_volume=0.5):
 		super().__init__()
 		self.character_path = '../graphics/character/'
 		if graphics != "default":
@@ -50,6 +50,7 @@ class Player(pygame.sprite.Sprite):
 
 		# health management
 		self.change_health = change_health
+		self.change_jump = change_jump
 		self.invincible = False
 		self.invincibility_duration = 500
 		self.hurt_time = 0
@@ -128,15 +129,19 @@ class Player(pygame.sprite.Sprite):
 		if keys[pygame.K_s] and keys[pygame.K_SPACE] and self.on_ground:
 			if self.jump_energy<self.jump_energy_limit:
 				self.jump_energy += 1
+				self.change_jump(1)
 		elif self.on_ground==False and self.move_direction_right==False:
 			self.direction.x = -1
 		
 		elif keys[pygame.K_l] and keys[pygame.K_SPACE] and self.on_ground:
 			if self.jump_energy<self.jump_energy_limit:
 				self.jump_energy += 1
+				self.change_jump(1)
+
 		elif self.on_ground==False and self.move_direction_right==True:
 			self.direction.x = 1
 		elif keys[pygame.K_SPACE]:
+			self.change_jump(-self.jump_energy)
 			self.jump_energy = 0
 		elif self.jump_energy>0:
 			self.create_jump_particles(self.rect.midbottom)
@@ -147,10 +152,14 @@ class Player(pygame.sprite.Sprite):
 				self.native_speed = 8
 			else:
 				self.native_speed = 4
+			self.change_jump(-self.jump_energy)
 			self.jump_energy = 0
+			#
 		else:
 			self.direction.x = 0
+			self.change_jump(-self.jump_energy)
 			self.jump_energy = 0
+			#
 		if keys[pygame.K_k] and self.tongue_stick_out_timeout==0:
 			self.tongue_stick_out = True
 			self.tongue_stick_out_timeout = self.stickout_charging_time+20

@@ -1,27 +1,24 @@
-from traceback import format_exc
 import pygame
-from support import import_csv_layout, import_cut_graphics
+from support import import_csv_layout, import_cut_graphics, import_folder
 from settings import tile_size, screen_height, screen_width
 from tiles import Tile, StaticTile, Crate, Coin, Palm, Constraint
-from enemy import Enemy
-from poop import Poop
-from fly import Fly
-from ant import Ant
-from dragonfly import Dragonfly
-from wasp import Wasp
+from mobs.poop import Poop
+from mobs.fly import Fly
+from mobs.ant import Ant
+from mobs.dragonfly import Dragonfly
+from mobs.wasp import Wasp
 from decoration import Sky, Water, Clouds
+from mobs.parachute_frog import ParachuteFrog
+from mobs.gangster_frog import GangsterFrog
+from mobs.boss import Boss
 from player import Player
 from particles import ParticleEffect
 from game_data import levels
 from random import randint
-from parachute_frog import ParachuteFrog
 from tiles import AnimatedTile
 
-#Janek was here
-#Sam was here tho
-
 class Level:
-	def __init__(self,current_level,surface,create_overworld,change_coins,change_health,difficulty):
+	def __init__(self,current_level,surface,create_overworld,change_coins,change_health,change_jump,difficulty):
 		# general setup
 		self.display_surface = surface
 		self.world_shift = 0
@@ -43,6 +40,7 @@ class Level:
 		self.current_level = current_level
 		level_data = levels[self.current_level]
 		self.new_max_level = level_data['unlock']
+		self.bossObject = Boss(level_data['boss'])
 
 		print("obtížnost")
 		print(difficulty)
@@ -63,7 +61,7 @@ class Level:
 		self.player = pygame.sprite.GroupSingle()
 		self.boss = pygame.sprite.GroupSingle()
 		self.goal = pygame.sprite.GroupSingle()
-		self.player_setup(player_layout,change_health, level_data['player_image'])
+		self.player_setup(player_layout,change_health, change_jump, level_data['player_image'])
 		self.killed_ants = 0
 		self.killed_flies = 0
 
@@ -175,13 +173,13 @@ class Level:
 		
 		return sprite_group
 
-	def player_setup(self,layout,change_health, player_image):
+	def player_setup(self,layout,change_health, change_jump, player_image):
 		for row_index, row in enumerate(layout):
 			for col_index,val in enumerate(row):
 				x = col_index * tile_size
 				y = row_index * tile_size
 				if val == '0':
-					sprite = Player((x,y),self.display_surface,self.create_jump_particles,change_health, player_image)
+					sprite = Player((x,y),self.display_surface,self.create_jump_particles,change_health, change_jump, player_image)
 					self.player.add(sprite)
 					
 				if val == '1':
@@ -447,6 +445,8 @@ class Level:
 				#combat starts
 					self.boss_x = screen_width-120
 					self.boss_y = 200
+					self.boss_direction = "left"
+					self.bossObject.direction = "left"
 					boss = AnimatedTile(tile_size,self.boss_x,self.boss_y,'../graphics/bosses/flyking/run')
 					self.boss.add(boss)
 					# It is needed to somehow fix situation when camera moves
@@ -463,11 +463,6 @@ class Level:
 				#boss' health is 0
 					#cutscene
 					#level end
-
-				
-
-
-
 			
 	def check_win(self):
 		if pygame.sprite.spritecollide(self.player.sprite,self.goal,False):
@@ -494,6 +489,17 @@ class Level:
 		if boss_collisions:
 			for enemy in boss_collisions:
 				self.eat_sound.play()
+				print("boss hit")
+				self.boss.update(10)
+				self.boss.draw(self.display_surface) 
+
+				self.boss_x = 0
+				self.boss_y = 400
+				self.boss_direction = "right"
+				self.bossObject.direction = "right"
+				boss = AnimatedTile(tile_size,self.boss_x,self.boss_y,'../graphics/bosses/flyking/run')
+				self.boss.empty()
+				self.boss.add(boss)
 
 	def check_enemy_collisions(self):
 		enemy_collisions = pygame.sprite.spritecollide(self.player.sprite,self.enemy_sprites,False)
@@ -606,8 +612,8 @@ class Level:
 			if(self.goal.sprite.rect.centerx < (screen_width) / 2 - 5):
 				self.world_shift = 10
 				self.player.sprite.speed = 10
-				self.boss.sprite.update(self.world_shift)
-				self.boss.sprite.draw(self.display_surface) 
+				self.boss.update(self.world_shift)
+				self.boss.draw(self.display_surface) 
 			elif(self.goal.sprite.rect.centerx > (screen_width) / 2 + 5):
 				self.world_shift = -10
 				self.player.sprite.speed = -10
@@ -625,15 +631,23 @@ class Level:
 
 		# water 
 		self.water.draw(self.display_surface,self.world_shift)
-
-		if(randint(0,999)<self.fly_occurency_probability): self.enemy_sprites.add(Fly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
-		if self.state == 'bossfight':
-			if(randint(0,999)<self.fly_occurency_probability*5): self.enemy_sprites.add(Poop(tile_size,self.boss_x,self.boss_y,randint(150,210),12))
-		if(randint(0,999)<self.dragonfly_occurency_probability): self.enemy_sprites.add(Dragonfly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
-		if(randint(0,999)<self.wasp_occurency_probability): self.enemy_sprites.add(Wasp(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
-		if(randint(0,999)<self.parachute_frog_ocurency_probability): self.enemy_sprites.add(ParachuteFrog(tile_size,randint(0, screen_width),0))
+		self.environment_behaviour_run()
 		
 		if self.state == 'begin':
 			self.state = 'running'
 			if self.current_level==2:
 				self.enter_dialog("chase_start")
+
+	def environment_behaviour_run(self):
+		if(randint(0,999)<self.fly_occurency_probability): self.enemy_sprites.add(Fly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
+		if(randint(0,999)<self.dragonfly_occurency_probability): self.enemy_sprites.add(Dragonfly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
+		if(randint(0,999)<self.wasp_occurency_probability): self.enemy_sprites.add(Wasp(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
+		if(randint(0,999)<self.parachute_frog_ocurency_probability): self.enemy_sprites.add(ParachuteFrog(tile_size,randint(0, screen_width),0))
+		if self.state == 'bossfight':
+			self.trigger_boss_action()
+			
+	def trigger_boss_action(self):
+		if(self.bossObject.direction=="left"):
+			if(randint(0,9999)<self.fly_occurency_probability*5): self.enemy_sprites.add(Poop(tile_size,self.boss_x,self.boss_y,randint(150,210),12))
+		else:
+			if(randint(0,9999)<self.fly_occurency_probability*5): self.enemy_sprites.add(Poop(tile_size,self.boss_x,self.boss_y,randint(330,390),12))

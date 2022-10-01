@@ -41,7 +41,7 @@ class Game:
 	def create_level(self,current_level,difficulty):
 		print("sounds_volume_in_level")
 		print(self.sounds_volume)
-		self.level = Level(current_level,self.screen,self.create_overworld,self.change_coins,self.change_health,difficulty)
+		self.level = Level(current_level,self.screen,self.create_overworld,self.change_coins,self.change_health,self.change_jump,difficulty)
 		self.status = 'level'
 		self.overworld_bg_music.stop()
 		self.level_bg_music = pygame.mixer.Sound(levels[current_level]['level_bg_music'])
@@ -64,6 +64,11 @@ class Game:
 		self.cur_health += amount
 		if(self.cur_health>self.max_health):
 			self.cur_health = self.max_health
+
+	def change_jump(self,amount):
+		self.cur_jump += amount
+		if(self.cur_jump>self.max_jump):
+			self.cur_jump = self.max_jump
 
 	def change_music_volume(self,new_music_volume):
 		self.music_volume = new_music_volume
