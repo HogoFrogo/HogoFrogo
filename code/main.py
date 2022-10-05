@@ -39,7 +39,7 @@ sounds_volume = settings["sounds_volume"]
 # Pygame setup
 pygame.init()
 pygame.display.set_caption("Hogo Frogo")
-screen = pygame.display.set_mode((screen_width,screen_height))
+screen = pygame.display.set_mode((screen_width,screen_height), pygame.SCALED + pygame.NOFRAME + pygame.FULLSCREEN)
 clock = pygame.time.Clock()
 
 load_settings_from_file()
