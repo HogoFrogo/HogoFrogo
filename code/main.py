@@ -39,6 +39,22 @@ settings=load_settings_from_file()
 music_volume = settings["music_volume"]
 sounds_volume = settings["sounds_volume"]
 
+font = pygame_menu.font.FONT_8BIT
+THEME_HOGO_FROGO = pygame_menu.Theme(
+    background_color=(40, 121, 35),
+    cursor_color=(255, 255, 255),
+    cursor_selection_color=(80, 80, 80, 120),
+    scrollbar_color=(39, 41, 42),
+    scrollbar_slider_color=(65, 66, 67),
+    scrollbar_slider_hover_color=(90, 89, 88),
+    selection_color=(255, 255, 255),
+    title_background_color=(47, 88, 51),
+    title_font_color=(215, 215, 215),
+    widget_font_color=(200, 200, 200),
+	title_font=font,
+	widget_font=font
+)
+
 # Pygame setup
 pygame.init()
 pygame.display.set_caption("Hogo Frogo")
@@ -75,15 +91,15 @@ def start_the_game():
 		clock.tick(60)
 
 main_menu = pygame_menu.Menu('Hogo Frogo', screen_width, screen_height,
-                       theme=pygame_menu.themes.THEME_GREEN)
+                       theme=THEME_HOGO_FROGO)
 play_menu = pygame_menu.Menu('Play', screen_width, screen_height,
-                       theme=pygame_menu.themes.THEME_GREEN)
+                       theme=THEME_HOGO_FROGO)
 name_text_input = play_menu.add.text_input('PlayerName: ', default='Mr. Croak')
 difficulty_input = play_menu.add.selector('Difficulty :', [('Toad', 1), ('Frog', 2)])
 play_menu.add.button('Play', start_the_game)
 
 credits_menu = pygame_menu.Menu('Credits', screen_width, screen_height,
-                       theme=pygame_menu.themes.THEME_GREEN)
+                       theme=THEME_HOGO_FROGO)
 credits_menu.add.label("Level Design")
 credits_menu.add.label("Person 1")
 credits_menu.add.label("Boss Design")
@@ -98,7 +114,7 @@ credits_menu.add.label("Music")
 credits_menu.add.label("Person 10")
 
 settings_menu = pygame_menu.Menu('Settings', screen_width, screen_height,
-                       theme=pygame_menu.themes.THEME_GREEN)
+                       theme=THEME_HOGO_FROGO)
 volume_slider = settings_menu.add.range_slider('Music Volume', music_volume, [0, 1], 1, change_music_volume)
 sounds_volume_slider = settings_menu.add.range_slider('Sounds Volume', sounds_volume, [0, 1], 1, change_sounds_volume)
 full_screen_checkbox = settings_menu.add.button('Fullscreen', toggle_fullscreen)
