@@ -38,6 +38,7 @@ sounds_volume = settings["sounds_volume"]
 
 # Pygame setup
 pygame.init()
+pygame.display.set_caption("Hogo Frogo")
 screen = pygame.display.set_mode((screen_width,screen_height))
 clock = pygame.time.Clock()
 
@@ -95,7 +96,7 @@ credits_menu.add.label("Person 10")
 
 settings_menu = pygame_menu.Menu('Settings', screen_width, screen_height,
                        theme=pygame_menu.themes.THEME_GREEN)
-volume_slider = settings_menu.add.range_slider('Volume', music_volume, [0, 1], 1, change_music_volume)
+volume_slider = settings_menu.add.range_slider('Music Volume', music_volume, [0, 1], 1, change_music_volume)
 sounds_volume_slider = settings_menu.add.range_slider('Sounds Volume', sounds_volume, [0, 1], 1, change_sounds_volume)
 
 main_menu.add.menu_link(play_menu, 'Play')
