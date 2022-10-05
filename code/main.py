@@ -32,6 +32,9 @@ def change_sounds_volume(new_volume):
 	game.change_sounds_volume(new_volume)	
 	save_settings_into_file()
 
+def toggle_fullscreen():
+	print('Will toggle fullscreen')
+
 settings=load_settings_from_file()
 music_volume = settings["music_volume"]
 sounds_volume = settings["sounds_volume"]
@@ -98,6 +101,7 @@ settings_menu = pygame_menu.Menu('Settings', screen_width, screen_height,
                        theme=pygame_menu.themes.THEME_GREEN)
 volume_slider = settings_menu.add.range_slider('Music Volume', music_volume, [0, 1], 1, change_music_volume)
 sounds_volume_slider = settings_menu.add.range_slider('Sounds Volume', sounds_volume, [0, 1], 1, change_sounds_volume)
+full_screen_checkbox = settings_menu.add.button('Fullscreen', toggle_fullscreen)
 
 main_menu.add.menu_link(play_menu, 'Play')
 main_menu.add.button('Play', play_menu)
