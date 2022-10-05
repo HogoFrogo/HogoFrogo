@@ -40,6 +40,8 @@ class Level:
 		self.current_level = current_level
 		level_data = levels[self.current_level]
 		self.new_max_level = level_data['unlock']
+		self.level_name = level_data['level_name']
+		self.level_img = level_data['level_img']
 		self.bossObject = Boss(level_data['boss'])
 
 		print("obtížnost")
@@ -358,15 +360,51 @@ class Level:
 
 		return text_lines
 		
+	def load_ingame_window_background(self):
+		window = (700,500)
+		background = pygame.Surface(window)
+		background.fill((102, 187, 106))
+		return background
+	def view_start_window(self,text_content,image_path,dialog_sound=""):
+		if dialog_sound != "":
+			dialog_sound.play()
+		next_state=self.state
+		self.state = 'dialog'
+		background = self.load_ingame_window_background()
+#Insert text
+		text_lines = self.text_line_split(text_content)
+		font = pygame.font.SysFont('Arial', 24)
+		line_n = 1
+		print("délka pole lajn")
+		print(len(text_lines))
+		for line in text_lines:
+			text = font.render(line, True, pygame.color.Color('Black'))
+			background.blit(text, (20, 20*line_n))
+			line_n+=1
+
+		myimage = pygame.image.load(image_path)
+		imagerect = myimage.get_rect()
+		picture = pygame.transform.scale(myimage, (280, 140))
+		
+		x1, y1 = background.get_width()//2, background.get_height()//2
+		background.blit(picture, (x1 - picture.get_width() // 2, y1 - picture.get_height() // 2))
+		
+		x, y = self.display_surface.get_width()//2, self.display_surface.get_height()//2
+		self.display_surface.blit(background,(x - background.get_width() // 2, y - background.get_height() // 2))
+
+		pygame.display.flip()
+		while self.state == 'dialog':
+			for event in pygame.event.get():
+				if event.type == pygame.KEYDOWN:
+					if event.key == pygame.K_SPACE:
+						self.state = next_state
 
 	def view_dialog(self,text_content,image_path,dialog_sound=""):
 		if dialog_sound != "":
 			dialog_sound.play()
 		next_state=self.state
 		self.state = 'dialog'
-		window = (700,500)
-		background = pygame.Surface(window)
-		background.fill((102, 187, 106))
+		background = self.load_ingame_window_background()
 
 		#Insert text
 		text_lines = self.text_line_split(text_content)
@@ -395,6 +433,8 @@ class Level:
 				if event.type == pygame.KEYDOWN:
 					if event.key == pygame.K_SPACE:
 						self.state = next_state
+	#def view_start_window(self):
+
 	def enter_dialog(self,dialog_type):
 		match(dialog_type):
 			case 'sad_frog':
@@ -421,7 +461,10 @@ class Level:
 				self.view_dialog("Give me that sandwich!",strong_frog_img,self.croak_speak_sound)
 				self.view_dialog("No!",player_img,self.croak_speak_sound)
 				self.view_dialog("I will hunt you down!",strong_frog_img,self.croak_speak_sound)
-				
+
+	def enter_start_window(self):
+		self.view_start_window(self.level_name,self.level_img,self.croak_speak_sound)		
+		
 	def begin_bossfight(self,boss):
 		match(boss):
 			case 'flyking':
@@ -549,7 +592,22 @@ class Level:
 				else:
 					self.player.sprite.get_damage(enemy.attack_damage)
 
+	def darken(surface, value):
+		"Value is 0 to 255. So 128 would be 50% darken"
+		dark = pygame.Surface(surface.get_size(), 32)
+		dark.set_alpha(value, pygame.RLEACCEL)
+		surface.blit(dark, (0, 0))
+		
 	def run(self):
+		if self.current_level==3:
+			radius = 75
+			clip_center = self.player.sprite.rect.center
+
+			# clear screen and set clipping region
+			self.display_surface.fill(0)    
+			clip_rect = pygame.Rect(clip_center[0]-radius, clip_center[1]-radius, radius*2, radius*2)
+			self.display_surface.set_clip(clip_rect)
+
 		# run the entire game / level 
 		
 		# sky 
@@ -632,11 +690,28 @@ class Level:
 		# water 
 		self.water.draw(self.display_surface,self.world_shift)
 		self.environment_behaviour_run()
+
+
+#----------#----------#----------#----------#----------#----------#----------#----------#----------
+		if self.current_level==3:
+			cover_surf = pygame.Surface((radius*2, radius*2))
+			cover_surf.fill(0)
+			cover_surf.set_colorkey((255, 255, 255))
+			pygame.draw.circle(cover_surf, (255, 255, 255), (radius, radius), radius)
+
+
+			# draw transparent circle and update display
+			self.display_surface.blit(cover_surf, clip_rect)
+			pygame.display.flip()
+
+#----------#----------#----------#----------#----------#----------#----------#----------#----------
 		
 		if self.state == 'begin':
+			self.enter_start_window()
 			self.state = 'running'
 			if self.current_level==2:
 				self.enter_dialog("chase_start")
+
 
 	def environment_behaviour_run(self):
 		if(randint(0,999)<self.fly_occurency_probability): self.enemy_sprites.add(Fly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
