@@ -8,43 +8,46 @@ from ui import UI
 from game import Game
 
 class Program:
+	font = pygame_menu.font.FONT_8BIT
+	THEME_HOGO_FROGO = pygame_menu.Theme(
+		background_color=(40, 121, 35),
+		cursor_color=(255, 255, 255),
+		cursor_selection_color=(80, 80, 80, 120),
+		scrollbar_color=(39, 41, 42),
+		scrollbar_slider_color=(65, 66, 67),
+		scrollbar_slider_hover_color=(90, 89, 88),
+		selection_color=(255, 255, 255),
+		title_background_color=(47, 88, 51),
+		title_font_color=(215, 215, 215),
+		widget_font_color=(200, 200, 200),
+		title_font=font,
+		widget_font=font,
+		widget_font_shadow=True,
+		widget_font_shadow_color=(20, 20, 20),
+		widget_selection_effect=pygame_menu.widgets.LeftArrowSelection(
+		arrow_right_margin=50,
+	)
+	)
+	PROGRAM_NAME = "Hogo Frogo"
+
 	def __init__(self):
 		# Pygame setup
 		pygame.init()
-		pygame.display.set_caption("Hogo Frogo")
+		pygame.display.set_caption(self.PROGRAM_NAME)
 		self.screen = pygame.display.set_mode((screen_width,screen_height), pygame.SCALED + pygame.NOFRAME + pygame.FULLSCREEN)
 		self.clock = pygame.time.Clock()
 
+        
+        # Load Settings
 		self.settings=self.load_settings_from_file()
 		self.music_volume = self.settings["music_volume"]
 		self.sounds_volume = self.settings["sounds_volume"]
 		self.main_menu_music_path = '../audio/magnetic_b-ing.mp3'
 
-		self.font = pygame_menu.font.FONT_8BIT
-		self.THEME_HOGO_FROGO = pygame_menu.Theme(
-			background_color=(40, 121, 35),
-			cursor_color=(255, 255, 255),
-			cursor_selection_color=(80, 80, 80, 120),
-			scrollbar_color=(39, 41, 42),
-			scrollbar_slider_color=(65, 66, 67),
-			scrollbar_slider_hover_color=(90, 89, 88),
-			selection_color=(255, 255, 255),
-			title_background_color=(47, 88, 51),
-			title_font_color=(215, 215, 215),
-			widget_font_color=(200, 200, 200),
-			title_font=self.font,
-			widget_font=self.font,
-			widget_font_shadow=True,
-			widget_font_shadow_color=(20, 20, 20),
-			widget_selection_effect=pygame_menu.widgets.LeftArrowSelection(
-			arrow_right_margin=50,
-		)
-		)
-
-		self.game = Game(self.screen, self.music_volume, self.sounds_volume)
-
 		self.main_menu_music = pygame.mixer.Sound(self.main_menu_music_path)
 		self.main_menu_music.set_volume(self.music_volume)
+
+		self.game = Game(self.screen, self.music_volume, self.sounds_volume)
 
 		self.play_menu = self.create_play_menu()
 		self.credits_menu = self.create_credits_menu()
