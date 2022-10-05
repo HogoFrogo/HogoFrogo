@@ -10,7 +10,7 @@ level_0 = {
 		'grass': '../levels/0/level_0_grass.csv',
 		'node_pos': (110,100),
 		'unlock': 1,
-		'node_graphics': '../graphics/overworld/0',
+		'node_graphics': '../graphics/levels/0/overworld',
 		'level_bg_music': '../audio/level_music.wav',
 		'flies': 2,
 		'dragonflies': 0,
@@ -22,7 +22,9 @@ level_0 = {
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/misc/sad_frog.png',
 		'boss': 'none',
-		'player_image': 'default'}
+		'player_image': 'default',
+		'level_name': 'First steps on new land',
+		'level_img': '../graphics/misc/sad_frog.png'}
 level_1 = {
 		'terrain': '../levels/1/level_1_terrain.csv',
 		'coins':'../levels/1/level_1_coins.csv',
@@ -34,7 +36,7 @@ level_1 = {
 		'player': '../levels/1/level_1_player.csv',
 		'grass': '../levels/1/level_1_grass.csv',
 		'node_pos': (300,270),
-		'node_graphics': '../graphics/overworld/1',
+		'node_graphics': '../graphics/levels/1/overworld',
 		'unlock': 2,
 		'level_bg_music': '../audio/magnetic_b-ing.mp3',
 		'flies': 20,
@@ -47,7 +49,9 @@ level_1 = {
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/misc/sandwich.png',
 		'boss': 'none',
-		'player_image': 'default'}
+		'player_image': 'default',
+		'level_name': 'Saving the gourmet sandwich',
+		'level_img': '../graphics/misc/sad_frog.png'}
 level_2 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
 		'coins':'../levels/2/level_2_coins.csv',
@@ -59,7 +63,7 @@ level_2 = {
 		'player': '../levels/2/level_2_player.csv',
 		'grass': '../levels/2/level_2_grass.csv',
 		'node_pos': (350,400),
-		'node_graphics': '../graphics/overworld/2',
+		'node_graphics': '../graphics/levels/2/overworld',
 		'unlock': 3,
 		'level_bg_music': '../audio/level_music.wav',
 		'flies': 10,
@@ -72,19 +76,21 @@ level_2 = {
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/character/hat.png',
 		'boss': 'none',
-		'player_image': 'sandwich'}
+		'player_image': 'sandwich',
+		'level_name': 'On the wave home',
+		'level_img': '../graphics/misc/sad_frog.png'}
 level_3 = {
-		'terrain': '../levels/3/level_3_terrain.csv',
-		'coins':'../levels/3/level_3_coins.csv',
-		'fg palms':'../levels/3/level_3_fg_palms.csv',
-		'bg palms':'../levels/3/level_3_bg_palms.csv',
-		'crates': '../levels/3/level_3_crates.csv',
-		'enemies':'../levels/3/level_3_enemies.csv',
-		'constraints':'../levels/3/level_3_constraints.csv',
-		'player': '../levels/3/level_3_player.csv',
-		'grass': '../levels/3/level_3_grass.csv',
+		'terrain': '../levels/4/level_4_terrain.csv',
+		'coins':'../levels/4/level_4_coins.csv',
+		'fg palms':'../levels/4/level_4_fg_palms.csv',
+		'bg palms':'../levels/4/level_4_bg_palms.csv',
+		'crates': '../levels/4/level_4_crates.csv',
+		'enemies':'../levels/4/level_4_enemies.csv',
+		'constraints':'../levels/4/level_4_constraints.csv',
+		'player': '../levels/4/level_4_player.csv',
+		'grass': '../levels/4/level_4_grass.csv',
 		'node_pos': (430,610),
-		'node_graphics': '../graphics/overworld/3',
+		'node_graphics': '../graphics/levels/3/overworld',
 		'unlock': 4,
 		'level_bg_music': '../audio/magnetic_b-ing.mp3',
 		'flies': 5,
@@ -97,7 +103,9 @@ level_3 = {
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/character/hat.png',
 		'boss': 'none',
-		'player_image': 'default'}
+		'player_image': 'default',
+		'level_name': 'In the footsteps of fireflies',
+		'level_img': '../graphics/misc/sad_frog.png'}
 level_4 = {
 		'terrain': '../levels/4/level_4_terrain.csv',
 		'coins':'../levels/4/level_4_coins.csv',
@@ -109,7 +117,7 @@ level_4 = {
 		'player': '../levels/4/level_4_player.csv',
 		'grass': '../levels/4/level_4_grass.csv',
 		'node_pos': (610,350),
-		'node_graphics': '../graphics/overworld/4',
+		'node_graphics': '../graphics/levels/4/overworld',
 		'unlock': 5,
 		'level_bg_music': '../audio/level_music.wav',
 		'flies': 10,
@@ -122,20 +130,22 @@ level_4 = {
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/character/hat.png',
 		'boss': 'none',
-		'player_image': 'default'}
-level_5 = {
-		'terrain': '../levels/2/level_2_terrain.csv',
-		'coins':'../levels/2/level_2_coins.csv',
-		'fg palms':'../levels/2/level_2_fg_palms.csv',
-		'bg palms':'../levels/2/level_2_bg_palms.csv',
-		'crates': '../levels/2/level_2_crates.csv',
-		'enemies':'../levels/2/level_2_enemies.csv',
-		'constraints':'../levels/2/level_2_constraints.csv',
-		'player': '../levels/2/level_2_player.csv',
-		'grass': '../levels/2/level_2_grass.csv',
+		'player_image': 'default',
+		'level_name': 'Froggy Style',
+		'level_img': '../graphics/misc/sad_frog.png'}
+level_shop = {
+		'terrain': '../levels/shop/shop_terrain.csv',
+		'coins':'../levels/shop/shop_coins.csv',
+		'fg palms':'../levels/shop/shop_fg_palms.csv',
+		'bg palms':'../levels/shop/shop_bg_palms.csv',
+		'crates': '../levels/shop/shop_crates.csv',
+		'enemies':'../levels/shop/shop_enemies.csv',
+		'constraints':'../levels/shop/shop_constraints.csv',
+		'player': '../levels/shop/shop_player.csv',
+		'grass': '../levels/shop/shop_grass.csv',
 		'node_pos': (880,110),
 		#'node_pos': (1050,400),
-		'node_graphics':'../graphics/overworld/5',
+		'node_graphics': '../graphics/levels/shop/overworld',
 		'unlock': 5,
 		'level_bg_music': '../audio/magnetic_b-ing.mp3',
 		'flies': 10,
@@ -148,17 +158,19 @@ level_5 = {
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/character/hat.png',
 		'boss': 'none',
-		'player_image': 'default'}
-level_6 = {
-		'terrain': '../levels/2/level_2_terrain.csv',
-		'coins':'../levels/2/level_2_coins.csv',
-		'fg palms':'../levels/2/level_2_fg_palms.csv',
-		'bg palms':'../levels/2/level_2_bg_palms.csv',
-		'crates': '../levels/2/level_2_crates.csv',
-		'enemies':'../levels/2/level_2_enemies.csv',
-		'constraints':'../levels/2/level_2_constraints.csv',
-		'player': '../levels/2/level_2_player.csv',
-		'grass': '../levels/2/level_2_grass.csv',
+		'player_image': 'default',
+		'level_name': 'Shopping Swamp',
+		'level_img': '../graphics/misc/sad_frog.png'}
+level_5 = {
+		'terrain': '../levels/4/level_4_terrain.csv',
+		'coins':'../levels/4/level_4_coins.csv',
+		'fg palms':'../levels/4/level_4_fg_palms.csv',
+		'bg palms':'../levels/4/level_4_bg_palms.csv',
+		'crates': '../levels/4/level_4_crates.csv',
+		'enemies':'../levels/4/level_4_enemies.csv',
+		'constraints':'../levels/4/level_4_constraints.csv',
+		'player': '../levels/4/level_4_player.csv',
+		'grass': '../levels/4/level_4_grass.csv',
 		'node_pos': (930,300),
 		'node_graphics':'../graphics/overworld/5',
 		'unlock': 5,
@@ -173,8 +185,10 @@ level_6 = {
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/character/hat.png',
 		'boss': 'none',
-		'player_image': 'default'}
-level_7 = {
+		'player_image': 'default',
+		'level_name': 'Like a flower without water',
+		'level_img': '../graphics/misc/sad_frog.png'}
+level_6 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
 		'coins':'../levels/2/level_2_coins.csv',
 		'fg palms':'../levels/2/level_2_fg_palms.csv',
@@ -198,7 +212,9 @@ level_7 = {
 		'parachute_frog_hard': 0,
 		'goal_image': '../graphics/character/hat.png',
 		'boss': 'none',
-		'player_image': 'default'}
+		'player_image': 'default',
+		'level_name': 'Finally back',
+		'level_img': '../graphics/misc/sad_frog.png'}
 
 levels = {
 	0: level_0,
@@ -206,6 +222,6 @@ levels = {
 	2: level_2,
 	3: level_3,
 	4: level_4,
-	5: level_5,
-	6: level_6,
-	7: level_7}
+	5: level_shop,
+	6: level_5,
+	7: level_6}
