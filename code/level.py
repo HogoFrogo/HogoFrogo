@@ -169,7 +169,9 @@ class Level:
 
 					if type == 'houses':
 						if val == '0': sprite = House(0*2.2,x,y,'../graphics/houses/house_1')
-						if val == '1': sprite = House(0*2.2,x,y,'../graphics/houses/house_1')
+						if val == '1': sprite = House(0*2.2,x,y,'../graphics/houses/house_2')
+						if val == '2': sprite = House(0*2.2,x,y,'../graphics/houses/house_3')
+						if val == '3': sprite = House(0*2.2,x,y,'../graphics/houses/house_4')
 
 					if type == 'bg palms':
 						sprite = Palm(tile_size,x,y,'../graphics/bioms/'+self.level_biome+'/terrain/palm_bg',64)
