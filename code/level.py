@@ -1,4 +1,5 @@
 import pygame
+from mobs.wave import Wave
 from support import import_csv_layout, import_cut_graphics, import_folder
 from settings import tile_size, screen_height, screen_width
 from tiles import Tile, StaticTile, Crate, Coin, Palm, Constraint
@@ -49,11 +50,13 @@ class Level:
 		print(difficulty)
 		if difficulty[0][0] == "Hard":
 			self.fly_occurency_probability = level_data['flies_hard']
+			self.firefly_occurency_probability = level_data['fireflies_hard']
 			self.dragonfly_occurency_probability = level_data['dragonflies_hard']
 			self.wasp_occurency_probability = level_data['wasps_hard']
 			self.parachute_frog_ocurency_probability = level_data['parachute_frog_hard']
 		else:
 			self.fly_occurency_probability = level_data['flies']
+			self.firefly_occurency_probability = level_data['fireflies']
 			self.dragonfly_occurency_probability = level_data['dragonflies']
 			self.wasp_occurency_probability = level_data['wasps']
 			self.parachute_frog_ocurency_probability = level_data['parachute_frog']
@@ -708,6 +711,12 @@ class Level:
 			# draw transparent circle and update display
 			mask_surf.blit(cover_surf, (0, 0))
 			self.display_surface.blit(mask_surf,(0,0))
+		if self.current_level==6:
+			cover_surf = pygame.Surface((self.display_surface.get_width(), self.display_surface.get_height()))
+			cover_surf.set_colorkey((255, 255, 255))
+			cover_surf.fill((222,102,0))
+			cover_surf.set_alpha(120) 
+			self.display_surface.blit(cover_surf,(0,0))
 
 #----------#----------#----------#----------#----------#----------#----------#----------#----------
 		
@@ -716,11 +725,12 @@ class Level:
 			self.state = 'running'
 			if self.current_level==2:
 				self.enter_dialog("chase_start")
+				self.enemy_sprites.add(Wave(tile_size,0,randint(self.level_border,screen_height/2),0,4))
 
 
 	def environment_behaviour_run(self):
 		if(randint(0,999)<self.fly_occurency_probability): self.enemy_sprites.add(Fly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
-		if(randint(0,999)<self.fly_occurency_probability): self.enemy_sprites.add(Firefly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
+		if(randint(0,999)<self.firefly_occurency_probability): self.enemy_sprites.add(Firefly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if(randint(0,999)<self.dragonfly_occurency_probability): self.enemy_sprites.add(Dragonfly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if(randint(0,999)<self.wasp_occurency_probability): self.enemy_sprites.add(Wasp(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if(randint(0,999)<self.parachute_frog_ocurency_probability): self.enemy_sprites.add(ParachuteFrog(tile_size,randint(0, screen_width),0))
