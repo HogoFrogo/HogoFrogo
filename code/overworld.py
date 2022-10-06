@@ -164,6 +164,7 @@ class Overworld:
 				self.allow_input = True
 
 	def run(self):
+		pygame.mouse.set_visible(False)
 		self.input_timer()
 		self.input()
 		self.update_icon_pos()

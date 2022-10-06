@@ -20,6 +20,8 @@ class Game:
 		self.screen = screen
 		programIcon = pygame.image.load('../graphics/character/idle/1.png')
 		pygame.display.set_icon(programIcon)
+		pygame.mouse.set_visible(False)
+
 		self.music_volume = music_volume
 		self.sounds_volume = sounds_volume
 		
