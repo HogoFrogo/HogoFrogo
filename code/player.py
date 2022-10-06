@@ -38,6 +38,7 @@ class Player(pygame.sprite.Sprite):
 		self.jump_energy = 0
 		self.collision_rect = pygame.Rect(self.rect.topleft,(self.rect.width,self.rect.height))
 		self.jump_energy_limit = 48
+		self.light_points = 60
 
 		# player status
 		self.status = 'idle'

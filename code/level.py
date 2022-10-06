@@ -4,6 +4,7 @@ from settings import tile_size, screen_height, screen_width
 from tiles import Tile, StaticTile, Crate, Coin, Palm, Constraint
 from mobs.poop import Poop
 from mobs.fly import Fly
+from mobs.firefly import Firefly
 from mobs.ant import Ant
 from mobs.dragonfly import Dragonfly
 from mobs.wasp import Wasp
@@ -564,6 +565,8 @@ class Level:
 						self.killed_ants += 1
 					if isinstance(enemy,Fly):
 						self.killed_flies += 1
+					if isinstance(enemy,Firefly):
+						self.player.sprite.light_points += 20
 				elif (self.player.sprite.rect.bottom-player_native_height > enemy.rect.bottom and self.player.sprite.tongue_stick_out_up):
 					self.eat_sound.play()
 					self.player.sprite.heal(enemy.healing_points)
@@ -600,13 +603,15 @@ class Level:
 		
 	def run(self):
 		if self.current_level==3:
-			radius = 75
-			clip_center = self.player.sprite.rect.center
-
-			# clear screen and set clipping region
-			self.display_surface.fill(0)    
-			clip_rect = pygame.Rect(clip_center[0]-radius, clip_center[1]-radius, radius*2, radius*2)
-			self.display_surface.set_clip(clip_rect)
+			mask_surf = pygame.Surface((self.display_surface.get_width(), self.display_surface.get_height()), pygame.SRCALPHA, 32)
+			mask_surf = mask_surf.convert_alpha()
+			cover_surf = pygame.Surface((self.display_surface.get_width(), self.display_surface.get_height()))
+			cover_surf.set_colorkey((255, 255, 255))
+			self.player.sprite.light_points -= 0.02
+			lights = [[self.player.sprite.rect.centerx, self.player.sprite.rect.centery, self.player.sprite.light_points]]
+			for enemy in self.enemy_sprites.sprites():
+				if isinstance(enemy,Firefly):
+					lights.append([enemy.rect.centerx,enemy.rect.centery,100])
 
 		# run the entire game / level 
 		
@@ -694,15 +699,15 @@ class Level:
 
 #----------#----------#----------#----------#----------#----------#----------#----------#----------
 		if self.current_level==3:
-			cover_surf = pygame.Surface((radius*2, radius*2))
-			cover_surf.fill(0)
-			cover_surf.set_colorkey((255, 255, 255))
-			pygame.draw.circle(cover_surf, (255, 255, 255), (radius, radius), radius)
-
+			cover_surf.fill((0,0,0))
+			cover_surf.set_alpha(220) 
+			for i in range(len(lights)):
+				pygame.draw.circle(cover_surf, (255, 255, 255), (lights[i][0], lights[i][1]), lights[i][2])
+				
 
 			# draw transparent circle and update display
-			self.display_surface.blit(cover_surf, clip_rect)
-			pygame.display.flip()
+			mask_surf.blit(cover_surf, (0, 0))
+			self.display_surface.blit(mask_surf,(0,0))
 
 #----------#----------#----------#----------#----------#----------#----------#----------#----------
 		
@@ -715,6 +720,7 @@ class Level:
 
 	def environment_behaviour_run(self):
 		if(randint(0,999)<self.fly_occurency_probability): self.enemy_sprites.add(Fly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
+		if(randint(0,999)<self.fly_occurency_probability): self.enemy_sprites.add(Firefly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if(randint(0,999)<self.dragonfly_occurency_probability): self.enemy_sprites.add(Dragonfly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if(randint(0,999)<self.wasp_occurency_probability): self.enemy_sprites.add(Wasp(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if(randint(0,999)<self.parachute_frog_ocurency_probability): self.enemy_sprites.add(ParachuteFrog(tile_size,randint(0, screen_width),0))
