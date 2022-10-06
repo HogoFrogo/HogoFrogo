@@ -1,4 +1,5 @@
 import pygame
+from mobs.mosquito import Mosquito
 from mobs.wave import Wave
 from support import import_csv_layout, import_cut_graphics, import_folder
 from settings import tile_size, screen_height, screen_width
@@ -54,12 +55,14 @@ class Level:
 			self.dragonfly_occurency_probability = level_data['dragonflies_hard']
 			self.wasp_occurency_probability = level_data['wasps_hard']
 			self.parachute_frog_ocurency_probability = level_data['parachute_frog_hard']
+			self.mosquito_ocurency_probability = level_data['mosquitos_hard']
 		else:
 			self.fly_occurency_probability = level_data['flies']
 			self.firefly_occurency_probability = level_data['fireflies']
 			self.dragonfly_occurency_probability = level_data['dragonflies']
 			self.wasp_occurency_probability = level_data['wasps']
 			self.parachute_frog_ocurency_probability = level_data['parachute_frog']
+			self.mosquito_ocurency_probability = level_data['mosquitos']
 
 		# player 
 		self.goal_image = level_data['goal_image']
@@ -114,10 +117,10 @@ class Level:
 		self.constraint_sprites = self.create_tile_group(constraint_layout,'constraint')
 
 		# decoration 
-		self.sky = Sky(8)
+		self.sky = Sky(8) # type should be chosen by level data
 		level_width = len(terrain_layout[0]) * tile_size
-		self.water = Water(screen_height - 20,level_width)
-		self.clouds = Clouds(400,level_width,30)
+		self.water = Water(screen_height - 20,level_width) # type should be chosen by level data
+		self.clouds = Clouds(400,level_width,30) # type should be chosen by level data
 
 	def change_sounds_volume(self, new_volume):
 		print("New volume")
@@ -734,6 +737,12 @@ class Level:
 		if(randint(0,999)<self.dragonfly_occurency_probability): self.enemy_sprites.add(Dragonfly(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if(randint(0,999)<self.wasp_occurency_probability): self.enemy_sprites.add(Wasp(tile_size,screen_width,randint(self.level_border,screen_height-self.level_border)))
 		if(randint(0,999)<self.parachute_frog_ocurency_probability): self.enemy_sprites.add(ParachuteFrog(tile_size,randint(0, screen_width),0))
+		if(randint(0,999)<self.mosquito_ocurency_probability):
+			mosc_height = randint(self.level_border,screen_height-self.level_border)
+			x = range(randint(1,5))
+			for n in x:
+				self.enemy_sprites.add(Mosquito(tile_size,screen_width,mosc_height+randint(-40,40)))
+			
 		if self.state == 'bossfight':
 			self.trigger_boss_action()
 			
