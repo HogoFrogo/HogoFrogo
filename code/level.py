@@ -454,14 +454,14 @@ class Level:
 				self.view_dialog("Of course!",player_img,self.croak_speak_sound)
 			case 'flyking':
 				player_img = '../graphics/character/run/1.png'
-				flyking_img = '../graphics/bosses/flyking.jpg'
+				flyking_img = '../graphics/mobs/bosses/flyking.jpg'
 				self.view_dialog("Uaaaaaaah!",player_img,self.croak_speak_sound)
 				self.view_dialog("Muhahahaaa! I'm the fly king. Stop touching my sandwich!",flyking_img,self.fly_speak_sound)
 				self.view_dialog("This sandwich is not yours!",player_img,self.croak_speak_sound)
 				self.view_dialog("If you think so fight for it!",flyking_img,self.fly_speak_sound)
 			case 'chase_start':
 				player_img = '../graphics/character/sandwich/run/1.png'
-				strong_frog_img = '../graphics/bosses/flyking.jpg'
+				strong_frog_img = '../graphics/mobs/bosses/flyking.jpg'
 				self.view_dialog("Give me that sandwich!",strong_frog_img,self.croak_speak_sound)
 				self.view_dialog("No!",player_img,self.croak_speak_sound)
 				self.view_dialog("I will hunt you down!",strong_frog_img,self.croak_speak_sound)
@@ -473,7 +473,7 @@ class Level:
 		match(boss):
 			case 'flyking':
 				#when the boss fight starts, a fly king will appear at the right side of the screen
-				#image = '../graphics/bosses/flyking/idle'
+				#image = '../graphics/mobs/bosses/flyking/idle'
 				#x = 500
 				#y = 300
 				#self.flyking = Ant(tile_size,x,y)
@@ -494,7 +494,7 @@ class Level:
 					self.boss_y = 200
 					self.boss_direction = "left"
 					self.bossObject.direction = "left"
-					boss = AnimatedTile(tile_size,self.boss_x,self.boss_y,'../graphics/bosses/flyking/run')
+					boss = AnimatedTile(tile_size,self.boss_x,self.boss_y,'../graphics/mobs/bosses/flyking/run')
 					self.boss.add(boss)
 					# It is needed to somehow fix situation when camera moves
 
@@ -544,7 +544,7 @@ class Level:
 				self.boss_y = 400
 				self.boss_direction = "right"
 				self.bossObject.direction = "right"
-				boss = AnimatedTile(tile_size,self.boss_x,self.boss_y,'../graphics/bosses/flyking/run')
+				boss = AnimatedTile(tile_size,self.boss_x,self.boss_y,'../graphics/mobs/bosses/flyking/run')
 				self.boss.empty()
 				self.boss.add(boss)
 
