@@ -737,7 +737,13 @@ class Level:
 		# water 
 		self.water.draw(self.display_surface,self.world_shift)
 		self.environment_behaviour_run()
+		
+		for enemy in self.enemy_sprites:
+			if isinstance(enemy,GangsterFrog):
 
+				bullet = enemy.shoot(self.player.sprite,tile_size)
+				self.enemy_sprites.add(bullet)
+				# enemy.time_to_shoot-=1
 
 #----------#----------#----------#----------#----------#----------#----------#----------#----------
 		if self.current_level==3:
