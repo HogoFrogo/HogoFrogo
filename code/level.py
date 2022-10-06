@@ -45,6 +45,7 @@ class Level:
 		self.new_max_level = level_data['unlock']
 		self.level_name = level_data['level_name']
 		self.level_img = level_data['level_img']
+		self.level_biome = level_data['biome']
 		self.bossObject = Boss(level_data['boss'])
 
 		print("obtížnost")
@@ -117,10 +118,10 @@ class Level:
 		self.constraint_sprites = self.create_tile_group(constraint_layout,'constraint')
 
 		# decoration 
-		self.sky = Sky(8) # type should be chosen by level data
+		self.sky = Sky(8,'level',self.level_biome) # type should be chosen by level data
 		level_width = len(terrain_layout[0]) * tile_size
-		self.water = Water(screen_height - 20,level_width) # type should be chosen by level data
-		self.clouds = Clouds(400,level_width,30) # type should be chosen by level data
+		self.water = Water(screen_height - 20,level_width,self.level_biome) # type should be chosen by level data
+		self.clouds = Clouds(400,level_width,30,self.level_biome) # type should be chosen by level data
 
 	def change_sounds_volume(self, new_volume):
 		print("New volume")
@@ -142,28 +143,28 @@ class Level:
 					y = row_index * tile_size
 
 					if type == 'terrain':
-						terrain_tile_list = import_cut_graphics('../graphics/terrain/terrain_tiles.png')
+						terrain_tile_list = import_cut_graphics('../graphics/bioms/'+self.level_biome+'/terrain/terrain_tiles.png')
 						tile_surface = terrain_tile_list[int(val)]
 						sprite = StaticTile(tile_size,x,y,tile_surface)
 						
 					if type == 'grass':
-						grass_tile_list = import_cut_graphics('../graphics/decoration/grass/grass.png')
+						grass_tile_list = import_cut_graphics('../graphics/bioms/'+self.level_biome+'/decoration/grass/grass.png')
 						tile_surface = grass_tile_list[int(val)]
 						sprite = StaticTile(tile_size,x,y,tile_surface)
 					
 					if type == 'crates':
-						sprite = Crate(tile_size,x,y)
+						sprite = Crate(tile_size,x,y,self.level_biome)
 
 					if type == 'coins':
 						if val == '0': sprite = Coin(tile_size,x,y,'../graphics/coins/gold',5)
 						if val == '1': sprite = Coin(tile_size,x,y,'../graphics/coins/silver',1)
 
 					if type == 'fg palms':
-						if val == '0': sprite = Palm(tile_size,x,y,'../graphics/terrain/palm_small',38)
-						if val == '1': sprite = Palm(tile_size,x,y,'../graphics/terrain/palm_large',64)
+						if val == '0': sprite = Palm(tile_size,x,y,'../graphics/bioms/'+self.level_biome+'/terrain/palm_small',38)
+						if val == '1': sprite = Palm(tile_size,x,y,'../graphics/bioms/'+self.level_biome+'/terrain/palm_large',64)
 
 					if type == 'bg palms':
-						sprite = Palm(tile_size,x,y,'../graphics/terrain/palm_bg',64)
+						sprite = Palm(tile_size,x,y,'../graphics/bioms/'+self.level_biome+'/terrain/palm_bg',64)
 
 					if type == 'enemies':
 						if val == '0': sprite = Ant(tile_size,x,y)
@@ -173,10 +174,10 @@ class Level:
 						
 
 					if type == 'constraint':
-						if val == '0': sprite = Constraint(tile_size,x,y,0)
-						if val == '1': sprite = Constraint(tile_size,x,y,1)
-						if val == '2': sprite = Constraint(tile_size,x,y,2)
-						if val == '3': sprite = Constraint(tile_size,x,y,3)
+						if val == '0': sprite = Constraint(tile_size,x,y,0,self.level_biome)
+						if val == '1': sprite = Constraint(tile_size,x,y,1,self.level_biome)
+						if val == '2': sprite = Constraint(tile_size,x,y,2,self.level_biome)
+						if val == '3': sprite = Constraint(tile_size,x,y,3,self.level_biome)
 
 					sprite_group.add(sprite)
 		

@@ -28,7 +28,8 @@ level_0 = {
 		'boss': 'none',
 		'player_image': 'default',
 		'level_name': 'First steps on new land',
-		'level_img': '../graphics/misc/sad_frog.png'}
+		'level_img': '../graphics/levels/0/level_image.png',
+		'biome': 'lawn_day'}
 level_1 = {
 		'terrain': '../levels/1/level_1_terrain.csv',
 		'coins':'../levels/1/level_1_coins.csv',
@@ -59,7 +60,8 @@ level_1 = {
 		'boss': 'none',
 		'player_image': 'default',
 		'level_name': 'Saving the gourmet sandwich',
-		'level_img': '../graphics/misc/sad_frog.png'}
+		'level_img': '../graphics/levels/1/level_image.png',
+		'biome': 'lawn_day'}
 level_2 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
 		'coins':'../levels/2/level_2_coins.csv',
@@ -90,7 +92,8 @@ level_2 = {
 		'boss': 'none',
 		'player_image': 'sandwich',
 		'level_name': 'On the wave home',
-		'level_img': '../graphics/misc/sad_frog.png'}
+		'level_img': '../graphics/levels/2/level_image.png',
+		'biome': 'lawn_day'}
 level_3 = {
 		'terrain': '../levels/4/level_4_terrain.csv',
 		'coins':'../levels/4/level_4_coins.csv',
@@ -121,7 +124,8 @@ level_3 = {
 		'boss': 'none',
 		'player_image': 'default',
 		'level_name': 'In the footsteps of fireflies',
-		'level_img': '../graphics/misc/sad_frog.png'}
+		'level_img': '../graphics/levels/3/level_image.png',
+		'biome': 'lawn_day'}
 level_4 = {
 		'terrain': '../levels/4/level_4_terrain.csv',
 		'coins':'../levels/4/level_4_coins.csv',
@@ -152,7 +156,8 @@ level_4 = {
 		'boss': 'none',
 		'player_image': 'default',
 		'level_name': 'Froggy Style',
-		'level_img': '../graphics/misc/sad_frog.png'}
+		'level_img': '../graphics/levels/4/level_image.png',
+		'biome': 'lawn_day'}
 level_shop = {
 		'terrain': '../levels/shop/shop_terrain.csv',
 		'coins':'../levels/shop/shop_coins.csv',
@@ -184,7 +189,8 @@ level_shop = {
 		'boss': 'none',
 		'player_image': 'default',
 		'level_name': 'Shopping Swamp',
-		'level_img': '../graphics/misc/sad_frog.png'}
+		'level_img': '../graphics/levels/shop/level_image.png',
+		'biome': 'lawn_day'}
 level_5 = {
 		'terrain': '../levels/4/level_4_terrain.csv',
 		'coins':'../levels/4/level_4_coins.csv',
@@ -215,7 +221,8 @@ level_5 = {
 		'boss': 'none',
 		'player_image': 'default',
 		'level_name': 'Like a flower without water',
-		'level_img': '../graphics/misc/sad_frog.png'}
+		'level_img': '../graphics/levels/5/level_image.png',
+		'biome': 'desert'}
 level_6 = {
 		'terrain': '../levels/2/level_2_terrain.csv',
 		'coins':'../levels/2/level_2_coins.csv',
@@ -246,7 +253,8 @@ level_6 = {
 		'boss': 'none',
 		'player_image': 'default',
 		'level_name': 'Finally back',
-		'level_img': '../graphics/misc/sad_frog.png'}
+		'level_img': '../graphics/levels/6/level_image.png',
+		'biome': 'lawn_day'}
 
 levels = {
 	0: level_0,
