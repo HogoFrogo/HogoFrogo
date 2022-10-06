@@ -57,6 +57,7 @@ class Program:
 
 	def run(self):
 		self.main_menu_music.play(loops = -1)
+		pygame.mouse.set_visible(False)
 		self.main_menu.mainloop(self.screen)
 
 	#settings loading
