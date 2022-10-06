@@ -11,7 +11,7 @@ class Enemy(AnimatedTile):
 	speed_x = 0
 	speed_y = 0
 	def __init__(self,size,x,y,speed_x=0,speed_y=0):
-		self.image = '../graphics/'+self.images_folder+'/run'
+		self.image = '../graphics/mobs/'+self.images_folder+'/run'
 		self.initialize_speed()
 		if speed_x==0:
 			self.speed = self.speed_x
