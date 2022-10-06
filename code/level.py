@@ -1,3 +1,4 @@
+import math
 import pygame
 from mobs.mosquito import Mosquito
 from mobs.wave import Wave
@@ -211,7 +212,7 @@ class Level:
 
 	def enemy_collision_reverse(self):
 		for enemy in self.enemy_sprites.sprites():
-			if isinstance(enemy,Ant):
+			if isinstance(enemy,Ant) or isinstance(enemy,GangsterFrog):
 				collided_constraints = pygame.sprite.spritecollide(enemy,self.constraint_sprites,False)
 				if collided_constraints:	
 					for constraint in collided_constraints:
@@ -586,6 +587,8 @@ class Level:
 						self.killed_flies += 1
 					if isinstance(enemy,Firefly):
 						self.player.sprite.light_points += 20
+						if self.player.sprite.light_points>100:
+							self.player.sprite.light_points=100
 				elif (self.player.sprite.rect.bottom-player_native_height > enemy.rect.bottom and self.player.sprite.tongue_stick_out_up):
 					self.eat_sound.play()
 					self.player.sprite.heal(enemy.healing_points)
@@ -599,6 +602,8 @@ class Level:
 						self.killed_flies += 1
 					if isinstance(enemy,Firefly):
 						self.player.sprite.light_points += 20
+						if self.player.sprite.light_points>100:
+							self.player.sprite.light_points=100
 				elif enemy_top < player_bottom < enemy_center and self.player.sprite.direction.y > 1:
 					self.stomp_sound.play()
 					self.player.sprite.direction.y = -13
@@ -621,6 +626,16 @@ class Level:
 		dark = pygame.Surface(surface.get_size(), 32)
 		dark.set_alpha(value, pygame.RLEACCEL)
 		surface.blit(dark, (0, 0))
+	
+	def light_to_radius(self,light):
+		max_light=100
+		pi = 3.14
+		if light>max_light:
+			radius=max_light
+		else:
+			position = light/max_light*pi
+			radius = (math.sin(position-pi/2)+1)/2*max_light
+		return radius
 		
 	def run(self):
 		if self.current_level==3:
@@ -629,6 +644,8 @@ class Level:
 			cover_surf = pygame.Surface((self.display_surface.get_width(), self.display_surface.get_height()))
 			cover_surf.set_colorkey((255, 255, 255))
 			self.player.sprite.light_points -= 0.02
+			if self.player.sprite.light_points<=0:
+				self.player.sprite.change_health(-1)
 			lights = [[self.player.sprite.rect.centerx, self.player.sprite.rect.centery, self.player.sprite.light_points]]
 			for enemy in self.enemy_sprites.sprites():
 				if isinstance(enemy,Firefly):
@@ -735,7 +752,8 @@ class Level:
 			cover_surf.fill((0,0,0))
 			cover_surf.set_alpha(220) 
 			for i in range(len(lights)):
-				pygame.draw.circle(cover_surf, (255, 255, 255), (lights[i][0], lights[i][1]), lights[i][2])
+				radius = self.light_to_radius(lights[i][2])
+				pygame.draw.circle(cover_surf, (255, 255, 255), (lights[i][0], lights[i][1]), radius)
 				
 
 			# draw transparent circle and update display

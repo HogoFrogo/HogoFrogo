@@ -7,7 +7,7 @@ class GangsterFrog(Enemy):
 	attack_damage = 7
 	healing_points = 4
 	minimum_speed = 2
-	maximum_speed = 9
+	maximum_speed = 5
 	def __init__(self,size,x,y):
 		super().__init__(size,x,y)
 
