@@ -4,7 +4,7 @@ from random import randint
 
 class Wave(Enemy):
 	images_folder = 'wave'
-	attack_damage = 2
+	attack_damage = 100
 	healing_points = 3
 	minimum_speed = 3
 	maximum_speed = 5

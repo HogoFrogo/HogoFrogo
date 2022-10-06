@@ -51,6 +51,14 @@ class Palm(AnimatedTile):
 		super().__init__(size,x,y,path)
 		offset_y = y - offset
 		self.rect.topleft = (x,offset_y)
+
+class House(AnimatedTile):
+	def __init__(self,size,x,y,path):
+		super().__init__(size,x,y,path)
+		offset_y = y - 72
+		self.rect.topleft = (x,offset_y)
+		#offset_y = y + size
+		#self.rect = self.image.get_rect(bottomleft = (x,offset_y))
 		
 class Constraint(StaticTile):
 	def __init__(self,size,x,y,value,biome):

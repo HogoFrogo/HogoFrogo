@@ -1,19 +1,19 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>12</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>528</x><y>588</y><w>252</w><h>132</h></coordinates><panel_attributes>_class: Fly_
+<diagram program="umletino" version="15.0.0"><zoom_level>12</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>888</x><y>690</y><w>252</w><h>132</h></coordinates><panel_attributes>_class: Fly_
 --
 -images_folder: string="fly"
 -attack_damage: int=2
 -healing_points: int=3
 -minimum_speed: int=2
--maximum_speed: int=9</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>636</x><y>312</y><w>324</w><h>300</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>250;10;10;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>792</x><y>588</y><w>252</w><h>132</h></coordinates><panel_attributes>_class: Ant_
+-maximum_speed: int=9</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>996</x><y>414</y><w>324</w><h>300</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>250;10;10;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1152</x><y>690</y><w>252</w><h>132</h></coordinates><panel_attributes>_class: Ant_
 --
 -images_folder: string="ant"
 -attack_damage: int=10
 -healing_points: int=5
 -minimum_speed: int=2
 -maximum_speed: int=9
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>912</x><y>312</y><w>132</w><h>300</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>20;10;10;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>804</x><y>0</y><w>252</w><h>324</h></coordinates><panel_attributes>class: Mob
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1272</x><y>414</y><w>120</w><h>300</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>20;10;10;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1164</x><y>102</y><w>252</w><h>324</h></coordinates><panel_attributes>class: Mob
 {abstract}
 --
 -id: long
@@ -29,15 +29,15 @@
 #reverse_image(): void
 #reverse(): void
 #update(shift: int): void
-#set_direction(angle: float): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1056</x><y>588</y><w>252</w><h>132</h></coordinates><panel_attributes>_class: Dragonfly_
+#set_direction(angle: float): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1416</x><y>690</y><w>252</w><h>132</h></coordinates><panel_attributes>_class: Dragonfly_
 --
 -images_folder: string="dragonfly"
 -attack_damage: int=5
 -healing_points: int=7
 -minimum_speed: int=7
 -maximum_speed: int=10
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>924</x><y>312</y><w>288</w><h>300</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>10;10;220;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1320</x><y>588</y><w>300</w><h>192</h></coordinates><panel_attributes>_class: GangsterFrog_
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1284</x><y>414</y><w>288</w><h>300</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>10;10;220;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1680</x><y>690</y><w>300</w><h>192</h></coordinates><panel_attributes>_class: GangsterFrog_
 --
 -images_folder: string="gangster_frog"
 -attack_damage: int=8
@@ -47,37 +47,37 @@
 -shooting_speed: int
 -ammo: Bullet
 --
-#shoot(object: Tile): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>924</x><y>312</y><w>552</w><h>300</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>10;10;440;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1464</x><y>432</y><w>252</w><h>132</h></coordinates><panel_attributes>_class: Poop_
+#shoot(object: Tile): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1284</x><y>414</y><w>552</w><h>300</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>10;10;440;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1824</x><y>534</y><w>252</w><h>132</h></coordinates><panel_attributes>_class: Poop_
 --
 -images_folder: string="poop"
 -attack_damage: int=8
 -healing_points: int=-10
 -minimum_speed: int=2
 -maximum_speed: int=9
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1584</x><y>360</y><w>156</w><h>96</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>60;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>264</x><y>588</y><w>252</w><h>132</h></coordinates><panel_attributes>_class: Wasp_
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1944</x><y>462</y><w>144</w><h>96</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>60;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>624</x><y>690</y><w>252</w><h>132</h></coordinates><panel_attributes>_class: Wasp_
 --
 -images_folder: string="wasp"
 -attack_damage: int=60
 -healing_points: int=6
 -minimum_speed: int=4
 -maximum_speed: int=12
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>384</x><y>312</y><w>576</w><h>300</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>460;10;10;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1728</x><y>432</y><w>252</w><h>132</h></coordinates><panel_attributes>_class: Bullet_
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>744</x><y>414</y><w>576</w><h>300</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>460;10;10;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2088</x><y>534</y><w>252</w><h>132</h></coordinates><panel_attributes>_class: Bullet_
 --
 -images_folder: string="bullet"
 -attack_damage: int=8
 -healing_points: int=-2
 -minimum_speed: int=7
 -maximum_speed: int=7
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1740</x><y>360</y><w>144</w><h>96</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>10;10;100;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1044</x><y>252</y><w>696</w><h>60</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>10;10;560;30</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1584</x><y>288</y><w>252</w><h>84</h></coordinates><panel_attributes>_class: Ammo_
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2100</x><y>462</y><w>144</w><h>96</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>10;10;100;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1404</x><y>354</y><w>696</w><h>60</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>10;10;560;30</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1944</x><y>390</y><w>252</w><h>84</h></coordinates><panel_attributes>_class: Ammo_
 {abstract}
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>312</y><w>840</w><h>300</h></coordinates><panel_attributes>lt=&lt;.
-&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>680;10;10;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>588</y><w>252</w><h>132</h></coordinates><panel_attributes>_class: Firefly_
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>414</y><w>840</w><h>300</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;instanceOf&gt;&gt;</panel_attributes><additional_attributes>680;10;10;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>690</y><w>252</w><h>132</h></coordinates><panel_attributes>_class: Firefly_
 --
 -images_folder: string="firefly"
 -attack_damage: int=0

@@ -3,7 +3,7 @@ from mobs.mosquito import Mosquito
 from mobs.wave import Wave
 from support import import_csv_layout, import_cut_graphics, import_folder
 from settings import tile_size, screen_height, screen_width
-from tiles import Tile, StaticTile, Crate, Coin, Palm, Constraint
+from tiles import House, Tile, StaticTile, Crate, Coin, Palm, Constraint
 from mobs.poop import Poop
 from mobs.fly import Fly
 from mobs.firefly import Firefly
@@ -108,6 +108,10 @@ class Level:
 		# background palms 
 		bg_palm_layout = import_csv_layout(level_data['bg palms'])
 		self.bg_palm_sprites = self.create_tile_group(bg_palm_layout,'bg palms')
+		
+		# houses
+		houses_layout = import_csv_layout(level_data['houses'])
+		self.houses_sprites = self.create_tile_group(houses_layout,'houses')
 
 		# enemy 
 		enemy_layout = import_csv_layout(level_data['enemies'])
@@ -163,6 +167,10 @@ class Level:
 						if val == '0': sprite = Palm(tile_size,x,y,'../graphics/bioms/'+self.level_biome+'/terrain/palm_small',38)
 						if val == '1': sprite = Palm(tile_size,x,y,'../graphics/bioms/'+self.level_biome+'/terrain/palm_large',64)
 
+					if type == 'houses':
+						if val == '0': sprite = House(0*2.2,x,y,'../graphics/houses/house_1')
+						if val == '1': sprite = House(0*2.2,x,y,'../graphics/houses/house_1')
+
 					if type == 'bg palms':
 						sprite = Palm(tile_size,x,y,'../graphics/bioms/'+self.level_biome+'/terrain/palm_bg',64)
 
@@ -171,6 +179,8 @@ class Level:
 						if val == '1': sprite = Fly(tile_size,x,y)
 						if val == '2': sprite = Dragonfly(tile_size,x,y)
 						if val == '3': sprite = Wasp(tile_size,x,y)
+						if val == '4': sprite = GangsterFrog(tile_size,x,y)
+						if val == '5': sprite = Mosquito(tile_size,x,y)
 						
 
 					if type == 'constraint':
@@ -585,6 +595,8 @@ class Level:
 						self.killed_ants += 1
 					if isinstance(enemy,Fly):
 						self.killed_flies += 1
+					if isinstance(enemy,Firefly):
+						self.player.sprite.light_points += 20
 				elif enemy_top < player_bottom < enemy_center and self.player.sprite.direction.y > 1:
 					self.stomp_sound.play()
 					self.player.sprite.direction.y = -13
@@ -629,6 +641,10 @@ class Level:
 		# background palms
 		self.bg_palm_sprites.update(self.world_shift)
 		self.bg_palm_sprites.draw(self.display_surface) 
+		
+		# houses
+		self.houses_sprites.update(self.world_shift)
+		self.houses_sprites.draw(self.display_surface) 
 
 		# dust particles 
 		self.dust_sprite.update(self.world_shift)
@@ -706,6 +722,14 @@ class Level:
 
 #----------#----------#----------#----------#----------#----------#----------#----------#----------
 		if self.current_level==3:
+			# making the lights yellowish
+			cover_surf = pygame.Surface((self.display_surface.get_width(), self.display_surface.get_height()))
+			cover_surf.set_colorkey((255, 255, 255))
+			cover_surf.fill((255,220,0))
+			cover_surf.set_alpha(60) 
+			self.display_surface.blit(cover_surf,(0,0))
+
+			#creating the lights
 			cover_surf.fill((0,0,0))
 			cover_surf.set_alpha(220) 
 			for i in range(len(lights)):
@@ -729,7 +753,7 @@ class Level:
 			self.state = 'running'
 			if self.current_level==2:
 				self.enter_dialog("chase_start")
-				self.enemy_sprites.add(Wave(tile_size,0,randint(self.level_border,screen_height/2),0,4))
+				self.enemy_sprites.add(Wave(tile_size*5,0,screen_height/2,0,4))
 
 
 	def environment_behaviour_run(self):
