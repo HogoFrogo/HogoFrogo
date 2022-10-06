@@ -3,7 +3,7 @@ from .enemy import Enemy
 from random import randint
 
 class Wave(Enemy):
-	images_folder = 'poop'
+	images_folder = 'wave'
 	attack_damage = 2
 	healing_points = 3
 	minimum_speed = 3

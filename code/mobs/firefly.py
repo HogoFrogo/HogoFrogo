@@ -3,7 +3,7 @@ from .enemy import Enemy
 from random import randint
 
 class Firefly(Enemy):
-	images_folder = 'parachute_frog'
+	images_folder = 'firefly'
 	attack_damage = 0
 	healing_points = 3
 	minimum_speed = 4
