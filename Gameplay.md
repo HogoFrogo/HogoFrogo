@@ -6,3 +6,17 @@
 ### 4) When player jump on an enemy he bounces off to the side selected by controls
 ### 5) Ninja Rope Option To Move With Tongue
 ![Ninja Rope](https://worms2d.info/images/4/43/Rope_knocking.gif)
+
+## Controls
+Jump - 
+Tongue - 
+Left - 
+Right - 
+Up - 
+Enter, Confirm - 
+Jump left - Jump + Left
+Jump right - Jump + Right
+Jump up - Jump + Up
+Tongue left - Tongue + Left
+Tongue right - Tongue + Right
+Tongue up - Tongue + Up
