@@ -4,12 +4,11 @@ from random import randint
 
 class Bullet(Enemy):
 	images_folder = 'bullet'
-	attack_damage = 8
+	attack_damage = 0
 	healing_points = -1
 	minimum_speed = 2
 	maximum_speed = 9
 	def __init__(self,size,x,y,angle=180,speed = 0):
 		super().__init__(size,x,y,speed)
 		self.total_speed = self.speed
-		if angle != 180:
-			self.set_direction(angle)
+		self.set_direction(angle)

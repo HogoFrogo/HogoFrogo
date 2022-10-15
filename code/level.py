@@ -5,6 +5,7 @@ from mobs.wave import Wave
 from support import import_csv_layout, import_cut_graphics, import_folder
 from settings import tile_size, screen_height, screen_width
 from tiles import House, Tile, StaticTile, Crate, Coin, Palm, Constraint
+from mobs.enemy import Enemy
 from mobs.poop import Poop
 from mobs.fly import Fly
 from mobs.firefly import Firefly
@@ -478,10 +479,12 @@ class Level:
 				self.view_dialog("If you think so fight for it!",flyking_img,self.fly_speak_sound)
 			case 'chase_start':
 				player_img = '../graphics/character/sandwich/run/1.png'
-				strong_frog_img = '../graphics/mobs/bosses/flyking.jpg'
-				self.view_dialog("Give me that sandwich!",strong_frog_img,self.croak_speak_sound)
-				self.view_dialog("No!",player_img,self.croak_speak_sound)
-				self.view_dialog("I will hunt you down!",strong_frog_img,self.croak_speak_sound)
+				self.view_dialog("Oh no! A tsunami!",player_img,self.croak_speak_sound)
+				self.view_dialog("I need to escape!",player_img,self.croak_speak_sound)
+			case 'sad_frog_final':
+				player_img = '../graphics/character/run/1.png'
+				sad_frog_img = '../graphics/mobs/bosses/flyking.jpg'
+				self.view_dialog("Hello!",player_img,self.croak_speak_sound)
 
 	def enter_start_window(self):
 		self.view_start_window(self.level_name,self.level_img,self.croak_speak_sound)		
@@ -527,6 +530,10 @@ class Level:
 				#boss' health is 0
 					#cutscene
 					#level end
+			case 'night_boss':
+				print('night boss')
+			case 'desert_boss':
+				print('desert boss')
 			
 	def check_win(self):
 		if pygame.sprite.spritecollide(self.player.sprite,self.goal,False):
@@ -742,8 +749,9 @@ class Level:
 			if isinstance(enemy,GangsterFrog):
 
 				bullet = enemy.shoot(self.player.sprite,tile_size)
-				self.enemy_sprites.add(bullet)
-				# enemy.time_to_shoot-=1
+				if isinstance(bullet,Enemy):
+					self.enemy_sprites.add(bullet)
+				enemy.time_to_shoot-=1
 
 #----------#----------#----------#----------#----------#----------#----------#----------#----------
 		if self.current_level==3:

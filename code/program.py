@@ -1,3 +1,5 @@
+from multiprocessing.connection import wait
+from time import sleep
 from typing_extensions import Self
 import pygame, sys
 import pygame_menu
@@ -28,7 +30,7 @@ class Program:
 		arrow_right_margin=50,
 	)
 	)
-	PROGRAM_NAME = "Hogo Frogo"
+	PROGRAM_NAME = "Hogo Frogo: The Unexpected Adventure"
 
 	def __init__(self):
 		# Pygame setup
@@ -56,8 +58,8 @@ class Program:
 		self.main_menu = self.create_main_menu()
 
 	def run(self):
+		self.run_launch_screen()
 		self.main_menu_music.play(loops = -1)
-		pygame.mouse.set_visible(False)
 		self.main_menu.mainloop(self.screen)
 
 	#settings loading
@@ -113,7 +115,7 @@ class Program:
 		return settings_menu
 
 	def create_main_menu(self):
-		main_menu = pygame_menu.Menu('Hogo Frogo', screen_width, screen_height,
+		main_menu = pygame_menu.Menu(self.PROGRAM_NAME, screen_width, screen_height,
 						theme=self.THEME_HOGO_FROGO)
 		main_menu.add.menu_link(self.play_menu, 'Play')
 		main_menu.add.button('Play', self.play_menu)
@@ -127,13 +129,19 @@ class Program:
 	def create_play_menu(self):
 		play_menu = pygame_menu.Menu('Play', screen_width, screen_height,
 						theme=self.THEME_HOGO_FROGO)
-		self.name_text_input = play_menu.add.text_input('PlayerName: ', default='Mr. Croak')
+		#self.name_text_input = play_menu.add.text_input('PlayerName: ', default='Mr. Croak')
 		self.difficulty_input = play_menu.add.selector('Difficulty :', [('Toad', 1), ('Frog', 2)])
 		play_menu.add.button('Play', self.start_the_game)
 		return play_menu
 
+	def run_launch_screen(self):
+		print('launch')
+		self.screen.fill('grey')
+		sleep(5)
+
 	def start_the_game(self):
-		player_name = self.name_text_input.get_value()
+		player_name = 'Mr. Croak'
+		# player_name = self.name_text_input.get_value()
 		difficulty = self.difficulty_input.get_value()
 		self.game.difficulty=difficulty
 		
