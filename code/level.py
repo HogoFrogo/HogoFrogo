@@ -7,6 +7,7 @@ from settings import tile_size, screen_height, screen_width
 from tiles import House, Tile, StaticTile, Crate, Coin, Palm, Constraint
 from mobs.enemy import Enemy
 from mobs.poop import Poop
+from mobs.bullet import Bullet
 from mobs.fly import Fly
 from mobs.firefly import Firefly
 from mobs.ant import Ant
@@ -612,14 +613,15 @@ class Level:
 						if self.player.sprite.light_points>100:
 							self.player.sprite.light_points=100
 				elif enemy_top < player_bottom < enemy_center and self.player.sprite.direction.y > 1:
-					self.stomp_sound.play()
-					self.player.sprite.direction.y = -13
-					if self.player.sprite.facing_right:
-						self.player.sprite.move_direction_right = True
-					else:
-						self.player.sprite.move_direction_right = False
-					explosion_sprite = ParticleEffect(enemy.rect.center,'explosion')
-					self.explosion_sprites.add(explosion_sprite)
+					if not isinstance(enemy,Bullet):
+						self.stomp_sound.play()
+						self.player.sprite.direction.y = -13 #bounce
+						if self.player.sprite.facing_right:
+							self.player.sprite.move_direction_right = True
+						else:
+							self.player.sprite.move_direction_right = False
+						explosion_sprite = ParticleEffect(enemy.rect.center,'explosion')
+						self.explosion_sprites.add(explosion_sprite)
 					enemy.kill()
 					if isinstance(enemy,Ant):
 						self.killed_ants += 1
