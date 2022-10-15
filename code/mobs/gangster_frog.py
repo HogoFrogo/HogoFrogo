@@ -17,33 +17,40 @@ class GangsterFrog(Enemy):
 	
 	def __init__(self,size,x,y):
 		super().__init__(size,x,y)
-		self.time_to_shoot=0
+		self.time_to_shoot=randint(0,self.time_to_shoot_max)
+		self.shoot_sound = pygame.mixer.Sound('../audio/effects/hit.wav')
 
 	def shoot(self,tile,tile_size):
-		if(self.time_to_shoot==0):
-			print("bang!")
-			# get coordinates of the other tile
-			# set dirwection of bullet by the coordinates
-			self.time_to_shoot = 30
-			## print(tile.rect.center)
-			distancex = (tile.rect.centerx-self.rect.centerx)
-			distancey = (tile.rect.centery-self.rect.centery)
-			abs_distancex = abs(distancex)
-			abs_distancey = abs(distancey)
-			if(abs_distancex==0):
-				angle=0
-			else:
-				gen_angle=degrees(atan(abs_distancey/abs_distancex))
-				if distancey>0 and distancex>0:
-					angle = gen_angle
-				if distancey<=0 and distancex>0:
-					angle = 360-gen_angle
-				if distancey>0 and distancex<0:
-					angle = 180-gen_angle
-				if distancey<=0 and distancex<0:
-					angle = 180+gen_angle
-			print(distancex)
-			print(distancey)
-			print(angle)
-			bullet = Bullet(tile_size,self.rect.centerx,self.rect.centery-64,angle,12)
-			return bullet
+		distancex = (tile.rect.centerx-self.rect.centerx)
+		distancey = (tile.rect.centery-self.rect.centery)
+		abs_distancex = abs(distancex)
+		abs_distancey = abs(distancey)
+		print(abs_distancex+abs_distancey)
+		print(self.time_to_shoot)
+		if((abs_distancex+abs_distancey)/2<300):
+			if(self.time_to_shoot==0):
+				print("bang!")
+				self.shoot_sound.play()
+				# get coordinates of the other tile
+				# set dirwection of bullet by the coordinates
+				self.time_to_shoot = 30
+				## print(tile.rect.center)
+				if(abs_distancex==0):
+					angle=0
+				else:
+					gen_angle=degrees(atan(abs_distancey/abs_distancex))
+					if distancey>0 and distancex>0:
+						angle = gen_angle
+					if distancey<=0 and distancex>0:
+						angle = 360-gen_angle
+					if distancey>0 and distancex<0:
+						angle = 180-gen_angle
+					if distancey<=0 and distancex<0:
+						angle = 180+gen_angle
+				#print(distancex)
+				#print(distancey)
+				#print(angle)
+				bullet = Bullet(tile_size,self.rect.centerx,self.rect.centery-64,angle,12)
+				return bullet
+		if self.time_to_shoot>0:
+			self.time_to_shoot-=1

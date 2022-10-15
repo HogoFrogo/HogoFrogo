@@ -751,7 +751,6 @@ class Level:
 				bullet = enemy.shoot(self.player.sprite,tile_size)
 				if isinstance(bullet,Enemy):
 					self.enemy_sprites.add(bullet)
-				enemy.time_to_shoot-=1
 
 #----------#----------#----------#----------#----------#----------#----------#----------#----------
 		if self.current_level==3:
