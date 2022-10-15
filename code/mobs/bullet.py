@@ -4,7 +4,7 @@ from random import randint
 
 class Bullet(Enemy):
 	images_folder = 'bullet'
-	attack_damage = 0
+	attack_damage = 8
 	healing_points = -1
 	minimum_speed = 2
 	maximum_speed = 9
