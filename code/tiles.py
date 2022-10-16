@@ -15,6 +15,26 @@ class StaticTile(Tile):
 		super().__init__(size,x,y)
 		self.image = surface 
 
+class Terrain(StaticTile):
+	stable=True
+	fall_speed = 10
+	time_before_fall = 60
+	def __init__(self,size,x,y,surface,position=0,stable=True):
+		super().__init__(size,x,y,surface)
+		self.position=position
+		self.stable=stable
+		self.state="static"
+		
+	def update(self,shift):
+		super().update(shift)
+		if self.state=="to_be_falling":
+			self.time_before_fall -=1
+			if self.time_before_fall<1:
+				self.state="falling"
+
+		if(not self.stable and self.state=="falling"):
+			self.rect.y += self.fall_speed
+
 class Crate(StaticTile):
 	def __init__(self,size,x,y,biome):
 		super().__init__(size,x,y,pygame.image.load('../graphics/bioms/'+biome+'/terrain/crate.png').convert_alpha())

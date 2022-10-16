@@ -4,7 +4,7 @@ from mobs.mosquito import Mosquito
 from mobs.wave import Wave
 from support import import_csv_layout, import_cut_graphics, import_folder
 from settings import tile_size, screen_height, screen_width
-from tiles import House, Tile, StaticTile, Crate, Coin, Palm, Constraint
+from tiles import House, Tile, StaticTile, Terrain, Crate, Coin, Palm, Constraint
 from mobs.enemy import Enemy
 from mobs.poop import Poop
 from mobs.bullet import Bullet
@@ -152,12 +152,16 @@ class Level:
 					if type == 'terrain':
 						terrain_tile_list = import_cut_graphics('../graphics/bioms/'+self.level_biome+'/terrain/terrain_tiles.png')
 						tile_surface = terrain_tile_list[int(val)]
-						sprite = StaticTile(tile_size,x,y,tile_surface)
+						if self.current_level==6 and val in ['12','13','14','15']:
+							stable = False
+						else:
+							stable = True
+						sprite = Terrain(tile_size,x,y,tile_surface,int(val),stable)
 						
 					if type == 'grass':
 						grass_tile_list = import_cut_graphics('../graphics/bioms/'+self.level_biome+'/decoration/grass/grass.png')
 						tile_surface = grass_tile_list[int(val)]
-						sprite = StaticTile(tile_size,x,y,tile_surface)
+						sprite = Terrain(tile_size,x,y,tile_surface,int(val))
 					
 					if type == 'crates':
 						sprite = Crate(tile_size,x,y,self.level_biome)
@@ -209,7 +213,7 @@ class Level:
 					
 				if val == '1':
 					hat_surface = pygame.image.load(self.goal_image).convert_alpha()
-					sprite = StaticTile(tile_size,x,y,hat_surface)
+					sprite = Terrain(tile_size,x,y,hat_surface,int(val))
 					self.goal.add(sprite)
 
 	def enemy_collision_reverse(self):
@@ -284,6 +288,11 @@ class Level:
 					player.collision_rect.bottom = sprite.rect.top
 					player.direction.y = 0
 					player.on_ground = True
+					# falling tiles
+					if isinstance(sprite, Terrain) and not sprite.stable:
+						sprite.state="to_be_falling"
+						print(sprite.position)
+						print("fall")
 				elif player.direction.y < 0:
 					player.collision_rect.top = sprite.rect.bottom
 					player.direction.y = 0
