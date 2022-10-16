@@ -140,20 +140,9 @@ class Program:
 
 		window = (700,500)
 		background = pygame.Surface(window)
-		background.fill((102, 187, 106))
 
-		#Insert text
-		line = "Hogo Frogo Games"
-		font = pygame.font.SysFont('Arial', 24)
-		line_n = 1
-		
-		text = font.render(line, True, pygame.color.Color('Black'))
-		background.blit(text, (20, 20*line_n))
-		line_n+=1
-
-		myimage = pygame.image.load('../graphics/character/run/1.png')
-		imagerect = myimage.get_rect()
-		picture = pygame.transform.scale(myimage, (280, 140))
+		myimage = pygame.image.load('../graphics/hogo_frogo_teamo_logo.png')
+		picture = pygame.transform.scale(myimage, (600, 400))
 		
 		x1, y1 = background.get_width()//2, background.get_height()//2
 		background.blit(picture, (x1 - picture.get_width() // 2, y1 - picture.get_height() // 2))
@@ -161,25 +150,14 @@ class Program:
 		x, y = self.screen.get_width()//2, self.screen.get_height()//2
 		self.screen.blit(background,(x - background.get_width() // 2, y - background.get_height() // 2))
 		pygame.display.flip()
-		sleep(4)
+		sleep(3.5)
 
 
 		window = (700,500)
 		background = pygame.Surface(window)
-		background.fill((102, 187, 106))
-
-		#Insert text
-		line = "Made With Pygame"
-		font = pygame.font.SysFont('Arial', 24)
-		line_n = 1
-		
-		text = font.render(line, True, pygame.color.Color('Black'))
-		background.blit(text, (20, 20*line_n))
-		line_n+=1
 
 		myimage = pygame.image.load('../graphics/pygame_logo.png')
-		imagerect = myimage.get_rect()
-		picture = pygame.transform.scale(myimage, (280, 140))
+		picture = pygame.transform.scale(myimage, (600, 400))
 		
 		x1, y1 = background.get_width()//2, background.get_height()//2
 		background.blit(picture, (x1 - picture.get_width() // 2, y1 - picture.get_height() // 2))
@@ -187,7 +165,7 @@ class Program:
 		x, y = self.screen.get_width()//2, self.screen.get_height()//2
 		self.screen.blit(background,(x - background.get_width() // 2, y - background.get_height() // 2))
 		pygame.display.flip()
-		sleep(4)
+		sleep(2.5)
 
 	def start_the_game(self):
 		player_name = 'Mr. Croak'
