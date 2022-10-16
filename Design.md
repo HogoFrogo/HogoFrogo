@@ -44,6 +44,9 @@
 ## NPC design and their level assignment
 ### NPC Black Rain Frog
     This frog will act for entertainment purposes in the cutscenes. In the beginning or during the story it will naturally frown to evoke sadness, in the end, it will finally smile.
+    
+## Decoration Blocks
+Orobinec, listí, kapradí, zlomenej orobinec, přeslička, houby?, lopuch (možná spíš jako čepička k zakoupení)
 
 ## Easter eggs and secrets design
 ### Secret "Snoop Frogg" ending
