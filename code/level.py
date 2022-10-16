@@ -4,7 +4,7 @@ from mobs.mosquito import Mosquito
 from mobs.wave import Wave
 from support import import_csv_layout, import_cut_graphics, import_folder
 from settings import tile_size, screen_height, screen_width
-from tiles import House, Tile, StaticTile, Terrain, Crate, Coin, Palm, Constraint
+from tiles import House, Stone, Tile, StaticTile, Terrain, Crate, Coin, Palm, Constraint
 from mobs.enemy import Enemy
 from mobs.poop import Poop
 from mobs.bullet import Bullet
@@ -164,7 +164,7 @@ class Level:
 						sprite = Terrain(tile_size,x,y,tile_surface,int(val))
 					
 					if type == 'crates':
-						sprite = Crate(tile_size,x,y,self.level_biome)
+						sprite = Stone(tile_size,x,y,self.level_biome)
 
 					if type == 'coins':
 						if val == '0': sprite = Coin(tile_size,x,y,'../graphics/coins/gold',5)
