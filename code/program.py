@@ -149,6 +149,9 @@ class Program:
 		
 		x, y = self.screen.get_width()//2, self.screen.get_height()//2
 		self.screen.blit(background,(x - background.get_width() // 2, y - background.get_height() // 2))
+		hogo_frogo_teamo_logo_sound_path = '../audio/frog_quak-81741.mp3'
+		hogo_frogo_teamo_logo_sound= pygame.mixer.Sound(hogo_frogo_teamo_logo_sound_path)
+		hogo_frogo_teamo_logo_sound.play()
 		pygame.display.flip()
 		sleep(3.5)
 
