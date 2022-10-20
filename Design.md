@@ -29,6 +29,7 @@
         - 5. hit - Perseus - 
         - 7. hit - Cassiopeia - 
     How to damage the boss: after using an XY amount of the same attack, the constellation that supported the attack will fall down and drop the stars to the arena. The player then needs to get to the stars and shoot them with their tongue to damage (hit) the boss.
+    Probably useful link for implementing stars and lightings mechanics: https://www.youtube.com/watch?v=NGFk44fY0O4
 ### 4. boss (Level 5) - Olgoj Chorchoj
     After you will reach the open "desert" area, you will encounter an underground-moving worm boss. The boss will resurface after a visual and audio prompt and he will either:
     1) Summon enemies native to the level in a given patterns
