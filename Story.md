@@ -1,11 +1,11 @@
 ## Story
 ### Intro
-Once upon a time there was a little frog named <player_name> that wanted some adventure. One day his house lands somewhere and he explores the new land.
+Once upon a time there was a small town frog named Mr. Croak. Mr. Croak was just a kid when he felt the need to explore the new lands he heard about so much. His friend, Sad Frog, liked this idea and proposed they go out on a field trip. They were so excited about the journey, they even packed up lunch. Sadly, a while after embarking on their journey, Sad Frog froze. He started looking around in panic and started sweating profusely. Before Mr. Croak could ask him about the issue, he bolted off. Our small town frog friend has therefore decided to follow him.
 
 ### Zeroth level
-#### The Journey To Help The World
-Player jumps out from a box or something. Empty level without any enemies. Player is directed to learn basic movement controls and just get used to them and reach the end of level where sad frog is waiting.
-Player arrives in an empty level with controls help to learn basic movement. When he arrives at the end of map he meets a sad black rain frog.  
+#### On the path to Sad Frog
+Mr. Croak: What has gotten into him? I must 
+A pretty safe area with scarce amount of enemies. Player is directed to learn basic movement controls and just get used to them and reach the end of level where sad frog is waiting.
 Dialog:  
 P: Hello there! I'm <player_name>!  
 N: Hello <player_name>! :(  
@@ -32,14 +32,17 @@ Night Level - limited vision (circle around the player, that gets smaller) - whe
 At the end of the day the chase is over and player arrives in a frog hood made partly from small plastic toy soldiers in the background. Frogs have weapons and cars. At the end of the hood a frog with big cigar is sitting and smoking... Snoop Frogg. Player smokes cigar with him or not.
 
 ### Fourth level
-frog hood - ranged enemies with AK47s - secret ending (read 'snoop frog')
+frog hood - car level - two sections - bottom (flat level where the car goes) upper (with enemies on platforms that want to destroy the car) - when player jumps out, car stops until he gets back in
 In both cases (smoking, non smoking) the player wakes up without sandwich. Player needs to beat the hood to get the sandwich or get out. At the end of the level player gets sunglasses and a car from hood frogs and he puts the sunglasses on and drives out with yellowish filter over screen.
+After confronting the gangsters they retrieve the sandwich, but they are low on gas, so they postpone the shared lunch so Mr. Croak can search for the gas station.
 
 ### Fifth level
-desert level - hydration mechanic which lowers the max jump limit - 
-With yellowish filter over screen player arrives in a (mexican-like?) desert.
+desert level - hydration mechanic that sets up max jump limit according to the hydration meter (the lower it is, the lower you jump)
+when gettign to the end of the level to refuel the car, Sad Frog pulls on an Olgoj Chorchoj tail instead of the hose - Olgoj gets mad and starts a boss fight
+Level with yellowish filter over screen player arrives in a (mexican-like?) desert.
 
 ### Sixth level
+when starting the level, environment looks like the zeroth level. Mr. Croak wonders why it looks similar to their starting place, while wondering about the similarity the frog friends hear
 test of the player's abilities - button (timed) sequence, jump puzzle, tongue mechanics - former biom seen in 0. level - HUMAN BOSS (child's father) - climb the human, environmental damage (hands) - different body sections, different gameplay gimmicks - final 'head' level - lick the eyes multiple times to kill it
 
 * Jambes de grenouilles
