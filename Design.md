@@ -38,7 +38,7 @@
         - 6. hit - Sextans - A curve appears in the skies, after a while a damaging star flies to the ground. When the player collides with a star, he gets hit
         - 9. hit - Crater - Boss slams the ground and after an indicator appears he temporarily breaks the ground below the player, after a while the ground is "rebuilt"
         - 12. hit - Antlia - Boss drains the air out with an Antlia, which makes the player jump lower, after a while boss charges the player and afterwards gets back to his place
-        - 15. hit - Hydra - *To be filled in*
+        - 15. hit - Hydra - *To be filled in* WHEN NOT UPDATED TILL THE DEV STAGE, DELETE IT
     How to damage the boss: after using an XY amount of the same attack, the constellation that supported the attack will fall down and drop the stars to the arena. The player then needs to get to the stars and shoot them with their tongue to damage (hit) the boss. After this time window the boss changes the constellation and attacks again.
     Probably useful links for implementing stars and lightings mechanics: https://www.youtube.com/watch?v=NGFk44fY0O4, https://www.youtube.com/watch?v=IWm5hi5Yrvk
 ### 4. boss (Level 5) - Olgoj Chorchoj
@@ -50,7 +50,7 @@
         There will be platforms that you can move to that will contain reappearing blocks that will fall after the player will stand on them for a longer period of time, they damage the boss.
 ### 5. boss (Level 6) - "Dad"
     Mood: Written in level's mood
-    Voice-led level - the player is being chased by "dad" human. The level includes common enemies and moves normally, but in addition there are environmental attacks from the human (stomping, arm-swinging, slapping, whatever). After getting to a certain point in the level the player will be caught by a kid (cutscene plays where the frog gets back to the terrarium)
+    Voice-led level - The player and Sad Frog are feeling "The End-ish", but just before they sit down and eat the sandwich, Sad Frog is kicked/launched by the human, right to the end of the level. The level includes common enemies and moves normally, but in addition there are environmental attacks from the human (stomping, arm-swinging, slapping, whatever). After getting to a certain point in the level the player will be caught by a kid (cutscene plays where the frog gets back to the terrarium)
 ## Enemy design and their level assignment
 ### Has to be filled in
     Insert enemy info here
