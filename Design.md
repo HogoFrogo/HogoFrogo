@@ -22,19 +22,24 @@
         - lower part of the arena: Player-targeting poop shots
         -  middle part of the arena: Fly swarm sent from the position the Flyking is at
         - higher part of the arena: Poop shots to the ground below the player - the poop changes to a liquid that emits a smell cloud that gets to the higher part of the arena and functions like a DoT
+        Flyking has 4 "HP" and loses one after being hit by the player. Each time flyking is hit, he changes in graphics to indicate that he is hurt.
 ### 2. boss (Level 2) - Tsunami
     Mood: Written in mood of the level
     
-    Immortal, constantly moving giant wave that functions like a chase level mechanic. After nearing the end of the level there is a cutscene of the fake victory, but then the wave appears on the other side and chases the player back to the beginning of the level. Near the beginning there will be a platform that the player needs to reach and when he reaches it, a short exact sequence of miniwaves occurs and after it the player in the cutscene hops to the end of the level.
+    Immortal, constantly moving giant wave that functions like a chase level mechanic. After nearing the end of the level there is a cutscene of the fake victory, but then the wave appears on the other side and chases the player back to the beginning of the level. Near the beginning there will be a platform that the player needs to reach and when he reaches it the game ends.
 ### 3. boss (Level 3) - Astro Firefly/Ghost Entity
     Mood: Mysterious, overwhelming
     
     The boss appears at the end of the level, where at this point you can clearly see the night sky. The main point of this boss are zodiac attacks that react to the night sky (Cancer - the boss walks backwards, Sagittarius - the boss shoots a projectile at a player etc). The entity has a set number of attacks it receives and reacts to the hit thresholds with unique attacks:
+    Constellations that are used to the moveset of the boss is as follows: 
+    [https://theskylive.com/planetarium?objects=sun-moon-mercury-venus-mars-jupiter-saturn-uranus-neptune-pluto&localdata=50.6607%7C14.03227%7CUsti+(CZ)%7CEurope%2FPrague%7C0&obj=sun&h=20&m=00&date=2022-05-01#ra|10.446431304341022|dec|-33.68022004095577|fov|80](https://theskylive.com/planetarium?objects=sun-moon-mercury-venus-mars-jupiter-saturn-uranus-neptune-pluto&obj=sun&h=20&m=00&date=2022-05-01#ra|11.669057051419266|dec|-5.091442144074352|fov|80)
         WIP!!!
-        - 2. hit - Orion - 
-        - 5. hit - Perseus - 
-        - 7. hit - Cassiopeia - 
-    How to damage the boss: after using an XY amount of the same attack, the constellation that supported the attack will fall down and drop the stars to the arena. The player then needs to get to the stars and shoot them with their tongue to damage (hit) the boss.
+        - 3. hit - Corvus - Boss flies up and makes a dive for the player
+        - 6. hit - Sextans - A curve appears in the skies, after a while a damaging star flies to the ground. When the player collides with a star, he gets hit
+        - 9. hit - Crater - Boss slams the ground and after an indicator appears he temporarily breaks the ground below the player, after a while the ground is "rebuilt"
+        - 12. hit - Antlia - Boss drains the air out with an Antlia, which makes the player jump lower, after a while boss charges the player and afterwards gets back to his place
+        - 15. hit - Hydra - *To be filled in*
+    How to damage the boss: after using an XY amount of the same attack, the constellation that supported the attack will fall down and drop the stars to the arena. The player then needs to get to the stars and shoot them with their tongue to damage (hit) the boss. After this time window the boss changes the constellation and attacks again.
     Probably useful links for implementing stars and lightings mechanics: https://www.youtube.com/watch?v=NGFk44fY0O4, https://www.youtube.com/watch?v=IWm5hi5Yrvk
 ### 4. boss (Level 5) - Olgoj Chorchoj
     Mood: Monsterous, mexican, desert
