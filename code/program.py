@@ -78,11 +78,13 @@ class Program:
 			f.write("sounds_volume = " + str(self.game.sounds_volume) + "\n")
 
 	def change_music_volume(self,new_volume):
+		new_volume = new_volume/100
 		self.game.change_music_volume(new_volume)
 		self.main_menu_music.set_volume(self.game.music_volume)
 		self.save_settings_into_file()
 
 	def change_sounds_volume(self,new_volume):
+		new_volume = new_volume/100
 		self.game.change_sounds_volume(new_volume)	
 		self.save_settings_into_file()
 
@@ -104,13 +106,15 @@ class Program:
 		credits_menu.add.label("Person 9")
 		credits_menu.add.label("Music")
 		credits_menu.add.label("Person 10")
+		credits_menu.add.label("Special Thanks To")
+		credits_menu.add.label("Clear Code YT Channel")
 		return credits_menu
 
 	def create_settings_menu(self):
 		settings_menu = pygame_menu.Menu('Settings', screen_width, screen_height,
 							theme=self.THEME_HOGO_FROGO)
-		self.volume_slider = settings_menu.add.range_slider('Music Volume', self.music_volume, [0, 1], 1, self.change_music_volume)
-		self.sounds_volume_slider = settings_menu.add.range_slider('Sounds Volume', self.sounds_volume, [0, 1], 1, self.change_sounds_volume)
+		self.volume_slider = settings_menu.add.range_slider('Music Volume', self.music_volume*100, [0, 100], 1, self.change_music_volume)
+		self.sounds_volume_slider = settings_menu.add.range_slider('Sounds Volume', self.sounds_volume*100, [0, 100], 1, self.change_sounds_volume)
 		self.full_screen_checkbox = settings_menu.add.button('Fullscreen', self.toggle_fullscreen)
 		return settings_menu
 

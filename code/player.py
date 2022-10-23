@@ -56,7 +56,7 @@ class Player(pygame.sprite.Sprite):
 		self.invincibility_duration = 500
 		self.hurt_time = 0
 
-		# audio 
+		# audio
 		self.jump_sound = pygame.mixer.Sound('../audio/effects/jump2.mp3')
 		self.jump_sound.set_volume(sounds_volume)
 		self.hit_sound = pygame.mixer.Sound('../audio/effects/hit.wav')

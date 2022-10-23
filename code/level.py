@@ -2,6 +2,7 @@ import math
 import pygame
 from mobs.mosquito import Mosquito
 from mobs.wave import Wave
+from star import Star
 from support import import_csv_layout, import_cut_graphics, import_folder
 from settings import tile_size, screen_height, screen_width
 from tiles import House, Stone, Tile, StaticTile, Terrain, Crate, Coin, Palm, Constraint
@@ -129,6 +130,20 @@ class Level:
 		level_width = len(terrain_layout[0]) * tile_size
 		self.water = Water(screen_height - 20,level_width,self.level_biome) # type should be chosen by level data
 		self.clouds = Clouds(400,level_width,30,self.level_biome) # type should be chosen by level data
+
+		# stars 
+		self.star_sprites = pygame.sprite.Group()
+		self.star_sprites.add(Star(tile_size,250,140))
+		self.star_sprites.add(Star(tile_size,630,150))
+		self.star_sprites.add(Star(tile_size,680,110))
+		self.star_sprites.add(Star(tile_size,730,130))
+		self.star_sprites.add(Star(tile_size,300,300))
+		self.star_sprites.add(Star(tile_size,600,300))
+
+		self.cover_surf = pygame.Surface((self.display_surface.get_width(), self.display_surface.get_height()))
+		self.cover_surf.set_colorkey((255, 255, 255))
+		self.cover_surf.fill((255,220,0))
+		self.cover_surf.set_alpha(60) 
 
 	def change_sounds_volume(self, new_volume):
 		print("New volume")
@@ -487,6 +502,13 @@ class Level:
 				self.view_dialog("Muhahahaaa! I'm the fly king. Stop touching my sandwich!",flyking_img,self.fly_speak_sound)
 				self.view_dialog("This sandwich is not yours!",player_img,self.croak_speak_sound)
 				self.view_dialog("If you think so fight for it!",flyking_img,self.fly_speak_sound)
+			case 'olgoi_khorkhoi':
+				player_img = '../graphics/character/run/1.png'
+				flyking_img = '../graphics/mobs/bosses/olgoi_khorkhoi.jpg'
+				self.view_dialog("Uaaaaaaah!",player_img,self.croak_speak_sound)
+				self.view_dialog("Gjekh ghu ghra!",flyking_img,self.fly_speak_sound)
+				self.view_dialog("What should I do? What should I do?!",player_img,self.croak_speak_sound)
+				self.view_dialog("Ghraaa!",flyking_img,self.fly_speak_sound)
 			case 'chase_start':
 				player_img = '../graphics/character/sandwich/run/1.png'
 				self.view_dialog("Oh no! A tsunami!",player_img,self.croak_speak_sound)
@@ -542,8 +564,46 @@ class Level:
 					#level end
 			case 'night_boss':
 				print('night boss')
-			case 'desert_boss':
-				print('desert boss')
+			case 'olgoi_khorkhoi':
+				print('olgoi_khorkhoi')
+				#when the boss fight starts, a fly king will appear at the right side of the screen
+				#image = '../graphics/mobs/bosses/flyking/idle'
+				#x = 500
+				#y = 300
+				#self.flyking = Ant(tile_size,x,y)
+				#self.flyking.draw(self.display_surface)
+					#health, image and attributes
+				#the game freezes
+				self.state = 'boss_cutscene'
+				self.enter_dialog("olgoi_khorkhoi")
+				self.state = 'bossfight'
+				# deletes fly constraints from map so that they can fly all over the screen
+				for constraint in self.constraint_sprites:
+					if constraint.value == 1:
+						constraint.value = 0
+				#cutscene
+
+				#combat starts
+					self.boss_x = screen_width-120
+					self.boss_y = 200
+					self.boss_direction = "left"
+					self.bossObject.direction = "left"
+					boss = AnimatedTile(tile_size,self.boss_x,self.boss_y,'../graphics/mobs/bosses/olgoi_khorkhoi/stay')
+					self.boss.add(boss)
+					# It is needed to somehow fix situation when camera moves
+
+					#the sandwich disappears and some platforms needed for combat movement will appear
+
+					#the boss will start spawning flies in a different frequency and pattern
+
+				#boss takes damage
+					#health will change
+					#platforms will change
+					#same as "combat starts"
+				
+				#boss' health is 0
+					#cutscene
+					#level end
 			
 	def check_win(self):
 		if pygame.sprite.spritecollide(self.player.sprite,self.goal,False):
@@ -669,10 +729,17 @@ class Level:
 				if isinstance(enemy,Firefly):
 					lights.append([enemy.rect.centerx,enemy.rect.centery,100])
 
+			
 		# run the entire game / level 
 		
 		# sky 
 		self.sky.draw(self.display_surface)
+	
+		# stars
+		# self.star_sprites.update(self.world_shift)
+		if self.current_level==3:
+			self.star_sprites.draw(self.display_surface) 
+
 		self.clouds.draw(self.display_surface,self.world_shift)
 		
 		# background palms
@@ -766,21 +833,37 @@ class Level:
 #----------#----------#----------#----------#----------#----------#----------#----------#----------
 		if self.current_level==3:
 			# making the lights yellowish
-			cover_surf = pygame.Surface((self.display_surface.get_width(), self.display_surface.get_height()))
-			cover_surf.set_colorkey((255, 255, 255))
-			cover_surf.fill((255,220,0))
-			cover_surf.set_alpha(60) 
-			self.display_surface.blit(cover_surf,(0,0))
+			self.display_surface.blit(self.cover_surf,(0,0))
 
 			#creating the lights
 			cover_surf.fill((0,0,0))
-			cover_surf.set_alpha(220) 
+			cover_surf.set_alpha(200) 
+			self.star_sprites.draw(cover_surf) 
+			self.clouds.draw(cover_surf,0)
+			self.dust_sprite.draw(cover_surf)
+			self.houses_sprites.draw(cover_surf) 
+			self.bg_palm_sprites.draw(cover_surf) 
+			self.terrain_sprites.draw(cover_surf)
+			self.goal.draw(cover_surf)
+			self.enemy_sprites.draw(cover_surf)
+			self.explosion_sprites.draw(cover_surf)
+			self.boss.draw(cover_surf)
+			self.crate_sprites.draw(cover_surf)
+			self.grass_sprites.draw(cover_surf)
+			self.coin_sprites.draw(cover_surf)
+			self.fg_palm_sprites.draw(cover_surf)
+			self.player.draw(cover_surf)
+
+			dark = pygame.Surface((cover_surf.get_width(), cover_surf.get_height()), flags=pygame.SRCALPHA)
+			dark.fill((0, 0, 0, 0))
+			cover_surf.blit(dark, (0, 0), special_flags=pygame.BLEND_SUB)
 			for i in range(len(lights)):
 				radius = self.light_to_radius(lights[i][2])
 				pygame.draw.circle(cover_surf, (255, 255, 255), (lights[i][0], lights[i][1]), radius)
 				
+				
 
-			# draw transparent circle and update display
+			# draw transparent circles and update display
 			mask_surf.blit(cover_surf, (0, 0))
 			self.display_surface.blit(mask_surf,(0,0))
 		if self.current_level==6:
