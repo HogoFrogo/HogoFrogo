@@ -16,13 +16,19 @@
 
 ## Boss design and chronology
 ### 1. boss (Level 1) - Flyking
+    Mood: The first bad guy, little hint of caricature, but still dramatic
+
     After killing XY flies that are at the end of the level, the visible screen ?ZOOMS OUT, LAYOUT OF THE ARENA CHANGES? and Flyking boss appears. It has no health, but there is a finite amount of hits it takes to defeat him. After each hit he moves to the opposite side of the arena. Depending on the position of the player the Flyking uses varying attacks:
         - lower part of the arena: Player-targeting poop shots
         -  middle part of the arena: Fly swarm sent from the position the Flyking is at
         - higher part of the arena: Poop shots to the ground below the player - the poop changes to a liquid that emits a smell cloud that gets to the higher part of the arena and functions like a DoT
 ### 2. boss (Level 2) - Tsunami
+    Mood: Written in mood of the level
+    
     Immortal, constantly moving giant wave that functions like a chase level mechanic. After nearing the end of the level there is a cutscene of the fake victory, but then the wave appears on the other side and chases the player back to the beginning of the level. Near the beginning there will be a platform that the player needs to reach and when he reaches it, a short exact sequence of miniwaves occurs and after it the player in the cutscene hops to the end of the level.
 ### 3. boss (Level 3) - Astro Firefly/Ghost Entity
+    Mood: Mysterious, overwhelming
+    
     The boss appears at the end of the level, where at this point you can clearly see the night sky. The main point of this boss are zodiac attacks that react to the night sky (Cancer - the boss walks backwards, Sagittarius - the boss shoots a projectile at a player etc). The entity has a set number of attacks it receives and reacts to the hit thresholds with unique attacks:
         WIP!!!
         - 2. hit - Orion - 
@@ -31,12 +37,14 @@
     How to damage the boss: after using an XY amount of the same attack, the constellation that supported the attack will fall down and drop the stars to the arena. The player then needs to get to the stars and shoot them with their tongue to damage (hit) the boss.
     Probably useful links for implementing stars and lightings mechanics: https://www.youtube.com/watch?v=NGFk44fY0O4, https://www.youtube.com/watch?v=IWm5hi5Yrvk
 ### 4. boss (Level 5) - Olgoj Chorchoj
+    Mood: Monsterous, mexican, desert
     After you will reach the open "desert" area, you will encounter an underground-moving worm boss. The boss will resurface after a visual and audio prompt and he will either:
     1) Summon enemies native to the level in a given patterns
     2) Shoot a sequence of projectiles at the player
     3) Confusing resurfacing - the boss resurfaces, but jebaits the player and burrows again
         There will be platforms that you can move to that will contain reappearing blocks that will fall after the player will stand on them for a longer period of time, they damage the boss.
 ### 5. boss (Level 6) - "Dad"
+    Mood: Written in level's mood
     Voice-led level - the player is being chased by "dad" human. The level includes common enemies and moves normally, but in addition there are environmental attacks from the human (stomping, arm-swinging, slapping, whatever). After getting to a certain point in the level the player will be caught by a kid (cutscene plays where the frog gets back to the terrarium)
 ## Enemy design and their level assignment
 ### Has to be filled in
