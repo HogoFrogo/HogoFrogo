@@ -19,6 +19,7 @@ from mobs.parachute_frog import ParachuteFrog
 from mobs.gangster_frog import GangsterFrog
 from mobs.boss import Boss
 from player import Player
+from car import Car
 from particles import ParticleEffect
 from game_data import levels
 from random import randint
@@ -75,6 +76,7 @@ class Level:
 		self.player = pygame.sprite.GroupSingle()
 		self.boss = pygame.sprite.GroupSingle()
 		self.goal = pygame.sprite.GroupSingle()
+		self.car = pygame.sprite.GroupSingle()
 		self.player_setup(player_layout,change_health, change_jump, level_data['player_image'])
 		self.killed_ants = 0
 		self.killed_flies = 0
@@ -230,6 +232,11 @@ class Level:
 					hat_surface = pygame.image.load(self.goal_image).convert_alpha()
 					sprite = Terrain(tile_size,x,y,hat_surface,int(val))
 					self.goal.add(sprite)
+					
+				if val == '2':
+					sprite = Car(tile_size,x,y)
+					self.car.add(sprite)
+					
 
 	def enemy_collision_reverse(self):
 		for enemy in self.enemy_sprites.sprites():
@@ -761,6 +768,10 @@ class Level:
 		# goal
 		self.goal.update(self.world_shift)
 		self.goal.draw(self.display_surface)
+
+		# car
+		self.car.update(self.world_shift)
+		self.car.draw(self.display_surface)
 
 		# enemy 
 		self.enemy_sprites.update(self.world_shift)
