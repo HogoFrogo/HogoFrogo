@@ -18,6 +18,7 @@ from decoration import Sky, Water, Clouds
 from mobs.parachute_frog import ParachuteFrog
 from mobs.gangster_frog import GangsterFrog
 from mobs.boss import Boss
+from mobs.green_poop import GreenPoop
 from player import Player
 from car import Car
 from particles import ParticleEffect
@@ -51,7 +52,7 @@ class Level:
 		self.level_name = level_data['level_name']
 		self.level_img = level_data['level_img']
 		self.level_biome = level_data['biome']
-		self.bossObject = Boss(level_data['boss'])
+		self.bossObject = Boss(30,300,level_data['boss'])
 
 		print("obtížnost")
 		print(difficulty)
@@ -509,6 +510,12 @@ class Level:
 				self.view_dialog("Muhahahaaa! I'm the fly king. Stop touching my sandwich!",flyking_img,self.fly_speak_sound)
 				self.view_dialog("This sandwich is not yours!",player_img,self.croak_speak_sound)
 				self.view_dialog("If you think so fight for it!",flyking_img,self.fly_speak_sound)
+			case 'flyking_over':
+				player_img = '../graphics/character/run/1.png'
+				flyking_img = '../graphics/mobs/bosses/flyking.jpg'
+				self.view_dialog("Yes!",player_img,self.croak_speak_sound)
+				self.view_dialog("Ouch!",flyking_img,self.fly_speak_sound)
+				self.view_dialog("Now the sandwich is back in our hands!",player_img,self.croak_speak_sound)
 			case 'olgoi_khorkhoi':
 				player_img = '../graphics/character/run/1.png'
 				flyking_img = '../graphics/mobs/bosses/olgoi_khorkhoi.jpg'
@@ -549,12 +556,8 @@ class Level:
 				#cutscene
 
 				#combat starts
-					self.boss_x = screen_width-120
-					self.boss_y = 200
-					self.boss_direction = "left"
 					self.bossObject.direction = "left"
-					boss = AnimatedTile(tile_size,self.boss_x,self.boss_y,'../graphics/mobs/bosses/flyking/run')
-					self.boss.add(boss)
+					self.boss.add(self.bossObject)
 					# It is needed to somehow fix situation when camera moves
 
 					#the sandwich disappears and some platforms needed for combat movement will appear
@@ -592,7 +595,7 @@ class Level:
 
 				#combat starts
 					self.boss_x = screen_width-120
-					self.boss_y = 200
+					self.boss_y = 50
 					self.boss_direction = "left"
 					self.bossObject.direction = "left"
 					boss = AnimatedTile(tile_size,self.boss_x,self.boss_y,'../graphics/mobs/bosses/olgoi_khorkhoi/stay')
@@ -617,13 +620,21 @@ class Level:
 			if self.current_level==0:
 				self.enter_dialog('sad_frog')
 			if self.current_level==1:
-				if self.killed_flies>=25 and self.killed_ants>=8 and self.state != 'bossfight':
-					print("stav hry")
-					print(self.state)
-					#self.create_overworld(self.current_level,self.new_max_level,self.difficulty)
-					self.begin_bossfight('flyking')
+				if self.killed_flies>=0 and self.killed_ants>=0 and self.state != 'bossfight':
+					if self.bossObject.health>0:
+						print("stav hry")
+						print(self.state)
+						#self.create_overworld(self.current_level,self.new_max_level,self.difficulty)
+						self.begin_bossfight('flyking')
+					else:
+						self.enter_dialog('flyking_over')
 			else:
 				self.create_overworld(self.current_level,self.new_max_level,self.difficulty)
+				
+		if self.current_level==1:
+			if self.bossObject.health>0:
+				self.enter_dialog('flyking_over')
+				self.create_overworld(self.current_level,0,self.difficulty)
 			
 	def check_coin_collisions(self):
 		collided_coins = pygame.sprite.spritecollide(self.player.sprite,self.coin_sprites,True)
@@ -641,11 +652,15 @@ class Level:
 				self.boss.update(10)
 				self.boss.draw(self.display_surface) 
 
-				self.boss_x = 0
-				self.boss_y = 400
-				self.boss_direction = "right"
+				self.bossObject.rect.x = 400
+				self.bossObject.rect.y = 300
+				self.bossObject.health -=1
+				print(self.bossObject.health)
+				if self.bossObject.health < 1:
+					print("boss killed")
+					self.state = 'end'
 				self.bossObject.direction = "right"
-				boss = AnimatedTile(tile_size,self.boss_x,self.boss_y,'../graphics/mobs/bosses/flyking/run')
+				boss = self.bossObject
 				self.boss.empty()
 				self.boss.add(boss)
 
@@ -910,7 +925,32 @@ class Level:
 			self.trigger_boss_action()
 			
 	def trigger_boss_action(self):
-		if(self.bossObject.direction=="left"):
-			if(randint(0,9999)<self.fly_occurency_probability*5): self.enemy_sprites.add(Poop(tile_size,self.boss_x,self.boss_y,randint(150,210),12))
+		rand_int = randint(-40,40)
+		if rand_int>30:
+			self.bossObject.attack_type = 'shoot_green'
+		elif rand_int>15:
+			self.bossObject.attack_type = 'shoot'
 		else:
-			if(randint(0,9999)<self.fly_occurency_probability*5): self.enemy_sprites.add(Poop(tile_size,self.boss_x,self.boss_y,randint(330,390),12))
+			self.bossObject.attack_type = 'fly_swarm'
+
+		match(self.bossObject.attack_type):
+			case 'shoot':
+				# player targeting shooting
+				poop = self.bossObject.shoot(self.player.sprite,tile_size)
+				if isinstance(poop,Enemy):
+					self.enemy_sprites.add(poop)
+			case 'shoot_green':
+				# smell cloud poops
+				poop = self.bossObject.shoot(self.player.sprite,tile_size,'green')
+				if isinstance(poop,Enemy):
+					self.enemy_sprites.add(poop)
+			case 'fly_swarm':# fly swarm
+				if(randint(0,999)<80):
+					mosc_height = screen_height/2
+					x = range(randint(7,8))
+					for n in x:
+						self.enemy_sprites.add(Fly(tile_size,screen_width,mosc_height+randint(-40,40)))
+		#if(self.bossObject.direction=="left"):
+		#	if(randint(0,9999)<self.fly_occurency_probability*5): self.enemy_sprites.add(Poop(tile_size,self.boss_x,self.boss_y,randint(150,210),12))
+		#else:
+		#	if(randint(0,9999)<self.fly_occurency_probability*5): self.enemy_sprites.add(Poop(tile_size,self.boss_x,self.boss_y,randint(330,390),12))
