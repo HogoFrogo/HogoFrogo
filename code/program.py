@@ -44,6 +44,7 @@ class Program:
 		self.settings=self.load_settings_from_file()
 		self.music_volume = self.settings["music_volume"]
 		self.sounds_volume = self.settings["sounds_volume"]
+		self.master_volume = self.settings["master_volume"]
 		self.main_menu_music_path = '../audio/magnetic_b-ing.mp3'
 
 		self.main_menu_music = pygame.mixer.Sound(self.main_menu_music_path)
@@ -67,15 +68,16 @@ class Program:
 		with open('settings.conf', 'r') as f:
 			option = f.readline().split(" = ")
 			music_volume = float(option[1])
-			option = f.readline().split(" = ")
 			sounds_volume = float(option[1])
-		return {"music_volume": music_volume, "sounds_volume": sounds_volume}
+			master_volume = float(option[1])
+		return {"music_volume": music_volume, "sounds_volume": sounds_volume, "master_volume": master_volume, }
 
 	#settings saving
 	def save_settings_into_file(self):
 		with open('settings.conf', 'w') as f:
 			f.write("music_volume = " + str(self.game.music_volume) + "\n")
 			f.write("sounds_volume = " + str(self.game.sounds_volume) + "\n")
+			f.write("master_volume = " + str(self.game.master_volume) + "\n")
 
 	def change_music_volume(self,new_volume):
 		new_volume = new_volume/100
@@ -86,6 +88,11 @@ class Program:
 	def change_sounds_volume(self,new_volume):
 		new_volume = new_volume/100
 		self.game.change_sounds_volume(new_volume)	
+		self.save_settings_into_file()
+
+	def change_master_volume(self, new_volume):
+		new_volume = new_volume/100
+		self.game.change_master_volume(new_volume)
 		self.save_settings_into_file()
 
 	def toggle_fullscreen(self):
@@ -115,6 +122,7 @@ class Program:
 							theme=self.THEME_HOGO_FROGO)
 		self.volume_slider = settings_menu.add.range_slider('Music Volume', self.music_volume*100, [0, 100], 1, self.change_music_volume)
 		self.sounds_volume_slider = settings_menu.add.range_slider('Sounds Volume', self.sounds_volume*100, [0, 100], 1, self.change_sounds_volume)
+		self.master_volume_slider = settings_menu.add.range_slider("Master Volume", self.master_volume*100, [0, 100], 1, self.change_master_volume)
 		self.full_screen_checkbox = settings_menu.add.button('Fullscreen', self.toggle_fullscreen)
 		return settings_menu
 

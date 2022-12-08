@@ -78,11 +78,13 @@ class Game:
 		self.overworld_bg_music.set_volume(new_music_volume)
 
 	def change_sounds_volume(self,new_sounds_volume):
-		print(new_sounds_volume)
 		self.sounds_volume = new_sounds_volume
 
+	def change_master_volume(self, new_music_volume):
+		self.master_volume = new_music_volume
+
 	def check_game_over(self):
-		if self.cur_health <= 0:
+		if (self.cur_health <= 0):
 			self.cur_health = 100
 			self.coins = self.coins-30
 			self.overworld = Overworld(0,self.max_level,self.screen,self.create_level,self.difficulty)
