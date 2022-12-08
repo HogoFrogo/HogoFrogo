@@ -50,7 +50,7 @@ class Program:
 		self.main_menu_music = pygame.mixer.Sound(self.main_menu_music_path)
 		self.main_menu_music.set_volume(self.music_volume)
 
-		self.game = Game(self.screen, self.music_volume, self.sounds_volume)
+		self.game = Game(self.screen, self.music_volume, self.sounds_volume, self.master_volume)
 
 		self.play_menu = self.create_play_menu()
 		self.credits_menu = self.create_credits_menu()
@@ -79,20 +79,20 @@ class Program:
 			f.write("sounds_volume = " + str(self.game.sounds_volume) + "\n")
 			f.write("master_volume = " + str(self.game.master_volume) + "\n")
 
-	def change_music_volume(self,new_volume):
-		new_volume = new_volume/100
-		self.game.change_music_volume(new_volume)
+	def change_music_volume(self,new_music_volume):
+		new_music_volume = new_music_volume/100
+		self.game.change_music_volume(new_music_volume)
 		self.main_menu_music.set_volume(self.game.music_volume)
 		self.save_settings_into_file()
 
-	def change_sounds_volume(self,new_volume):
-		new_volume = new_volume/100
-		self.game.change_sounds_volume(new_volume)	
+	def change_sounds_volume(self,new_sounds_volume):
+		new_sounds_volume = new_sounds_volume/100
+		self.game.change_sounds_volume(new_sounds_volume)	
 		self.save_settings_into_file()
 
-	def change_master_volume(self, new_volume):
-		new_volume = new_volume/100
-		self.game.change_master_volume(new_volume)
+	def change_master_volume(self, new_sounds_volume):
+		new_sounds_volume = new_sounds_volume/100
+		self.game.change_master_volume(new_sounds_volume)
 		self.save_settings_into_file()
 
 	def toggle_fullscreen(self):
