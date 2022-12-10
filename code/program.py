@@ -68,9 +68,11 @@ class Program:
 		with open('settings.conf', 'r') as f:
 			option = f.readline().split(" = ")
 			music_volume = float(option[1])
+			option = f.readline().split(" = ")
 			sounds_volume = float(option[1])
+			option = f.readline().split(" = ")
 			master_volume = float(option[1])
-		return {"music_volume": music_volume, "sounds_volume": sounds_volume, "master_volume": master_volume, }
+		return {"music_volume": music_volume, "sounds_volume": sounds_volume, "master_volume": master_volume}
 
 	#settings saving
 	def save_settings_into_file(self):
