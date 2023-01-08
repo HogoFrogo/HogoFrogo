@@ -1,6 +1,7 @@
 import math
 import pygame
 from mobs.mosquito import Mosquito
+from mobs.mosquito_sombrero import MosquitoSombrero
 from mobs.wave import Wave
 from star import Star
 from support import import_csv_layout, import_cut_graphics, import_folder
@@ -63,6 +64,7 @@ class Level:
 			self.wasp_occurency_probability = level_data['wasps_hard']
 			self.parachute_frog_ocurency_probability = level_data['parachute_frog_hard']
 			self.mosquito_ocurency_probability = level_data['mosquitos_hard']
+			self.mosquito_sombreros_ocurency_probability = level_data['mosquitos_sombreros_hard']
 		else:
 			self.fly_occurency_probability = level_data['flies']
 			self.firefly_occurency_probability = level_data['fireflies']
@@ -70,6 +72,7 @@ class Level:
 			self.wasp_occurency_probability = level_data['wasps']
 			self.parachute_frog_ocurency_probability = level_data['parachute_frog']
 			self.mosquito_ocurency_probability = level_data['mosquitos']
+			self.mosquito_sombreros_ocurency_probability = level_data['mosquitos_sombreros']
 
 		# player 
 		self.goal_image = level_data['goal_image']
@@ -926,6 +929,12 @@ class Level:
 			for n in x:
 				self.enemy_sprites.add(Mosquito(tile_size,screen_width,mosc_height+randint(-40,40)))
 			
+		if(randint(0,999)<self.mosquito_sombreros_ocurency_probability):
+			mosc_height = randint(self.level_border,screen_height-self.level_border)
+			x = range(randint(1,5))
+			for n in x:
+				self.enemy_sprites.add(MosquitoSombrero(tile_size,screen_width,mosc_height+randint(-40,40)))
+
 		if self.state == 'bossfight':
 			self.trigger_boss_action()
 			

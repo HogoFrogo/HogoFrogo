@@ -45,6 +45,15 @@ class Program:
 		self.music_volume = self.settings["music_volume"]
 		self.sounds_volume = self.settings["sounds_volume"]
 		self.master_volume = self.settings["master_volume"]
+
+		# Load Controls
+		self.controls=self.load_controls_from_file()
+		print(self.controls["right"])
+		print(self.controls["left"])
+		print(self.controls["tongue"])
+		print(self.controls["tongue_up"])
+		print(self.controls["jump"])
+
 		self.main_menu_music_path = '../audio/magnetic_b-ing.mp3'
 
 		self.main_menu_music = pygame.mixer.Sound(self.main_menu_music_path)
@@ -80,6 +89,21 @@ class Program:
 			f.write("music_volume = " + str(self.game.music_volume) + "\n")
 			f.write("sounds_volume = " + str(self.game.sounds_volume) + "\n")
 			f.write("master_volume = " + str(self.game.master_volume) + "\n")
+
+	#controls loading
+	def load_controls_from_file(self):
+		with open('controls.conf', 'r') as file:
+			option = file.readline().split(' = ')
+			right = option[1]
+			option = file.readline().split(' = ')
+			left = option[1]
+			option = file.readline().split(' = ')
+			jump = option[1]
+			option = file.readline().split(' = ')
+			tongue = option[1]
+			option = file.readline().split(' = ')
+			tongue_up = option[1]
+		return {"right": right, "left": left, "jump": jump, "tongue": tongue, "tongue_up": tongue_up}
 
 	def change_music_volume(self,new_music_volume):
 		new_music_volume = new_music_volume/100
