@@ -31,6 +31,7 @@ class Program:
 	)
 	)
 	PROGRAM_NAME = "Hogo Frogo: The Unexpected Adventure"
+	MENU_MUSIC = "../audio/magnetic_b-ing.mp3"
 
 	def __init__(self):
 		# Pygame setup
@@ -38,33 +39,26 @@ class Program:
 		pygame.display.set_caption(self.PROGRAM_NAME)
 		self.screen = pygame.display.set_mode((screen_width,screen_height), pygame.SCALED + pygame.NOFRAME + pygame.FULLSCREEN)
 		self.clock = pygame.time.Clock()
-
         
         # Load Settings
 		self.settings=self.load_settings_from_file()
+
+		# volume
 		self.music_volume = self.settings["music_volume"]
 		self.sounds_volume = self.settings["sounds_volume"]
 		self.master_volume = self.settings["master_volume"]
 
-		# Load Controls
-		self.controls=self.load_controls_from_file()
-		print(self.controls["right"])
-		print(self.controls["left"])
-		print(self.controls["tongue"])
-		print(self.controls["tongue_up"])
-		print(self.controls["jump"])
-
-		self.main_menu_music_path = '../audio/magnetic_b-ing.mp3'
-
+		# main menu music
+		self.main_menu_music_path = self.MENU_MUSIC
 		self.main_menu_music = pygame.mixer.Sound(self.main_menu_music_path)
 		self.main_menu_music.set_volume(self.music_volume)
 
 		self.game = Game(self.screen, self.music_volume, self.sounds_volume, self.master_volume)
 
+		# loading submenus
 		self.play_menu = self.create_play_menu()
 		self.credits_menu = self.create_credits_menu()
 		self.settings_menu = self.create_settings_menu()
-
 		self.main_menu = self.create_main_menu()
 
 	def run(self):
