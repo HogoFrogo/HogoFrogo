@@ -625,21 +625,21 @@ class Level:
 			if self.current_level==0:
 				self.enter_dialog('sad_frog')
 			if self.current_level==1:
-				if self.killed_flies>=0 and self.killed_ants>=0 and self.state != 'bossfight':
+				if self.killed_flies>=25 and self.killed_ants>=7 and self.state != 'bossfight':
 					if self.bossObject.health>0:
 						print("stav hry")
 						print(self.state)
-						#self.create_overworld(self.current_level,self.new_max_level,self.difficulty)
 						self.begin_bossfight('flyking')
 					else:
 						self.enter_dialog('flyking_over')
+						self.create_overworld(self.current_level,self.new_max_level,self.difficulty)
 			else:
 				self.create_overworld(self.current_level,self.new_max_level,self.difficulty)
 				
-		if self.current_level==1:
-			if self.bossObject.health>0:
-				self.enter_dialog('flyking_over')
-				self.create_overworld(self.current_level,0,self.difficulty)
+		#if self.current_level==1:
+		#	if self.bossObject.health>0:
+		#		self.enter_dialog('flyking_over')
+		#		self.create_overworld(self.current_level,0,self.difficulty)
 			
 	def check_coin_collisions(self):
 		collided_coins = pygame.sprite.spritecollide(self.player.sprite,self.coin_sprites,True)
