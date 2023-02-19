@@ -1,0 +1,120 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-29 09:01-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: main.py:11
+msgid "Game Name"
+msgstr "Hogo Frogo: Neočekávané dobrodružství"
+
+#: main.py:12
+msgid "Play"
+msgstr "Hrát"
+
+msgid "Settings"
+msgstr "Nastavení"
+
+msgid "Credits"
+msgstr "O hře"
+
+msgid "Quit"
+msgstr "Konec"
+
+msgid "Difficulty"
+msgstr "Obtížnost"
+
+msgid "Toad"
+msgstr "Ropucha"
+
+msgid "Frog"
+msgstr "Žabka"
+
+msgid "Music Volume"
+msgstr "Hudba"
+
+msgid "Sounds Volume"
+msgstr "Zvuky"
+
+msgid "Master Volume"
+msgstr "Master"
+
+msgid "Fullscreen"
+msgstr "Celá obrazovka"
+
+msgid "First steps on new land"
+msgstr "První krůčky v novém světě"
+
+# Dialog 1 - Sad Frog
+msgid "Hello there! I'm Mr. Croak!"
+msgstr "Hello there! I'm %(player_name)s!"
+
+msgid "Hello player_name!"
+msgstr "Hello %(player_name)s! :("
+
+msgid "What's going on?"
+msgstr "What's going on?"
+
+msgid "My wife has prepared me my favourite salami sandwich for snack but evil flies have taken the control over it!"
+msgstr "My wife has prepared me my favourite salami sandwich for snack but evil flies have taken the control over it!"
+
+msgid "Why don't you eat them?"
+msgstr "Why don't you eat them?"
+
+msgid ""I'm allergic to flies! :("
+msgstr ""I'm allergic to flies! :("
+
+msgid "Could you help me save my sandwich?"
+msgstr "Could you help me save my sandwich?"
+
+msgid "Uaaaaaaah!"
+msgstr "Uaaaaaaah!"
+
+msgid "Muhahahaaa! I'm the fly king. Stop touching my sandwich!"
+msgstr "Muhahahaaa! I'm the fly king. Stop touching my sandwich!"
+
+msgid "This sandwich is not yours!"
+msgstr "This sandwich is not yours!"
+
+msgid "If you think so fight for it!"
+msgstr "If you think so fight for it!"
+
+msgid "Yes!"
+msgstr "Yes!"
+
+msgid "Ouch!"
+msgstr "Ouch!"
+
+msgid "Now the sandwich is back in our hands!"
+msgstr "Now the sandwich is back in our hands!"
+
+msgid "Gjekh ghu ghra!"
+msgstr "Gjekh ghu ghra!"
+
+msgid "What should I do? What should I do?!"
+msgstr "What should I do? What should I do?!"
+
+msgid "Ghraaa!"
+msgstr "Ghraaa!"
+
+msgid "Oh no! A tsunami!"
+msgstr "Oh no! A tsunami!"
+
+msgid "I need to escape!"
+msgstr "I need to escape!"
+
+msgid "Hello!"
+msgstr "Hello!"
