@@ -1,3 +1,4 @@
+#region Imports
 import math
 import pygame
 from mobs.mosquito import Mosquito
@@ -26,6 +27,7 @@ from particles import ParticleEffect
 from game_data import levels
 from random import randint
 from tiles import AnimatedTile
+#endregion
 
 class Level:
 	def __init__(self,current_level,surface,create_overworld,change_coins,change_health,change_jump,difficulty):

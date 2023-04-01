@@ -1,10 +1,11 @@
+#region Imports
 import pygame 
 import copy
 from game_data import levels
 from support import import_folder
 from decoration import Sky
 import pygame_menu
-
+#endregion
 class Node(pygame.sprite.Sprite):
 	def __init__(self,pos,status,icon_speed,path):
 		super().__init__()

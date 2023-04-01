@@ -1,7 +1,9 @@
+#region Imports
 from tkinter.tix import Tree
 import pygame 
 from support import import_folder
 from math import sin
+#endregion
 
 class Player(pygame.sprite.Sprite):
 	def __init__(self,pos,surface,create_jump_particles,change_health,change_jump, graphics="default",sounds_volume=0.5):

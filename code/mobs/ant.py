@@ -1,7 +1,8 @@
+#region Imports
 import pygame 
 from .enemy import Enemy
 from random import randint
-
+#endregion
 class Ant(Enemy):
 	images_folder = 'ant'
 	attack_damage = 10

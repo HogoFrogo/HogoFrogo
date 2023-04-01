@@ -1,3 +1,4 @@
+#region Imports
 from multiprocessing.connection import wait
 from time import sleep
 from typing_extensions import Self
@@ -8,6 +9,7 @@ from level import Level
 from overworld import Overworld
 from ui import UI
 from game import Game
+#endregion
 
 class Program:
 	font = pygame_menu.font.FONT_8BIT

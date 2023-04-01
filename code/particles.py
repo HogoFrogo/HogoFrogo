@@ -1,5 +1,7 @@
+#region Imports
 import pygame
 from support import import_folder
+#endregion
 
 class ParticleEffect(pygame.sprite.Sprite):
 	def __init__(self,pos,type):

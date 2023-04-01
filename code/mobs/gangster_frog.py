@@ -1,9 +1,10 @@
+#region Imports
 from math import atan, degrees
 import pygame
-
 from mobs.bullet import Bullet 
 from .enemy import Enemy
 from random import randint
+#endregion
 
 class GangsterFrog(Enemy):
 	images_folder = 'gangster_frog'

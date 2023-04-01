@@ -1,3 +1,4 @@
+#region Imports
 from math import atan, degrees
 import pygame
 from mobs.poop import Poop 
@@ -5,6 +6,7 @@ from mobs.green_poop import GreenPoop
 from tiles import Tile, AnimatedTile, StaticTile
 from random import randint
 from player import Player
+#endregion
 
 class Boss(AnimatedTile):
 	images_folder = ''

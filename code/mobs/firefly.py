@@ -1,6 +1,8 @@
+#region Imports
 import pygame 
 from .enemy import Enemy
 from random import randint
+#endregion
 
 class Firefly(Enemy):
 	images_folder = 'firefly'

@@ -1,6 +1,8 @@
+#region Imports
 import pygame 
 from .poop import Poop
 from random import randint
+#endregion
 
 class GreenPoop(Poop):
 	images_folder = 'green_poop'

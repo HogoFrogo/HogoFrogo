@@ -1,6 +1,7 @@
+#region Imports
 import pygame
 from tiles import StaticTile
-
+#endregion
 
 class Star(StaticTile):
 	def __init__(self,size,x,y):

@@ -1,7 +1,9 @@
+#region Imports
 import pygame 
 from tiles import AnimatedTile
 from random import randint
 import math
+#endregion
 
 class Car(AnimatedTile):
 	image = ""

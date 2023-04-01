@@ -1,3 +1,4 @@
+#region Imports
 from mimetypes import init
 import pygame, sys
 from settings import * 
@@ -6,7 +7,7 @@ from overworld import Overworld
 from ui import UI
 from game_data import levels
 from player import *
-
+#endregion
 
 class Game:
 	def __init__(self, screen, music_volume,sounds_volume, master_volume):
