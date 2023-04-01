@@ -57,8 +57,7 @@ class Level:
 		self.level_biome = level_data['biome']
 		self.bossObject = Boss(30,300,level_data['boss'])
 
-		print("obtížnost")
-		print(difficulty)
+		print(f"obtížnost: {difficulty}")
 		if difficulty[0][0] == "Hard":
 			self.fly_occurency_probability = level_data['flies_hard']
 			self.firefly_occurency_probability = level_data['fireflies_hard']
