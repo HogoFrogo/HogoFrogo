@@ -26,9 +26,9 @@
 ### 2. boss (Level 2) - Tsunami
     Mood: Written in mood of the level
     
-    Immortal, constantly moving giant wave that functions like a chase level mechanic. After nearing the end of the level there is a cutscene of the fake victory, but then the wave appears on the other side and chases the player back to the beginning of the level. Near the beginning there will be a platform that the player needs to reach and when he reaches it the game ends.
+    Immortal, constantly moving giant wave that functions like a chase level mechanic. After nearing the end of the level there is a cutscene of the fake victory, but then the wave appears on the other side and chases the player back to the beginning of the level. Near the beginning there will be a platform that the player needs to reach and when he reaches it the level ends.
 ### 3. boss (Level 3) - Astro Firefly/Ghost Entity
-    Mood: Mysterious, overwhelming
+    Mood: Mysterious, overwhelming, inspiration in Elden Beast (Elden Ring)
     
     The boss appears at the end of the level, where at this point you can clearly see the night sky. The main point of this boss are zodiac attacks that react to the night sky (Cancer - the boss walks backwards, Sagittarius - the boss shoots a projectile at a player etc). The entity has a set number of attacks it receives and reacts to the hit thresholds with unique attacks:
     Constellations that are used to the moveset of the boss is as follows: 
@@ -38,19 +38,20 @@
         - 6. hit - Sextans - A curve appears in the skies, after a while a damaging star flies to the ground. When the player collides with a star, he gets hit
         - 9. hit - Crater - Boss slams the ground and after an indicator appears he temporarily breaks the ground below the player, after a while the ground is "rebuilt"
         - 12. hit - Antlia - Boss drains the air out with an Antlia, which makes the player jump lower, after a while boss charges the player and afterwards gets back to his place
-        - 15. hit - Hydra - *To be filled in* WHEN NOT UPDATED TILL THE DEV STAGE, DELETE IT
+        - 15. hit - Hydra - Boss grows another head and spits star projectiles, alternating between the two heads
     How to damage the boss: after using an XY amount of the same attack, the constellation that supported the attack will fall down and drop the stars to the arena. The player then needs to get to the stars and shoot them with their tongue to damage (hit) the boss. After this time window the boss changes the constellation and attacks again.
     Probably useful links for implementing stars and lightings mechanics: https://www.youtube.com/watch?v=NGFk44fY0O4, https://www.youtube.com/watch?v=IWm5hi5Yrvk
 ### 4. boss (Level 5) - Olgoj Chorchoj
-    Mood: Monsterous, mexican, desert
+    Mood: Monsterous, mexican, desert, Dune-like
     After you will reach the open "desert" area, you will encounter an underground-moving worm boss. The boss will resurface after a visual and audio prompt and he will either:
     1) Summon enemies native to the level in a given patterns
     2) Shoot a sequence of projectiles at the player
     3) Confusing resurfacing - the boss resurfaces, but jebaits the player and burrows again
         There will be platforms that you can move to that will contain reappearing blocks that will fall after the player will stand on them for a longer period of time, they damage the boss.
 ### 5. boss (Level 6) - "Dad"
-    Mood: Written in level's mood
-    Voice-led level - The player and Sad Frog are feeling "The End-ish", but just before they sit down and eat the sandwich, Sad Frog is kicked/launched by the human, right to the end of the level. The level includes common enemies and moves normally, but in addition there are environmental attacks from the human (stomping, arm-swinging, slapping, whatever). After getting to a certain point in the level the player will be caught by a kid (cutscene plays where the frog gets back to the terrarium)
+    Mood: Written in level's mood, should be a more dramatic alternative of the intro music in a "To The Moon" nature (very calm iconic intro song, which is then reused in the final scene, but with added sounds, the main hook stays the same to be recognisable)
+    Voice-led level - The player and Sad Frog are feeling "The End-ish", but just before they sit down and eat the sandwich, Sad Frog is kicked/launched by the human, right to the end of the level. The level includes common enemies and moves normally, but in addition there are environmental attacks from the human (stomping, arm-swinging, slapping, whatever). After getting to a certain point in the level the player will encounter the main boss: Dad
+    After this bossfight there is the ending cutscene necessary (player getting back to the terrarium, plot twist revealed)
 ## Enemy design and their level assignment
 ### Has to be filled in
     Insert enemy info here
@@ -60,7 +61,7 @@
     This frog will act for entertainment purposes in the cutscenes. In the beginning or during the story it will naturally frown to evoke sadness, in the end, it will finally smile.
     
 ## Decoration Blocks
-Orobinec, listí, kapradí, zlomenej orobinec, přeslička, houby?, lopuch (možná spíš jako čepička k zakoupení)
+Cattail, leaves, fern, broken cattail, horsetail, mushrooms?, burdock (probably more likely to be a player cosmetic, not a decoration block)
 
 ## Easter eggs and secrets design
 ### Secret "Snoop Frogg" ending
