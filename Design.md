@@ -5,6 +5,7 @@
     sandwich, flies -> flyking (shooting poops, increased fly spawn, player has to jump their way to flyking, when they damage him, he moves to the other side, when beat, )
 ### 2. level
     chase level - tsunami, if you are not fast enough, sandwich will be soaked - game over
+    Tsunami will be a "block", an entity without a healthbar. It will be present in the whole level and will be moving with a constant unchanging speed. First the movement will be from left to right (the standard level progression), after reaching the exit the tsunami will travel from right to left (after a brief pause, maybe a cutscene). During the second phase there will be a child in the background (very subtly). Also the child laughter will be heard, but not too obviously. After arriving at the platform in the beginning part of the level, a (quicktime event) sequence occurs. Tsunami will split into multiple fast moving mini-waves which will try to knock the player off the platform. After surviving this sequence the level ends.
 ### 3. level (night level)
     limited vision (circle around the player, that gets smaller) - when a player eats a firefly, the light radius expands -> night boss (either he does the 'lights out' and is visible only by a small light everytime you reach an HP threshold or he makes the darkness and you can't enter it) 
 ### 4. level
